@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><title>Badges</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: var(--espaco-5); }
+  .row { display: flex; gap: var(--espaco-3); align-items: center; flex-wrap: wrap; }
+  .badge { font-family: var(--fonte-ui); font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px; }
+  .badge .dot { width: 6px; height: 6px; border-radius: 50%; }
+  .badge-neutro  { background: #E9E1D2; color: #5F584A; }
+  .badge-neutro  .dot { background: #847A63; }
+  .badge-sucesso { background: #E7EDE4; color: #3C5639; }
+  .badge-sucesso .dot { background: #5C7E58; }
+  .badge-atencao { background: #F5EBD8; color: #8a5e1f; }
+  .badge-atencao .dot { background: #C2893C; }
+  .badge-erro    { background: #F3E0DC; color: #7C2E25; }
+  .badge-erro    .dot { background: #AE4A3C; }
+  .badge-info    { background: #EAEEF4; color: #26405A; }
+  .badge-info    .dot { background: #3D6189; }
+  .caption { font-size: 12px; color: var(--cor-texto-suave); margin-top: var(--espaco-3); }
+</style></head>
+<body>
+  <div class="card-root">
+    <div class="row">
+      <span class="badge badge-neutro"><span class="dot"></span>Rascunho</span>
+      <span class="badge badge-info"><span class="dot"></span>Em andamento</span>
+      <span class="badge badge-atencao"><span class="dot"></span>Pendente</span>
+      <span class="badge badge-erro"><span class="dot"></span>Atrasado</span>
+      <span class="badge badge-sucesso"><span class="dot"></span>Concluído</span>
+    </div>
+    <div class="row">
+      <span class="badge badge-neutro">Rascunho</span>
+      <span class="badge badge-info">Em andamento</span>
+      <span class="badge badge-atencao">Pendente</span>
+      <span class="badge badge-erro">Atrasado</span>
+      <span class="badge badge-sucesso">Concluído</span>
+    </div>
+    <div class="caption">Pill-shaped, 11px/600. Dot variant for richer status lists; plain variant for compact rows. Background uses the semantic <code>-bg</code> token, foreground a darker shade of the same hue.</div>
+  </div>
+</body></html>

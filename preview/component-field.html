@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><title>Form field</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: var(--espaco-5); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--espaco-4); }
+  .campo { display: flex; flex-direction: column; gap: 6px; }
+  .campo label { font-size: 13px; font-weight: 600; color: var(--cor-texto); }
+  .campo input { font-family: var(--fonte-ui); font-size: 15px; color: var(--cor-texto); padding: 9px 12px; border: 1px solid var(--cor-borda-forte); border-radius: 6px; background: var(--cor-superficie); transition: border-color 0.15s ease, box-shadow 0.15s ease; }
+  .campo input.focus { outline: none; border-color: var(--cor-acao); box-shadow: 0 0 0 3px var(--primaria-50); }
+  .campo input.err { border-color: var(--cor-erro); }
+  .campo .dica { font-size: 11px; color: var(--cor-texto-suave); }
+  .campo .erro { font-size: 11px; color: var(--cor-erro); }
+  .state-label { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cor-texto-suave); margin-bottom: 4px; }
+</style></head>
+<body>
+  <div class="card-root">
+    <div class="grid">
+      <div>
+        <div class="state-label">Normal</div>
+        <div class="campo">
+          <label for="a">Nome do projeto</label>
+          <input id="a" type="text" value="Reforma da cozinha">
+          <span class="dica">Aparece na lista da página inicial.</span>
+        </div>
+      </div>
+      <div>
+        <div class="state-label">Foco</div>
+        <div class="campo">
+          <label for="b">Nome do projeto</label>
+          <input id="b" type="text" class="focus" value="Pomar dos fundos">
+          <span class="dica">Aparece na lista da página inicial.</span>
+        </div>
+      </div>
+      <div>
+        <div class="state-label">Erro</div>
+        <div class="campo">
+          <label for="c">Nome do projeto</label>
+          <input id="c" type="text" class="err" value="">
+          <span class="erro">Dê um nome para o projeto.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body></html>

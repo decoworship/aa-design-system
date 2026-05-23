@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><title>Colors — Semantic</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: var(--espaco-5); }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--espaco-3); }
+  .tok { background: var(--cor-superficie); border: 1px solid var(--cor-borda); border-radius: 10px; overflow: hidden; }
+  .tok .chip { height: 56px; }
+  .tok .lbl  { padding: 8px 10px; }
+  .tok .lbl b { display: block; font-size: 12px; font-weight: 600; color: var(--cor-texto); }
+  .tok .lbl span { display: block; font-size: 10px; color: var(--cor-texto-suave); font-family: ui-monospace, "SF Mono", monospace; margin-top: 1px; }
+  .tok.text { padding: 12px; height: 78px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .tok.text .sample { font-size: 18px; font-weight: 600; line-height: 1; flex: 1; display: flex; align-items: flex-start; padding-top: 4px; }
+  .tok.text b { font-size: 12px; font-weight: 600; }
+  .tok.text span { font-size: 10px; color: var(--cor-texto-suave); font-family: ui-monospace, "SF Mono", monospace; }
+</style></head>
+<body>
+  <div class="card-root">
+    <div class="grid">
+      <div class="tok"><div class="chip" style="background:var(--cor-fundo)"></div><div class="lbl"><b>--cor-fundo</b><span>areia-100 · pagina</span></div></div>
+      <div class="tok"><div class="chip" style="background:var(--cor-superficie)"></div><div class="lbl"><b>--cor-superficie</b><span>areia-50 · cards</span></div></div>
+      <div class="tok"><div class="chip" style="background:var(--cor-superficie-2)"></div><div class="lbl"><b>--cor-superficie-2</b><span>areia-200 · sutil</span></div></div>
+      <div class="tok"><div class="chip" style="background:var(--cor-borda); border-bottom:1px solid var(--cor-borda)"></div><div class="lbl"><b>--cor-borda</b><span>areia-300 · linhas</span></div></div>
+
+      <div class="tok text" style="background:var(--cor-superficie)"><div class="sample" style="color:var(--cor-texto-forte)">Ab</div><b style="color:var(--cor-texto-forte)">--cor-texto-forte</b><span>areia-900 · títulos</span></div>
+      <div class="tok text" style="background:var(--cor-superficie)"><div class="sample" style="color:var(--cor-texto)">Ab</div><b style="color:var(--cor-texto)">--cor-texto</b><span>areia-800 · padrão</span></div>
+      <div class="tok text" style="background:var(--cor-superficie)"><div class="sample" style="color:var(--cor-texto-suave)">Ab</div><b style="color:var(--cor-texto-suave)">--cor-texto-suave</b><span>areia-600 · apoio</span></div>
+      <div class="tok"><div class="chip" style="background:var(--cor-acao)"></div><div class="lbl"><b>--cor-acao</b><span>primária-500 · ação</span></div></div>
+    </div>
+  </div>
+</body></html>

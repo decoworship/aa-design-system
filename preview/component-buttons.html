@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><title>Buttons</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: var(--espaco-5); }
+  .row { display: flex; gap: var(--espaco-3); align-items: center; flex-wrap: wrap; margin-bottom: var(--espaco-3); }
+  .row:last-child { margin-bottom: 0; }
+  .row .tag {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--cor-texto-suave);
+    flex-basis: 88px;
+  }
+
+  .btn {
+    font-family: var(--fonte-ui); font-size: 15px; font-weight: 600;
+    padding: 10px 18px; border-radius: 10px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease,
+                box-shadow 0.15s ease, transform 0.12s ease, color 0.15s ease;
+    position: relative;
+    white-space: nowrap;
+  }
+
+  /* ----- PRIMÁRIO: clear state diff via color + elevation + tactile shift ----- */
+  .btn-primario {
+    background: var(--cor-acao);
+    color: var(--cor-texto-invertido);
+    box-shadow: 0 1px 2px rgba(34,31,26,0.10);
+  }
+  .btn-primario.h {
+    background: var(--cor-acao-hover);
+    box-shadow: 0 6px 14px rgba(38,64,90,0.22);
+    transform: translateY(-1px);
+  }
+  .btn-primario.a {
+    background: var(--cor-acao-ativa);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.18), 0 1px 0 rgba(34,31,26,0.04);
+    transform: translateY(1px);
+  }
+  .btn-primario.focus {
+    background: var(--cor-acao);
+    box-shadow: 0 0 0 4px var(--primaria-50),
+                0 0 0 5px var(--cor-acao-ativa),
+                0 1px 2px rgba(34,31,26,0.10);
+    outline: none;
+  }
+  .btn-primario.disabled {
+    background: var(--cor-acao);
+    color: var(--cor-texto-invertido);
+    opacity: 0.45; cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  /* ----- SECUNDÁRIO ----- */
+  .btn-secundario {
+    background: var(--cor-superficie);
+    color: var(--cor-texto);
+    border-color: var(--cor-borda-forte);
+  }
+  .btn-secundario.h {
+    background: var(--cor-superficie-2);
+    border-color: var(--areia-500);
+  }
+  .btn-secundario.a {
+    background: var(--areia-300);
+    border-color: var(--areia-500);
+    box-shadow: inset 0 1px 2px rgba(34,31,26,0.10);
+  }
+  .btn-secundario.focus {
+    background: var(--cor-superficie);
+    border-color: var(--cor-acao);
+    box-shadow: 0 0 0 3px var(--primaria-50);
+  }
+  .btn-secundario.disabled { opacity: 0.45; cursor: not-allowed; }
+
+  /* ----- TEXTO ----- */
+  .btn-texto { background: transparent; color: var(--cor-acao); }
+  .btn-texto.h { background: var(--primaria-50); }
+  .btn-texto.a { background: var(--primaria-100); color: var(--cor-acao-ativa); }
+  .btn-texto.disabled { opacity: 0.45; cursor: not-allowed; }
+</style></head>
+<body>
+  <div class="card-root">
+    <div class="row">
+      <span class="tag">Primário</span>
+      <button class="btn btn-primario">Salvar projeto</button>
+      <button class="btn btn-primario h">Hover</button>
+      <button class="btn btn-primario a">Pressed</button>
+      <button class="btn btn-primario focus">Focus</button>
+      <button class="btn btn-primario disabled">Salvar</button>
+    </div>
+    <div class="row">
+      <span class="tag">Secundário</span>
+      <button class="btn btn-secundario">Cancelar</button>
+      <button class="btn btn-secundario h">Hover</button>
+      <button class="btn btn-secundario a">Pressed</button>
+      <button class="btn btn-secundario focus">Focus</button>
+      <button class="btn btn-secundario disabled">Cancelar</button>
+    </div>
+    <div class="row">
+      <span class="tag">Texto</span>
+      <button class="btn btn-texto">Ver detalhes</button>
+      <button class="btn btn-texto h">Hover</button>
+      <button class="btn btn-texto a">Pressed</button>
+      <button class="btn btn-texto disabled">Ver detalhes</button>
+    </div>
+  </div>
+</body></html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><title>Colors — Accent terracotta</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: var(--espaco-5); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: var(--espaco-3); align-items: stretch; }
+  .sw { border-radius: 10px; overflow: hidden; border: 1px solid rgba(34,31,26,0.06); }
+  .sw .chip { height: 110px; }
+  .sw .lbl  { padding: 8px 12px; background: var(--cor-superficie); }
+  .sw .lbl b { display: block; font-size: 13px; font-weight: 600; color: var(--cor-texto); }
+  .sw .lbl span { display: block; font-size: 11px; color: var(--cor-texto-suave); font-variant-numeric: tabular-nums; font-family: ui-monospace, "SF Mono", monospace; }
+  .note { background: var(--cor-superficie); border: 1px solid var(--cor-borda); border-radius: 10px; padding: var(--espaco-4); display: flex; flex-direction: column; gap: 6px; }
+  .note .rot { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--acento-500); }
+  .note .body { font-size: 13px; line-height: 1.5; color: var(--cor-texto); }
+</style></head>
+<body>
+  <div class="card-root">
+    <div class="grid">
+      <div class="sw"><div class="chip" style="background:#C57B57"></div><div class="lbl"><b>acento-500</b><span>C57B57 · destaque</span></div></div>
+      <div class="sw"><div class="chip" style="background:#AC6644"></div><div class="lbl"><b>acento-600</b><span>AC6644 · hover</span></div></div>
+      <div class="note">
+        <span class="rot">Usar com parcimônia</span>
+        <span class="body">The rare "touch of color". Eyebrow labels, a single chart bar, an accent divider. If you reach for it more than once or twice on a screen, you're overusing it.</span>
+      </div>
+    </div>
+  </div>
+</body></html>

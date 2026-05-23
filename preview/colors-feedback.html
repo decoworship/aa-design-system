@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><title>Colors — Feedback</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: var(--espaco-5); }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--espaco-3); }
+  .item { background: var(--cor-superficie); border: 1px solid var(--cor-borda); border-radius: 10px; overflow: hidden; }
+  .item .duo { display: grid; grid-template-columns: 1fr; }
+  .item .fg { height: 48px; display: flex; align-items: center; justify-content: center; }
+  .item .bg { height: 36px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; }
+  .item .lbl { padding: 8px 10px; border-top: 1px solid var(--cor-borda); }
+  .item .lbl b { display: block; font-size: 12px; font-weight: 600; color: var(--cor-texto); }
+  .item .lbl span { display: block; font-size: 10px; color: var(--cor-texto-suave); font-family: ui-monospace, "SF Mono", monospace; margin-top: 1px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+</style></head>
+<body>
+  <div class="card-root">
+    <div class="grid">
+      <div class="item">
+        <div class="fg" style="background:#5C7E58"><span class="dot" style="background:#fff;opacity:0.5"></span></div>
+        <div class="bg" style="background:#E7EDE4;color:#3C5639">Concluído</div>
+        <div class="lbl"><b>sucesso</b><span>5C7E58 / E7EDE4</span></div>
+      </div>
+      <div class="item">
+        <div class="fg" style="background:#C2893C"><span class="dot" style="background:#fff;opacity:0.5"></span></div>
+        <div class="bg" style="background:#F5EBD8;color:#8a5e1f">Pendente</div>
+        <div class="lbl"><b>atenção</b><span>C2893C / F5EBD8</span></div>
+      </div>
+      <div class="item">
+        <div class="fg" style="background:#AE4A3C"><span class="dot" style="background:#fff;opacity:0.5"></span></div>
+        <div class="bg" style="background:#F3E0DC;color:#7C2E25">Atrasado</div>
+        <div class="lbl"><b>erro</b><span>AE4A3C / F3E0DC</span></div>
+      </div>
+      <div class="item">
+        <div class="fg" style="background:#3D6189"><span class="dot" style="background:#fff;opacity:0.5"></span></div>
+        <div class="bg" style="background:#EAEEF4;color:#26405A">Salvo</div>
+        <div class="lbl"><b>info</b><span>3D6189 / EAEEF4</span></div>
+      </div>
+    </div>
+  </div>
+</body></html>

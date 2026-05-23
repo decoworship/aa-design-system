@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><title>Metric card</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: var(--espaco-5); background: var(--cor-fundo); }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--espaco-3); }
+  .metrica { background: var(--cor-superficie); border: 1px solid var(--cor-borda); border-radius: 10px; padding: var(--espaco-4); display: flex; flex-direction: column; gap: 2px; }
+  .metrica .rot { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--cor-texto-suave); }
+  .metrica .num { font-family: var(--fonte-display); font-size: 36px; font-weight: 600; color: var(--cor-texto-forte); line-height: 1.05; margin-top: 4px; }
+  .metrica .delta { font-size: 11px; font-weight: 600; margin-top: 4px; display: flex; align-items: center; gap: 4px; }
+  .delta.up { color: #3C5639; }
+  .delta.warn { color: #8a5e1f; }
+  .delta.flat { color: var(--cor-texto-suave); }
+</style></head>
+<body>
+  <div class="card-root">
+    <div class="grid">
+      <div class="metrica">
+        <div class="rot">Projetos ativos</div>
+        <div class="num">7</div>
+        <div class="delta up">+2 no mês</div>
+      </div>
+      <div class="metrica">
+        <div class="rot">Concluídos</div>
+        <div class="num">23</div>
+        <div class="delta up">+5 no mês</div>
+      </div>
+      <div class="metrica">
+        <div class="rot">Pendências</div>
+        <div class="num">4</div>
+        <div class="delta warn">2 atrasadas</div>
+      </div>
+    </div>
+  </div>
+</body></html>

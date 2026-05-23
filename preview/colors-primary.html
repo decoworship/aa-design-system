@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><title>Colors — Primary blue</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: var(--espaco-5); }
+  .swatches { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
+  .sw { border-radius: 8px; overflow: hidden; border: 1px solid rgba(34,31,26,0.06); }
+  .sw .chip { height: 84px; display: flex; align-items: flex-end; padding: 8px; }
+  .sw .chip .pill { font-size: 10px; font-weight: 600; padding: 2px 6px; border-radius: 999px; background: rgba(255,255,255,0.7); color: var(--cor-texto); }
+  .sw .lbl  { padding: 6px 10px; background: var(--cor-superficie); }
+  .sw .lbl b { display: block; font-size: 12px; font-weight: 600; color: var(--cor-texto); }
+  .sw .lbl span { display: block; font-size: 10px; color: var(--cor-texto-suave); font-variant-numeric: tabular-nums; font-family: ui-monospace, "SF Mono", monospace; }
+  .caption { font-size: 13px; color: var(--cor-texto-suave); margin-top: var(--espaco-3); }
+  .caption b { color: var(--cor-texto); font-weight: 600; }
+</style></head>
+<body>
+  <div class="card-root">
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#EAEEF4"></div><div class="lbl"><b>primária-50</b><span>EAEEF4</span></div></div>
+      <div class="sw"><div class="chip" style="background:#CBD6E4"></div><div class="lbl"><b>primária-100</b><span>CBD6E4</span></div></div>
+      <div class="sw"><div class="chip" style="background:#7C95B4"></div><div class="lbl"><b>primária-300</b><span>7C95B4</span></div></div>
+      <div class="sw"><div class="chip" style="background:#3D6189"><span class="pill">action</span></div><div class="lbl"><b>primária-500</b><span>3D6189</span></div></div>
+      <div class="sw"><div class="chip" style="background:#31506F"><span class="pill">hover</span></div><div class="lbl"><b>primária-600</b><span>31506F</span></div></div>
+      <div class="sw"><div class="chip" style="background:#26405A"><span class="pill">active</span></div><div class="lbl"><b>primária-700</b><span>26405A</span></div></div>
+    </div>
+    <div class="caption"><b>primária</b> — calm, slightly grey-leaning blue. The <i>only</i> action color in the system. 500 is default, 600 hover, 700 pressed; 50 is the focus-ring tint.</div>
+  </div>
+</body></html>

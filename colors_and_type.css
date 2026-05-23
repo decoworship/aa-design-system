@@ -1,0 +1,196 @@
+/* ============================================================
+   AA Design System — Colors & Type
+   Base tokens + semantic tokens + semantic typography mixins.
+   Import this on every project page; it declares local web fonts
+   and exposes the full token set described in docs/guia-de-design.md.
+   ============================================================ */
+
+/* Fraunces — local variable fonts (full SOFT/WONK/opsz/wght axes) */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('fonts/Fraunces-VariableFont.ttf') format('truetype-variations'),
+       url('fonts/Fraunces-VariableFont.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('fonts/Fraunces-Italic-VariableFont.ttf') format('truetype-variations'),
+       url('fonts/Fraunces-Italic-VariableFont.ttf') format('truetype');
+}
+
+/* Hanken Grotesk — local variable fonts (uploaded by the brand owner) */
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('fonts/HankenGrotesk-VariableFont_wght.ttf') format('truetype-variations'),
+       url('fonts/HankenGrotesk-VariableFont_wght.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('fonts/HankenGrotesk-Italic-VariableFont_wght.ttf') format('truetype-variations'),
+       url('fonts/HankenGrotesk-Italic-VariableFont_wght.ttf') format('truetype');
+}
+
+:root {
+  /* ---------- Cores cruas: escala neutra (areia quente) ---------- */
+  --areia-50:  #FAF7F1;
+  --areia-100: #F4EFE6;
+  --areia-200: #E9E1D2;
+  --areia-300: #DAD0BC;
+  --areia-400: #C2B69D;
+  --areia-500: #A6987D;
+  --areia-600: #847A63;
+  --areia-700: #5F584A;
+  --areia-800: #3D382F;
+  --areia-900: #221F1A;
+
+  /* ---------- Cores cruas: primária (azul calmo) ---------- */
+  --primaria-50:  #EAEEF4;
+  --primaria-100: #CBD6E4;
+  --primaria-300: #7C95B4;
+  --primaria-500: #3D6189;
+  --primaria-600: #31506F;
+  --primaria-700: #26405A;
+
+  /* ---------- Cores cruas: acento (terracota) ---------- */
+  --acento-500: #C57B57;
+  --acento-600: #AC6644;
+
+  /* ---------- SEMÂNTICOS — superfícies, texto, ações ---------- */
+  --cor-fundo:           var(--areia-100);
+  --cor-superficie:      var(--areia-50);
+  --cor-superficie-2:    var(--areia-200);
+  --cor-borda:           var(--areia-300);
+  --cor-borda-forte:     var(--areia-400);
+  --cor-texto:           var(--areia-800);
+  --cor-texto-suave:     var(--areia-600);
+  --cor-texto-forte:     var(--areia-900);
+  --cor-texto-invertido: var(--areia-50);
+
+  --cor-acao:            var(--primaria-500);
+  --cor-acao-hover:      var(--primaria-600);
+  --cor-acao-ativa:      var(--primaria-700);
+  --cor-destaque:        var(--acento-500);
+
+  /* ---------- Feedback ---------- */
+  --cor-sucesso:    #5C7E58;  --cor-sucesso-bg: #E7EDE4;
+  --cor-atencao:    #C2893C;  --cor-atencao-bg: #F5EBD8;
+  --cor-erro:       #AE4A3C;  --cor-erro-bg:    #F3E0DC;
+  --cor-info:       #3D6189;  --cor-info-bg:    #EAEEF4;
+
+  /* ---------- Paleta de dados (gráficos) ---------- */
+  --dados-1: #3D6189;
+  --dados-2: #C57B57;
+  --dados-3: #6E8E6B;
+  --dados-4: #D0A24E;
+  --dados-5: #8A6E8E;
+  --dados-6: #5E7C8A;
+
+  /* ---------- Tipografia: famílias ---------- */
+  --fonte-display: 'Fraunces', Georgia, serif;
+  --fonte-ui:      'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+
+  /* ---------- Tipografia: escala (tamanho base) ---------- */
+  --texto-display:  36px;
+  --texto-titulo-g: 24px;
+  --texto-titulo-m: 18px;
+  --texto-corpo:    15px;
+  --texto-pequeno:  13px;
+  --texto-rotulo:   12px;
+
+  /* ---------- Espaçamento (base 4px) ---------- */
+  --espaco-1: 4px;
+  --espaco-2: 8px;
+  --espaco-3: 12px;
+  --espaco-4: 16px;
+  --espaco-5: 24px;
+  --espaco-6: 32px;
+  --espaco-7: 48px;
+  --espaco-8: 64px;
+
+  /* ---------- Raio de borda ---------- */
+  --raio-pequeno: 6px;
+  --raio-medio:   10px;
+  --raio-grande:  16px;
+  --raio-pilula:  999px;
+
+  /* ---------- Sombras ---------- */
+  --sombra-pequena: 0 1px 2px rgba(34,31,26,0.06);
+  --sombra-media:   0 4px 12px rgba(34,31,26,0.08);
+  --sombra-grande:  0 12px 28px rgba(34,31,26,0.12);
+}
+
+/* ============================================================
+   ESTILOS SEMÂNTICOS DE TEXTO
+   Aplique como classe ou copie as regras para um seletor próprio.
+   ============================================================ */
+
+body {
+  font-family: var(--fonte-ui);
+  font-size: var(--texto-corpo);
+  line-height: 1.55;
+  color: var(--cor-texto);
+  background: var(--cor-fundo);
+  -webkit-font-smoothing: antialiased;
+}
+
+.t-display {
+  font-family: var(--fonte-display);
+  font-size: var(--texto-display);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--cor-texto-forte);
+  letter-spacing: -0.01em;
+}
+
+.t-titulo-g {
+  font-family: var(--fonte-ui);
+  font-size: var(--texto-titulo-g);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--cor-texto-forte);
+}
+
+.t-titulo-m {
+  font-family: var(--fonte-ui);
+  font-size: var(--texto-titulo-m);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--cor-texto-forte);
+}
+
+.t-corpo {
+  font-family: var(--fonte-ui);
+  font-size: var(--texto-corpo);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--cor-texto);
+}
+
+.t-pequeno {
+  font-family: var(--fonte-ui);
+  font-size: var(--texto-pequeno);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--cor-texto-suave);
+}
+
+.t-rotulo {
+  font-family: var(--fonte-ui);
+  font-size: var(--texto-rotulo);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cor-texto-suave);
+}

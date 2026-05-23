@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><title>Colors — Data palette</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: var(--espaco-5); }
+  .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: var(--espaco-4); align-items: stretch; }
+  .swatches { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
+  .sw { background: var(--cor-superficie); border: 1px solid var(--cor-borda); border-radius: 8px; overflow: hidden; display: flex; align-items: center; gap: 8px; padding: 6px; }
+  .sw .chip { width: 36px; height: 36px; border-radius: 6px; flex: none; }
+  .sw .lbl b { display: block; font-size: 12px; font-weight: 600; color: var(--cor-texto); }
+  .sw .lbl span { display: block; font-size: 10px; color: var(--cor-texto-suave); font-family: ui-monospace, "SF Mono", monospace; }
+  .chart { background: var(--cor-superficie); border: 1px solid var(--cor-borda); border-radius: 12px; padding: var(--espaco-4); display: flex; flex-direction: column; gap: var(--espaco-3); }
+  .chart .ttl { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cor-texto-suave); }
+  .bars { display: flex; align-items: flex-end; gap: 8px; height: 110px; }
+  .bars .col { flex: 1; border-radius: 4px 4px 0 0; }
+</style></head>
+<body>
+  <div class="card-root">
+    <div class="wrap">
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#3D6189"></div><div class="lbl"><b>dados-1</b><span>3D6189</span></div></div>
+        <div class="sw"><div class="chip" style="background:#C57B57"></div><div class="lbl"><b>dados-2</b><span>C57B57</span></div></div>
+        <div class="sw"><div class="chip" style="background:#6E8E6B"></div><div class="lbl"><b>dados-3</b><span>6E8E6B</span></div></div>
+        <div class="sw"><div class="chip" style="background:#D0A24E"></div><div class="lbl"><b>dados-4</b><span>D0A24E</span></div></div>
+        <div class="sw"><div class="chip" style="background:#8A6E8E"></div><div class="lbl"><b>dados-5</b><span>8A6E8E</span></div></div>
+        <div class="sw"><div class="chip" style="background:#5E7C8A"></div><div class="lbl"><b>dados-6</b><span>5E7C8A</span></div></div>
+      </div>
+      <div class="chart">
+        <span class="ttl">Atividade por semana</span>
+        <div class="bars">
+          <div class="col" style="height:55%; background:#3D6189"></div>
+          <div class="col" style="height:80%; background:#C57B57"></div>
+          <div class="col" style="height:40%; background:#6E8E6B"></div>
+          <div class="col" style="height:95%; background:#D0A24E"></div>
+          <div class="col" style="height:65%; background:#8A6E8E"></div>
+          <div class="col" style="height:48%; background:#5E7C8A"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body></html>

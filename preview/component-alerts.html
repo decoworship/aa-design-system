@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><title>Alerts</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  body { padding: var(--espaco-5); }
+  .stack { display: flex; flex-direction: column; gap: var(--espaco-2); }
+  .alerta { display: flex; gap: var(--espaco-3); padding: 12px 16px; border-radius: 10px; font-size: 13px; align-items: flex-start; }
+  .alerta .ponto { width: 8px; height: 8px; border-radius: 50%; margin-top: 6px; flex: none; }
+  .alerta-info    { background: #EAEEF4; color: #26405A; }
+  .alerta-info    .ponto { background: #3D6189; }
+  .alerta-sucesso { background: #E7EDE4; color: #3C5639; }
+  .alerta-sucesso .ponto { background: #5C7E58; }
+  .alerta-atencao { background: #F5EBD8; color: #8a5e1f; }
+  .alerta-atencao .ponto { background: #C2893C; }
+  .alerta-erro    { background: #F3E0DC; color: #7C2E25; }
+  .alerta-erro    .ponto { background: #AE4A3C; }
+</style></head>
+<body>
+  <div class="card-root">
+    <div class="stack">
+      <div class="alerta alerta-info"><span class="ponto"></span><span>Seus dados foram salvos automaticamente.</span></div>
+      <div class="alerta alerta-sucesso"><span class="ponto"></span><span>Projeto criado com sucesso.</span></div>
+      <div class="alerta alerta-atencao"><span class="ponto"></span><span>Duas tarefas estão atrasadas — confira antes de fechar o mês.</span></div>
+      <div class="alerta alerta-erro"><span class="ponto"></span><span>Não foi possível conectar. Tente novamente em alguns segundos.</span></div>
+    </div>
+  </div>
+</body></html>
