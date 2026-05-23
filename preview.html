@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AA Design System — Referência Visual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens/tokens.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--fonte-ui);
+    font-size: var(--texto-corpo);
+    line-height: 1.55;
+    color: var(--cor-texto);
+    background: var(--cor-fundo);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .pagina { max-width: 980px; margin: 0 auto; padding: var(--espaco-8) var(--espaco-5); }
+
+  /* Cabeçalho */
+  header { margin-bottom: var(--espaco-8); }
+  .marca { display: flex; align-items: center; gap: var(--espaco-3); margin-bottom: var(--espaco-5); }
+  .marca svg { width: 26px; height: 26px; color: var(--cor-texto-forte); }
+  .marca .nome { font-size: var(--texto-rotulo); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--cor-texto-suave); }
+  header h1 { font-family: var(--fonte-display); font-size: var(--texto-display); font-weight: 600; color: var(--cor-texto-forte); line-height: 1.1; margin-bottom: var(--espaco-3); }
+  header p { color: var(--cor-texto-suave); max-width: 60ch; }
+  .versao { display: inline-block; margin-top: var(--espaco-4); font-size: var(--texto-pequeno); color: var(--cor-texto-suave); background: var(--cor-superficie-2); padding: 2px 10px; border-radius: var(--raio-pilula); }
+
+  /* Seções */
+  section { margin-bottom: var(--espaco-8); }
+  .secao-rotulo { font-size: var(--texto-rotulo); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--cor-destaque); margin-bottom: var(--espaco-3); }
+  .secao-titulo { font-family: var(--fonte-display); font-size: var(--texto-titulo-g); font-weight: 600; color: var(--cor-texto-forte); margin-bottom: var(--espaco-2); }
+  .secao-desc { color: var(--cor-texto-suave); margin-bottom: var(--espaco-5); max-width: 64ch; }
+
+  /* Cards genéricos */
+  .card {
+    background: var(--cor-superficie);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-grande);
+    padding: var(--espaco-5);
+  }
+
+  /* --- Cores --- */
+  .grade-cor { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--espaco-3); }
+  .amostra { border-radius: var(--raio-medio); overflow: hidden; border: 1px solid var(--cor-borda); }
+  .amostra .chip { height: 64px; }
+  .amostra .meta { padding: var(--espaco-2) var(--espaco-3); background: var(--cor-superficie); }
+  .amostra .meta b { display: block; font-size: var(--texto-pequeno); font-weight: 600; }
+  .amostra .meta span { font-size: 11px; color: var(--cor-texto-suave); font-variant-numeric: tabular-nums; }
+  .grupo-cor { margin-bottom: var(--espaco-5); }
+  .grupo-cor h3 { font-size: var(--texto-titulo-m); margin-bottom: var(--espaco-3); }
+
+  /* --- Tipografia --- */
+  .amostra-tipo { padding: var(--espaco-3) 0; border-bottom: 1px solid var(--cor-borda); display: flex; align-items: baseline; gap: var(--espaco-4); }
+  .amostra-tipo:last-child { border-bottom: none; }
+  .amostra-tipo .tag { flex: 0 0 96px; font-size: 11px; color: var(--cor-texto-suave); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+  .t-display  { font-family: var(--fonte-display); font-size: var(--texto-display); font-weight: 600; line-height: 1.1; }
+  .t-titulo-g { font-size: var(--texto-titulo-g); font-weight: 600; }
+  .t-titulo-m { font-size: var(--texto-titulo-m); font-weight: 600; }
+  .t-corpo    { font-size: var(--texto-corpo); }
+  .t-pequeno  { font-size: var(--texto-pequeno); }
+  .t-rotulo   { font-size: var(--texto-rotulo); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* --- Espaçamento --- */
+  .grade-espaco { display: flex; flex-wrap: wrap; gap: var(--espaco-5); }
+  .item-espaco { text-align: center; }
+  .item-espaco .barra { background: var(--cor-destaque); height: 24px; border-radius: 3px; margin-bottom: var(--espaco-2); }
+  .item-espaco span { font-size: 11px; color: var(--cor-texto-suave); font-variant-numeric: tabular-nums; }
+
+  .grade-raio { display: flex; gap: var(--espaco-5); flex-wrap: wrap; }
+  .item-raio { text-align: center; }
+  .item-raio .quad { width: 72px; height: 72px; background: var(--primaria-100); border: 1px solid var(--primaria-300); margin-bottom: var(--espaco-2); }
+  .item-raio span { font-size: 11px; color: var(--cor-texto-suave); }
+
+  /* --- Componentes --- */
+  .demo-linha { display: flex; flex-wrap: wrap; gap: var(--espaco-3); align-items: center; margin-bottom: var(--espaco-4); }
+  .demo-linha:last-child { margin-bottom: 0; }
+
+  .btn {
+    font-family: var(--fonte-ui); font-size: var(--texto-corpo); font-weight: 600;
+    padding: 10px 18px; border-radius: var(--raio-medio); border: 1px solid transparent;
+    cursor: pointer; transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .btn-primario { background: var(--cor-acao); color: var(--cor-texto-invertido); }
+  .btn-primario:hover { background: var(--cor-acao-hover); }
+  .btn-secundario { background: var(--cor-superficie); color: var(--cor-texto); border-color: var(--cor-borda-forte); }
+  .btn-secundario:hover { background: var(--cor-superficie-2); }
+  .btn-texto { background: transparent; color: var(--cor-acao); }
+  .btn-texto:hover { background: var(--primaria-50); }
+  .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+  .campo { display: flex; flex-direction: column; gap: 6px; max-width: 280px; }
+  .campo label { font-size: var(--texto-pequeno); font-weight: 600; color: var(--cor-texto); }
+  .campo input {
+    font-family: var(--fonte-ui); font-size: var(--texto-corpo); color: var(--cor-texto);
+    padding: 9px 12px; border: 1px solid var(--cor-borda-forte); border-radius: var(--raio-pequeno);
+    background: var(--cor-superficie); transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .campo input:focus { outline: none; border-color: var(--cor-acao); box-shadow: 0 0 0 3px var(--primaria-50); }
+  .campo .dica { font-size: 11px; color: var(--cor-texto-suave); }
+
+  .badge { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: var(--raio-pilula); }
+  .badge-neutro  { background: var(--cor-superficie-2); color: var(--cor-texto-suave); }
+  .badge-sucesso { background: var(--cor-sucesso-bg); color: var(--cor-sucesso); }
+  .badge-atencao { background: var(--cor-atencao-bg); color: var(--cor-atencao); }
+  .badge-erro    { background: var(--cor-erro-bg);    color: var(--cor-erro); }
+
+  .alerta { display: flex; gap: var(--espaco-3); padding: var(--espaco-3) var(--espaco-4); border-radius: var(--raio-medio); font-size: var(--texto-pequeno); }
+  .alerta .ponto { width: 8px; height: 8px; border-radius: 50%; margin-top: 6px; flex: none; }
+  .alerta-info    { background: var(--cor-info-bg); color: var(--primaria-700); }
+  .alerta-info    .ponto { background: var(--cor-info); }
+  .alerta-sucesso { background: var(--cor-sucesso-bg); color: #3C5639; }
+  .alerta-sucesso .ponto { background: var(--cor-sucesso); }
+  .alerta-erro    { background: var(--cor-erro-bg); color: #7C2E25; }
+  .alerta-erro    .ponto { background: var(--cor-erro); }
+
+  /* --- Mini dashboard --- */
+  .dash { background: var(--cor-fundo); border: 1px solid var(--cor-borda); border-radius: var(--raio-grande); padding: var(--espaco-5); }
+  .dash-topo { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--espaco-4); }
+  .dash-topo h3 { font-family: var(--fonte-display); font-size: var(--texto-titulo-m); }
+  .dash-grade { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--espaco-3); margin-bottom: var(--espaco-4); }
+  .metrica { background: var(--cor-superficie); border: 1px solid var(--cor-borda); border-radius: var(--raio-medio); padding: var(--espaco-4); }
+  .metrica .rot { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--cor-texto-suave); }
+  .metrica .num { font-family: var(--fonte-display); font-size: 26px; font-weight: 600; color: var(--cor-texto-forte); margin-top: 4px; }
+  .metrica .delta { font-size: 11px; font-weight: 600; margin-top: 2px; }
+  .grafico { background: var(--cor-superficie); border: 1px solid var(--cor-borda); border-radius: var(--raio-medio); padding: var(--espaco-4); }
+  .grafico .rot { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--cor-texto-suave); margin-bottom: var(--espaco-3); }
+  .barras { display: flex; align-items: flex-end; gap: var(--espaco-3); height: 110px; }
+  .barras .col { flex: 1; border-radius: 4px 4px 0 0; }
+
+  footer { margin-top: var(--espaco-8); padding-top: var(--espaco-5); border-top: 1px solid var(--cor-borda); font-size: var(--texto-pequeno); color: var(--cor-texto-suave); }
+
+  @media (max-width: 620px) {
+    .dash-grade { grid-template-columns: 1fr; }
+    .amostra-tipo { flex-direction: column; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+<div class="pagina">
+
+  <header>
+    <div class="marca">
+      <svg viewBox="0 0 496 496" aria-hidden="true">
+        <g transform="translate(0,496) scale(0.1,-0.1)" fill="currentColor" stroke="none">
+          <path d="M2309 4956 c-2 -2 -39 -6 -82 -10 -274 -23 -579 -112 -850 -246 -484 -241 -876 -633 -1115 -1115 -133 -266 -194 -470 -247 -820 -14 -94 -14 -433 0 -556 67 -582 321 -1101 736 -1504 385 -374 837 -597 1379 -682 179 -27 540 -25 727 5 745 120 1390 559 1767 1204 152 261 258 560 308 871 30 187 32 548 5 727 -85 542 -308 994 -682 1379 -472 486 -1098 749 -1786 750 -86 0 -158 -1 -160 -3z m454 -252 c403 -49 792 -213 1122 -474 44 -35 133 -117 198 -182 l118 -120 -24 -41 c-107 -185 -752 -1289 -773 -1324 l-14 -23 -395 0 -395 0 0 855 0 856 -122 -3 -122 -3 -860 -1476 c-474 -811 -868 -1486 -877 -1499 -16 -24 -16 -24 -73 73 -273 464 -369 1017 -270 1557 79 433 297 843 619 1165 496 496 1164 725 1868 639z m-403 -1549 l0 -615 -361 0 c-198 0 -359 4 -357 8 7 18 711 1222 715 1222 1 0 3 -277 3 -615z m2050 470 c115 -190 215 -446 264 -675 108 -504 35 -1053 -200 -1500 -395 -750 -1149 -1211 -1983 -1212 -266 0 -482 35 -726 116 -357 119 -706 347 -943 613 l-62 70 53 91 c28 49 210 360 402 691 l350 601 398 0 397 0 0 -855 0 -855 119 0 118 0 641 1098 c352 603 740 1268 862 1477 235 403 248 425 255 425 2 0 27 -38 55 -85z m-1117 -1253 c-278 -485 -689 -1177 -693 -1166 -3 7 -4 283 -2 614 l2 600 360 0 360 0 -27 -48z"/>
+        </g>
+      </svg>
+      <span class="nome">AA Design System</span>
+    </div>
+    <h1>Referência visual</h1>
+    <p>Esta página mostra o sistema funcionando. É o "styleguide vivo": sempre que você mudar os tokens, é aqui que se confere se tudo continua coerente. Base calma e neutra, com toques de cor pontuais.</p>
+    <span class="versao">versão 0.1.0 — base inicial</span>
+  </header>
+
+  <!-- CORES -->
+  <section>
+    <div class="secao-rotulo">Fundamentos</div>
+    <h2 class="secao-titulo">Cores</h2>
+    <p class="secao-desc">A base é uma escala de areia quente. O azul é a única cor de ação. A terracota é um destaque raro. As cores de feedback são suaves de propósito, para não brigar com o tom calmo.</p>
+
+    <div class="grupo-cor">
+      <h3>Neutros — a base</h3>
+      <div class="grade-cor">
+        <div class="amostra"><div class="chip" style="background:#FAF7F1"></div><div class="meta"><b>areia-50</b><span>#FAF7F1</span></div></div>
+        <div class="amostra"><div class="chip" style="background:#F4EFE6"></div><div class="meta"><b>areia-100</b><span>#F4EFE6</span></div></div>
+        <div class="amostra"><div class="chip" style="background:#E9E1D2"></div><div class="meta"><b>areia-200</b><span>#E9E1D2</span></div></div>
+        <div class="amostra"><div class="chip" style="background:#DAD0BC"></div><div class="meta"><b>areia-300</b><span>#DAD0BC</span></div></div>
+        <div class="amostra"><div class="chip" style="background:#C2B69D"></div><div class="meta"><b>areia-400</b><span>#C2B69D</span></div></div>
+        <div class="amostra"><div class="chip" style="background:#A6987D"></div><div class="meta"><b>areia-500</b><span>#A6987D</span></div></div>
+        <div class="amostra"><div class="chip" style="background:#847A63"></div><div class="meta"><b>areia-600</b><span>#847A63</span></div></div>
+        <div class="amostra"><div class="chip" style="background:#5F584A"></div><div class="meta"><b>areia-700</b><span>#5F584A</span></div></div>
+        <div class="amostra"><div class="chip" style="background:#3D382F"></div><div class="meta"><b>areia-800</b><span>#3D382F</span></div></div>
+        <div class="amostra"><div class="chip" style="background:#221F1A"></div><div class="meta"><b>areia-900</b><span>#221F1A</span></div></div>
+      </div>
+    </div>
+
+    <div class="grupo-cor">
+      <h3>Primária e acento — os toques de cor</h3>
+      <div class="grade-cor">
+        <div class="amostra"><div class="chip" style="background:#EAEEF4"></div><div class="meta"><b>primária-50</b><span>#EAEEF4</span></div></div>
+        <div class="amostra"><div class="chip" style="background:#7C95B4"></div><div class="meta"><b>primária-300</b><span>#7C95B4</span></div></div>
+        <div class="amostra"><div class="chip" style="background:#3D6189"></div><div class="meta"><b>primária-500</b><span>#3D6189</span></div></div>
+        <div class="amostra"><div class="chip" style="background:#31506F"></div><div class="meta"><b>primária-600</b><span>#31506F</span></div></div>
+        <div class="amostra"><div class="chip" style="background:#C57B57"></div><div class="meta"><b>acento-500</b><span>#C57B57</span></div></div>
+        <div class="amostra"><div class="chip" style="background:#AC6644"></div><div class="meta"><b>acento-600</b><span>#AC6644</span></div></div>
+      </div>
+    </div>
+
+    <div class="grupo-cor">
+      <h3>Feedback</h3>
+      <div class="grade-cor">
+        <div class="amostra"><div class="chip" style="background:#5C7E58"></div><div class="meta"><b>sucesso</b><span>#5C7E58</span></div></div>
+        <div class="amostra"><div class="chip" style="background:#C2893C"></div><div class="meta"><b>atenção</b><span>#C2893C</span></div></div>
+        <div class="amostra"><div class="chip" style="background:#AE4A3C"></div><div class="meta"><b>erro</b><span>#AE4A3C</span></div></div>
+        <div class="amostra"><div class="chip" style="background:#3D6189"></div><div class="meta"><b>info</b><span>#3D6189</span></div></div>
+      </div>
+    </div>
+
+    <div class="grupo-cor" style="margin-bottom:0">
+      <h3>Dados — para gráficos</h3>
+      <div class="grade-cor">
+        <div class="amostra"><div class="chip" style="background:#3D6189"></div><div class="meta"><b>dados-1</b><span>#3D6189</span></div></div>
+        <div class="amostra"><div class="chip" style="background:#C57B57"></div><div class="meta"><b>dados-2</b><span>#C57B57</span></div></div>
+        <div class="amostra"><div class="chip" style="background:#6E8E6B"></div><div class="meta"><b>dados-3</b><span>#6E8E6B</span></div></div>
+        <div class="amostra"><div class="chip" style="background:#D0A24E"></div><div class="meta"><b>dados-4</b><span>#D0A24E</span></div></div>
+        <div class="amostra"><div class="chip" style="background:#8A6E8E"></div><div class="meta"><b>dados-5</b><span>#8A6E8E</span></div></div>
+        <div class="amostra"><div class="chip" style="background:#5E7C8A"></div><div class="meta"><b>dados-6</b><span>#5E7C8A</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIPOGRAFIA -->
+  <section>
+    <div class="secao-rotulo">Fundamentos</div>
+    <h2 class="secao-titulo">Tipografia</h2>
+    <p class="secao-desc">Duas fontes apenas. <b>Fraunces</b> (serifada, com calor) só nos títulos grandes. <b>Hanken Grotesk</b> faz todo o resto — é a fonte de trabalho do sistema.</p>
+    <div class="card">
+      <div class="amostra-tipo"><span class="tag">Display</span><span class="t-display">Casa & projetos</span></div>
+      <div class="amostra-tipo"><span class="tag">Título G</span><span class="t-titulo-g">Resumo do mês</span></div>
+      <div class="amostra-tipo"><span class="tag">Título M</span><span class="t-titulo-m">Despesas recentes</span></div>
+      <div class="amostra-tipo"><span class="tag">Corpo</span><span class="t-corpo">Texto padrão de interface, usado na maior parte do conteúdo das telas.</span></div>
+      <div class="amostra-tipo"><span class="tag">Pequeno</span><span class="t-pequeno">Textos de apoio, legendas e dicas secundárias.</span></div>
+      <div class="amostra-tipo"><span class="tag">Rótulo</span><span class="t-rotulo">Categoria</span></div>
+    </div>
+  </section>
+
+  <!-- ESPACAMENTO -->
+  <section>
+    <div class="secao-rotulo">Fundamentos</div>
+    <h2 class="secao-titulo">Espaçamento e raio</h2>
+    <p class="secao-desc">Escala de espaçamento em base 4px — use só estes valores, nunca um número solto. Raios de borda suaves dão o ar calmo e amigável.</p>
+    <div class="card" style="margin-bottom:var(--espaco-3)">
+      <div class="grade-espaco">
+        <div class="item-espaco"><div class="barra" style="width:4px"></div><span>1 · 4px</span></div>
+        <div class="item-espaco"><div class="barra" style="width:8px"></div><span>2 · 8px</span></div>
+        <div class="item-espaco"><div class="barra" style="width:12px"></div><span>3 · 12px</span></div>
+        <div class="item-espaco"><div class="barra" style="width:16px"></div><span>4 · 16px</span></div>
+        <div class="item-espaco"><div class="barra" style="width:24px"></div><span>5 · 24px</span></div>
+        <div class="item-espaco"><div class="barra" style="width:32px"></div><span>6 · 32px</span></div>
+        <div class="item-espaco"><div class="barra" style="width:48px"></div><span>7 · 48px</span></div>
+        <div class="item-espaco"><div class="barra" style="width:64px"></div><span>8 · 64px</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="grade-raio">
+        <div class="item-raio"><div class="quad" style="border-radius:6px"></div><span>pequeno · 6px</span></div>
+        <div class="item-raio"><div class="quad" style="border-radius:10px"></div><span>médio · 10px</span></div>
+        <div class="item-raio"><div class="quad" style="border-radius:16px"></div><span>grande · 16px</span></div>
+        <div class="item-raio"><div class="quad" style="border-radius:999px"></div><span>pílula</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPONENTES -->
+  <section>
+    <div class="secao-rotulo">Componentes</div>
+    <h2 class="secao-titulo">Os primeiros componentes</h2>
+    <p class="secao-desc">Só o essencial para começar: botão, campo, etiqueta e alerta. Tudo construído a partir dos tokens acima — nada de valores soltos.</p>
+    <div class="card">
+      <div class="demo-linha">
+        <button class="btn btn-primario">Botão primário</button>
+        <button class="btn btn-secundario">Secundário</button>
+        <button class="btn btn-texto">Texto</button>
+        <button class="btn btn-primario" disabled>Desabilitado</button>
+      </div>
+      <div class="demo-linha" style="margin-top:var(--espaco-5)">
+        <div class="campo">
+          <label for="ex">Nome do projeto</label>
+          <input id="ex" type="text" placeholder="Ex.: Reforma da cozinha">
+          <span class="dica">Aparece na lista da página inicial.</span>
+        </div>
+      </div>
+      <div class="demo-linha" style="margin-top:var(--espaco-5)">
+        <span class="badge badge-neutro">Rascunho</span>
+        <span class="badge badge-sucesso">Concluído</span>
+        <span class="badge badge-atencao">Pendente</span>
+        <span class="badge badge-erro">Atrasado</span>
+      </div>
+      <div style="margin-top:var(--espaco-5); display:flex; flex-direction:column; gap:var(--espaco-2)">
+        <div class="alerta alerta-info"><span class="ponto"></span><span>Seus dados foram salvos automaticamente.</span></div>
+        <div class="alerta alerta-sucesso"><span class="ponto"></span><span>Projeto criado com sucesso.</span></div>
+        <div class="alerta alerta-erro"><span class="ponto"></span><span>Não foi possível conectar. Tente novamente.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section>
+    <div class="secao-rotulo">Tudo junto</div>
+    <h2 class="secao-titulo">Exemplo de dashboard</h2>
+    <p class="secao-desc">Os mesmos tokens aplicados num dashboard — o tipo de tela que você quer construir. Repare como a paleta de dados deixa o gráfico legível sem perder o tom calmo.</p>
+    <div class="dash">
+      <div class="dash-topo">
+        <h3>Resumo do mês</h3>
+        <button class="btn btn-secundario" style="padding:6px 14px; font-size:var(--texto-pequeno)">Últimos 30 dias</button>
+      </div>
+      <div class="dash-grade">
+        <div class="metrica"><div class="rot">Projetos ativos</div><div class="num">7</div><div class="delta" style="color:var(--cor-sucesso)">+2 no mês</div></div>
+        <div class="metrica"><div class="rot">Concluídos</div><div class="num">23</div><div class="delta" style="color:var(--cor-sucesso)">+5 no mês</div></div>
+        <div class="metrica"><div class="rot">Pendências</div><div class="num">4</div><div class="delta" style="color:var(--cor-atencao)">2 atrasadas</div></div>
+      </div>
+      <div class="grafico">
+        <div class="rot">Atividade por semana</div>
+        <div class="barras">
+          <div class="col" style="height:55%; background:var(--dados-1)"></div>
+          <div class="col" style="height:80%; background:var(--dados-2)"></div>
+          <div class="col" style="height:40%; background:var(--dados-3)"></div>
+          <div class="col" style="height:95%; background:var(--dados-4)"></div>
+          <div class="col" style="height:65%; background:var(--dados-5)"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    AA Design System · v0.1.0 — base inicial. Edite <code>tokens/tokens.json</code> e recarregue esta página para conferir as mudanças.
+  </footer>
+
+</div>
+</body>
+</html>
