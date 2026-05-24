@@ -11,16 +11,16 @@
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url('fonts/Fraunces-VariableFont.ttf') format('truetype-variations'),
-       url('fonts/Fraunces-VariableFont.ttf') format('truetype');
+  src: url('fonts/Fraunces/Fraunces-VariableFont.ttf') format('truetype-variations'),
+       url('fonts/Fraunces/Fraunces-VariableFont.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Fraunces';
   font-style: italic;
   font-weight: 100 900;
   font-display: swap;
-  src: url('fonts/Fraunces-Italic-VariableFont.ttf') format('truetype-variations'),
-       url('fonts/Fraunces-Italic-VariableFont.ttf') format('truetype');
+  src: url('fonts/Fraunces/Fraunces-Italic-VariableFont.ttf') format('truetype-variations'),
+       url('fonts/Fraunces/Fraunces-Italic-VariableFont.ttf') format('truetype');
 }
 
 /* Hanken Grotesk — local variable fonts (uploaded by the brand owner) */
@@ -29,16 +29,16 @@
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url('fonts/HankenGrotesk-VariableFont_wght.ttf') format('truetype-variations'),
-       url('fonts/HankenGrotesk-VariableFont_wght.ttf') format('truetype');
+  src: url('fonts/Hanken_Grotesk/HankenGrotesk-VariableFont_wght.ttf') format('truetype-variations'),
+       url('fonts/Hanken_Grotesk/HankenGrotesk-VariableFont_wght.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Hanken Grotesk';
   font-style: italic;
   font-weight: 100 900;
   font-display: swap;
-  src: url('fonts/HankenGrotesk-Italic-VariableFont_wght.ttf') format('truetype-variations'),
-       url('fonts/HankenGrotesk-Italic-VariableFont_wght.ttf') format('truetype');
+  src: url('fonts/Hanken_Grotesk/HankenGrotesk-Italic-VariableFont_wght.ttf') format('truetype-variations'),
+       url('fonts/Hanken_Grotesk/HankenGrotesk-Italic-VariableFont_wght.ttf') format('truetype');
 }
 
 :root {

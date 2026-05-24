@@ -3,6 +3,12 @@
 Todas as mudanças relevantes do AA Design System.
 Versionamento: `MAIOR.MENOR.CORRECAO` — correções mudam o último número, adições mudam o do meio.
 
+## [0.1.1] — Fixed
+
+### Fixed
+- `@font-face` paths in `colors_and_type.css` now point to `fonts/Fraunces/` and `fonts/Hanken_Grotesk/` after the font directory was reorganized into subfolders.
+- Fraunces variable `.ttf` files renamed to drop the `_SOFT,WONK,opsz,wght` suffix (commas in filenames broke URL resolution).
+
 ## [0.1.0] — base inicial
 
 ### Adicionado

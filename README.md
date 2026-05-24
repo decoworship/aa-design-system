@@ -105,7 +105,7 @@ The system has a **distinct, recognizable look**. Follow these closely; they're 
 - **The data palette is separate** from feedback and UI colors. Never use feedback colors in charts; never use chart colors in buttons.
 
 ### Typography
-- **Two fonts, both local.** Fraunces (variable serif, full SOFT/WONK/opsz/wght axes — italic + roman) for display ONLY, loaded from `fonts/Fraunces-VariableFont.ttf` and `fonts/Fraunces-Italic-VariableFont.ttf`. Hanken Grotesk (variable sans, weight axis 100–900, italic + roman) for everything else: headings ≤24px, body, UI — loaded from `fonts/HankenGrotesk-VariableFont_wght.ttf` and `fonts/HankenGrotesk-Italic-VariableFont_wght.ttf`. Nothing comes from Google Fonts; the system runs fully offline.
+- **Two fonts, both local.** Fraunces (variable serif, full SOFT/WONK/opsz/wght axes — italic + roman) for display ONLY, loaded from `fonts/Fraunces/Fraunces-VariableFont.ttf` and `fonts/Fraunces/Fraunces-Italic-VariableFont.ttf`. Hanken Grotesk (variable sans, weight axis 100–900, italic + roman) for everything else: headings ≤24px, body, UI — loaded from `fonts/Hanken_Grotesk/HankenGrotesk-VariableFont_wght.ttf` and `fonts/Hanken_Grotesk/HankenGrotesk-Italic-VariableFont_wght.ttf`. Nothing comes from Google Fonts; the system runs fully offline.
 - **Fraunces is the voice** — it appears only on the largest titles (36px Display, occasionally the metric numerals on a dashboard). Used too small, it loses its warmth.
 - **Hanken Grotesk is the workhorse.** Body is 15px (not 14, not 16). Tight, deliberate scale: 12 / 13 / 15 / 18 / 24 / 36. No values outside this scale.
 - **Micro-labels (`--texto-rotulo`, 12px)** are 600 weight, UPPERCASE, `letter-spacing: 0.06em`. They're the eyebrow that gives sections their structure.
