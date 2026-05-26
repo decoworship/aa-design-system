@@ -13,7 +13,7 @@ This skill packages a small, opinionated personal design system. The brand langu
 1. Read **`README.md`** in this folder — it covers content fundamentals, visual foundations, and iconography.
 2. Read **`docs/guia-de-design.md`** for the authoritative Portuguese design guide if you need the "why" behind any decision.
 3. Browse the **`preview/`** folder to see individual design-system cards (colors, type, spacing, components, brand).
-4. Use **`colors_and_type.css`** (or `tokens/tokens.css`) on any new page — it loads Google Fonts and defines every token described in the guide.
+4. Use **`colors_and_type.css`** (or `tokens/tokens.css`) on any new page — it loads the local variable fonts (Fraunces + Hanken Grotesk, shipped in `fonts/`) and defines every token described in the guide.
 5. For interactive recreations, see **`ui_kits/casa-projetos/`** — the only product the system targets is a small personal dashboard for home projects.
 
 ## When generating visual artifacts
@@ -40,7 +40,7 @@ Then act as an expert AA-flavored designer and output an HTML artifact OR produc
 ## Files in this skill
 
 - `README.md` — full design language documentation
-- `colors_and_type.css` — drop-in tokens + Google Fonts
+- `colors_and_type.css` — drop-in tokens + local variable fonts (`@font-face` for Fraunces + Hanken Grotesk, served from `fonts/`)
 - `tokens/tokens.css`, `tokens/tokens.json` — same tokens, two forms (JSON is source of truth)
 - `docs/guia-de-design.md` — original Portuguese design guide
 - `assets/logo-aa.svg` — recolorable monogram

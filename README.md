@@ -2,7 +2,7 @@
 
 > A calm, neutral, warm-sand design system for personal **web & mobile dashboards and tools.** Built around two fonts (Fraunces + Hanken Grotesk), a single sand neutral scale, one quiet blue, and a rare terracotta accent. Originally written in **Brazilian Portuguese** (`pt-BR`) — token names, copy, and component labels follow Portuguese conventions.
 
-**Version:** 0.1.0 — base inicial
+**Version:** 0.1.1 — font path fix
 
 ---
 
@@ -190,8 +190,19 @@ When extending the system in a project, mimic the existing components' construct
 
 ---
 
-## A note on language
+## Language conventions
 
-Token names, comments, and the design guide are all in **Brazilian Portuguese**. When generating code or copy for AA projects, **keep the Portuguese names** — don't rename `--cor-acao` to `--color-action`. This matters: it's part of the system's identity and what makes it not just "another tan-colored Tailwind config."
+This repository is intentionally **bilingual**, with a strict split between developer-facing process artifacts and brand-facing content.
 
-UI copy for AA projects should also default to Portuguese unless explicitly told otherwise.
+**English** — anything developer-facing:
+- This `README.md` and `SKILL.md`.
+- `CHANGELOG.md`.
+- Code comments.
+- Commit messages, PR descriptions, issue bodies.
+
+**Brazilian Portuguese (`pt-BR`)** — anything that carries the brand voice:
+- Token names: `--cor-acao`, `--espaco-4`, `--areia-500`, `--fonte-display`. These are intentional and **must not be renamed** to English equivalents — they are part of the system's identity and what makes it not just "another tan-colored Tailwind config."
+- Sample UI copy in `preview/` and `ui_kits/`: `Casa & projetos`, `Reforma da cozinha`, `Resumo do mês`, etc. Examples stay domestic and small-scale.
+- [`docs/guia-de-design.md`](docs/guia-de-design.md) — the authoritative design guide, written in the AA brand voice (calm, second-person-informal `você`). Keep it pt-BR; new English readers get an orientation paragraph at the top plus this README.
+
+When generating UI copy for AA projects, default to Portuguese unless explicitly told otherwise — the system was written for personal Brazilian Portuguese projects and the voice is part of the brand.
