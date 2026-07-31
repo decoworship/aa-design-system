@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Componentes — Ações" name="Botão, etiqueta, avatar, dica" subtitle="4 variantes de botão · 3 tamanhos · estados · etiquetas de status" viewport="880x430" -->
+<html lang="pt-BR"><head><meta charset="UTF-8"><title>Ações</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>html,body{margin:0;padding:0}body{width:880px;box-sizing:border-box;padding:var(--espaco-6);background:var(--cor-fundo)}
+.bloco{display:flex;flex-direction:column;gap:var(--espaco-5)}
+.rot{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--cor-texto-suave)}
+.linha{display:flex;gap:var(--espaco-3);align-items:center;flex-wrap:wrap}
+.grade{display:grid;gap:var(--espaco-4)}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+</head><body><div id="root"></div>
+<script type="text/babel">
+const { Botao, Etiqueta, Avatar, Dica } = window.AADesignSystem_ada6b1;
+
+function Demo() {
+  return (
+    <div className="bloco">
+      <div><div className="rot" style={{marginBottom:12}}>Variantes</div>
+        <div className="linha">
+          <Botao>Salvar projeto</Botao>
+          <Botao variante="secundario">Cancelar</Botao>
+          <Botao variante="texto">Ver detalhes</Botao>
+          <Botao variante="perigo">Excluir</Botao>
+        </div></div>
+      <div><div className="rot" style={{marginBottom:12}}>Tamanhos e estados</div>
+        <div className="linha">
+          <Botao tamanho="pequeno">Pequeno</Botao>
+          <Botao tamanho="medio">Médio</Botao>
+          <Botao tamanho="grande">Grande</Botao>
+          <Botao carregando>Salvando</Botao>
+          <Botao desabilitado>Desabilitado</Botao>
+          <Botao variante="secundario" desabilitado>Desabilitado</Botao>
+        </div></div>
+      <div><div className="rot" style={{marginBottom:12}}>Etiquetas</div>
+        <div className="linha">
+          <Etiqueta>Rascunho</Etiqueta>
+          <Etiqueta variante="info">Em revisão</Etiqueta>
+          <Etiqueta variante="sucesso">Concluído</Etiqueta>
+          <Etiqueta variante="atencao">Atrasado</Etiqueta>
+          <Etiqueta variante="erro">Bloqueado</Etiqueta>
+          <Etiqueta variante="destaque" ponto={false}>Novo</Etiqueta>
+        </div></div>
+      <div><div className="rot" style={{marginBottom:12}}>Avatar e dica</div>
+        <div className="linha">
+          <Avatar nome="Ana Alves" />
+          <Avatar nome="João Pedro" tamanho={40} />
+          <Avatar nome="Marina Costa" tamanho={28} />
+          <Dica texto="Aparece na lista da página inicial"><Botao variante="secundario" tamanho="pequeno">Passe o mouse</Botao></Dica>
+        </div></div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script></body></html>

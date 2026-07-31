@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Componentes — Formulário" name="Período e calendário" subtitle="Atalhos resolvem 90% · calendário é o escape · comparação embutida" viewport="900x760" -->
+<html lang="pt-BR"><head><meta charset="UTF-8"><title>Período</title>
+<link rel="stylesheet" href="../styles.css">
+<style>html,body{margin:0;padding:0}body{width:900px;box-sizing:border-box;padding:var(--espaco-6);background:var(--cor-fundo)}
+.rot{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--cor-texto-suave)}
+a{color:var(--cor-acao)}a:hover{color:var(--cor-acao-hover)}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../_ds_bundle.js"></script>
+</head><body><div id="root"></div>
+<script type="text/babel">
+const { SeletorPeriodo, Calendario, Etiqueta } = window.AADesignSystem_ada6b1;
+const { periodoDoAtalho, periodoAnterior } = SeletorPeriodo;
+const { useState } = React;
+
+const HOJE = new Date(2026, 6, 31);
+const fmt = (d) => d.toLocaleDateString('pt-BR', { day:'2-digit', month:'short', year:'numeric' }).replace('.','');
+
+function Demo() {
+  const [p, setP] = useState({ chave:'30d', ...periodoDoAtalho('30d', HOJE), comparar:true, comparacao: periodoAnterior(periodoDoAtalho('30d', HOJE)) });
+  const [dia, setDia] = useState(new Date(2026, 6, 18));
+  const [faixa, setFaixa] = useState({ inicio:new Date(2026,6,8), fim:new Date(2026,6,22) });
+
+  const bloco = { background:'var(--cor-superficie)', border:'1px solid var(--cor-borda)', borderRadius:'var(--raio-grande)', padding:'var(--espaco-5)' };
+
+  return (
+    <div style={{display:'flex',flexDirection:'column',gap:'var(--espaco-5)'}}>
+      <div style={bloco}>
+        <div className="rot" style={{marginBottom:12}}>Seletor de período</div>
+        <SeletorPeriodo valor={p} aoMudar={setP} hoje={HOJE} />
+        <div style={{marginTop:16,paddingTop:16,borderTop:'1px solid var(--cor-borda)',display:'flex',gap:'var(--espaco-6)',flexWrap:'wrap'}}>
+          <div>
+            <div className="rot" style={{marginBottom:4}}>período</div>
+            <div style={{fontSize:15,color:'var(--cor-texto)',fontVariantNumeric:'tabular-nums'}}>{fmt(p.inicio)} a {fmt(p.fim)}</div>
+          </div>
+          <div>
+            <div className="rot" style={{marginBottom:4}}>comparação</div>
+            <div style={{fontSize:15,color: p.comparacao ? 'var(--cor-texto)' : 'var(--cor-texto-suave)',fontVariantNumeric:'tabular-nums'}}>
+              {p.comparacao ? fmt(p.comparacao.inicio) + ' a ' + fmt(p.comparacao.fim) : 'desligada'}
+            </div>
+          </div>
+          <div>
+            <div className="rot" style={{marginBottom:4}}>atalho</div>
+            <Etiqueta variante={p.chave === 'custom' ? 'atencao' : 'info'}>{p.chave}</Etiqueta>
+          </div>
+        </div>
+      </div>
+
+      <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'var(--espaco-4)'}}>
+        <div style={bloco}>
+          <div className="rot" style={{marginBottom:12}}>Calendário — modo dia</div>
+          <Calendario modo="dia" valor={dia} aoSelecionar={setDia} mesInicial={HOJE} />
+          <div style={{marginTop:12,fontSize:13,color:'var(--cor-texto-suave)'}}>{fmt(dia)}</div>
+        </div>
+        <div style={bloco}>
+          <div className="rot" style={{marginBottom:12}}>Calendário — modo intervalo</div>
+          <Calendario modo="intervalo" valor={faixa} aoSelecionar={setFaixa} mesInicial={HOJE} max={HOJE} />
+          <div style={{marginTop:12,fontSize:13,color:'var(--cor-texto-suave)'}}>
+            {faixa.inicio && faixa.fim ? fmt(faixa.inicio) + ' a ' + fmt(faixa.fim) : 'Escolha a segunda ponta'}
+          </div>
+        </div>
+      </div>
+
+      <div style={{...bloco,borderLeft:'3px solid var(--cor-destaque)'}}>
+        <div className="rot" style={{marginBottom:8}}>por que atalhos primeiro</div>
+        <p style={{margin:0,fontSize:15,color:'var(--cor-texto)',maxWidth:'70ch',textWrap:'pretty'}}>
+          Em dashboard, quase todo filtro de data é "os últimos trinta dias" ou "este mês". Abrir calendário
+          para isso são quatro cliques onde deveria ter um. O calendário existe para o caso raro — e por isso
+          fica no fim da fila, atrás de um botão, não ocupando espaço permanente na tela.
+        </p>
+        <p style={{margin:'10px 0 0',fontSize:15,color:'var(--cor-texto)',maxWidth:'70ch',textWrap:'pretty'}}>
+          A comparação com o período anterior nasce junto com o seletor porque é a segunda coisa que se pede,
+          sempre. Ela calcula um intervalo de mesma duração colado no início do atual — nunca "mês passado"
+          quando você escolheu sete dias.
+        </p>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script></body></html>

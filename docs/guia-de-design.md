@@ -1,9 +1,7 @@
 # Guia de Design — AA Design System
 
-> Versão 0.1.1 · base inicial
+> Versão 0.1.0 · base inicial
 > Um design system pequeno e propositalmente simples, para projetos pessoais em web e mobile (dashboards e ferramentas).
-
-> **English orientation:** This is the **authoritative AA design guide**, intentionally written in Brazilian Portuguese — it carries the AA brand voice (calm, conversational, second-person-informal). For an English-language overview of the system, see [`../README.md`](../README.md). Token names, sample UI copy and the design-language vocabulary remain in Portuguese by design; the README's "Language conventions" section explains the full bilingual split.
 
 ---
 
@@ -62,7 +60,7 @@ Seis cores separadas, só para **gráficos** de dashboard (`dados-1` a `dados-6`
 
 ## 2. Tipografia
 
-Duas fontes, ambas distribuídas localmente junto com o projeto (sem dependência do Google Fonts em tempo de execução):
+Duas fontes, ambas gratuitas no Google Fonts:
 
 - **Fraunces** — serifada, com calor. Usada **só** em títulos grandes (Display). É a "voz" do sistema.
 - **Hanken Grotesk** — sem serifa, limpa e legível. Faz **todo o resto**: títulos menores, corpo, legendas, interface. É a fonte de trabalho.

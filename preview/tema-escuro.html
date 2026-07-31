@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Tema" name="Modo escuro" subtitle="Só os tokens semânticos mudam · base marrom-carvão, não cinza · componente nenhum foi tocado" viewport="1060x900" -->
+<html lang="pt-BR"><head><meta charset="UTF-8"><title>Modo escuro</title>
+<link rel="stylesheet" href="../styles.css">
+<style>html,body{margin:0;padding:0}body{width:1060px;box-sizing:border-box;padding:var(--espaco-6);background:#0F0D0B}
+.rot{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--cor-texto-suave)}
+.painel{background:var(--cor-fundo);padding:var(--espaco-5);border-radius:var(--raio-grande);display:flex;flex-direction:column;gap:var(--espaco-4)}
+.cartao{background:var(--cor-superficie);border:1px solid var(--cor-borda);border-radius:var(--raio-medio);padding:var(--espaco-4)}
+a{color:var(--cor-acao)}a:hover{color:var(--cor-acao-hover)}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../_ds_bundle.js"></script>
+</head><body><div id="root"></div>
+<script type="text/babel">
+const { Metrica, Tabela, Botao, Campo, Etiqueta, Alerta, GraficoBarras } = window.AADesignSystem_ada6b1;
+
+const LINHAS = [
+  { id:1, projeto:'Reforma da cozinha', status:'andamento', gasto:12400 },
+  { id:2, projeto:'Horta da varanda', status:'concluido', gasto:860 },
+  { id:3, projeto:'Pintura do corredor', status:'atrasado', gasto:2140 },
+];
+const TONS = { andamento:'info', concluido:'sucesso', atrasado:'atencao' };
+const NOMES = { andamento:'Em andamento', concluido:'Concluído', atrasado:'Atrasado' };
+const DADOS = [
+  { rotulo:'Mar', previsto:8, real:7 }, { rotulo:'Abr', previsto:9, real:11 },
+  { rotulo:'Mai', previsto:10, real:9 }, { rotulo:'Jun', previsto:12, real:13 },
+];
+
+function Painel() {
+  return (
+    <>
+      <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:'var(--espaco-3)'}}>
+        <Metrica rotulo="Projetos ativos" valor="7" delta="+2 no mês" tendencia="alta" serie={[3,4,4,5,6,6,7]} />
+        <Metrica rotulo="Pendências" valor="4" delta="2 atrasadas" tendencia="atencao" serie={[6,5,5,4,5,4,4]} />
+        <Metrica rotulo="Gasto" valor="15,4" unidade="mil" delta="dentro do previsto" tendencia="neutra" />
+      </div>
+      <div className="cartao">
+        <GraficoBarras dados={DADOS} series={[{chave:'previsto',nome:'Previsto'},{chave:'real',nome:'Real'}]} altura={130} mostrarLegenda />
+      </div>
+      <div className="cartao" style={{padding:0,overflow:'hidden'}}>
+        <Tabela linhaAtiva={1}
+          colunas={[
+            { chave:'projeto', rotulo:'Projeto' },
+            { chave:'status', rotulo:'Status', render:(l)=><Etiqueta variante={TONS[l.status]}>{NOMES[l.status]}</Etiqueta> },
+            { chave:'gasto', rotulo:'Gasto', numerica:true, render:(l)=>'R$ '+l.gasto.toLocaleString('pt-BR') },
+          ]}
+          linhas={LINHAS} aoClicarLinha={()=>{}} />
+      </div>
+      <Alerta variante="atencao" titulo="Duas pendências passaram do prazo">Abra a lista de pendências para reagendar.</Alerta>
+      <div style={{display:'flex',gap:'var(--espaco-3)',alignItems:'flex-end',flexWrap:'wrap'}}>
+        <Campo rotulo="Buscar" valor="cozinha" style={{flex:1,minWidth:180}} />
+        <Botao>Salvar</Botao>
+        <Botao variante="secundario">Cancelar</Botao>
+        <Botao variante="texto">Ajuda</Botao>
+      </div>
+    </>
+  );
+}
+
+function Demo() {
+  return (
+    <div style={{display:'flex',flexDirection:'column',gap:'var(--espaco-5)'}}>
+      <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'var(--espaco-4)'}}>
+        <div>
+          <div style={{fontSize:11,fontWeight:600,letterSpacing:'.06em',textTransform:'uppercase',color:'#B7AC98',marginBottom:8}}>claro — padrão</div>
+          <div className="painel"><Painel /></div>
+        </div>
+        <div data-tema="escuro">
+          <div style={{fontSize:11,fontWeight:600,letterSpacing:'.06em',textTransform:'uppercase',color:'#B7AC98',marginBottom:8}}>escuro — data-tema="escuro"</div>
+          <div className="painel"><Painel /></div>
+        </div>
+      </div>
+
+      <div data-tema="escuro" className="cartao" style={{borderLeft:'3px solid var(--cor-destaque)'}}>
+        <div className="rot" style={{marginBottom:10}}>as quatro decisões</div>
+        <ol style={{margin:0,paddingLeft:20,fontSize:15,color:'var(--cor-texto)',display:'grid',gap:8,maxWidth:'78ch',textWrap:'pretty'}}>
+          <li><strong>Só o semântico muda.</strong> As cores cruas (<code>--areia-*</code>, <code>--primaria-*</code>) ficam intactas: o tema escuro redefine tokens semânticos e nada mais.</li>
+<li><strong>O escuro é um teste de disciplina de token.</strong> Dez componentes ainda tinham cor literal ou escala crua escrita dentro (<code>Etiqueta</code>, <code>Metrica</code>, <code>Alerta</code>, <code>Aviso</code>, <code>Botao</code>, <code>Avatar</code>, <code>Abas</code>, <code>Paginacao</code>, <code>BarraLateral</code>, <code>MenuSuspenso</code>). No claro passavam; no escuro o fundo virava e o texto não — badge de 1.4:1. Todos foram convertidos, e os estados de interação que estavam soltos viraram token (<code>--cor-acao-suave</code>, <code>--cor-destaque-bg</code>, <code>--cor-linha-hover</code>…). <strong>A regra agora é explícita: componente nenhum escreve cor literal nem escala crua.</strong></li>
+          <li><strong>Marrom-carvão, não cinza azulado.</strong> O sistema é areia; areia no escuro continua quente. Cinza neutro aqui seria outro produto.</li>
+          <li><strong>No escuro, separação é tom e borda — não sombra.</strong> Superfície sobe de tom conforme sobe de camada. As sombras continuam declaradas, mas fazem pouco.</li>
+          <li><strong>A ordem das séries de gráfico não muda.</strong> As cores clareiam mantendo o mesmo matiz e a mesma posição: ordem é hierarquia, e trocá-la no escuro quebraria a leitura de quem já conhece o gráfico.</li>
+        </ol>
+        <p style={{margin:'14px 0 0',fontSize:13,color:'var(--cor-texto-suave)'}}>
+          Auditar token não basta — <code>preview/contraste.html</code> mede pares de token, e um literal dentro do componente passa invisível por ele. Antes de fechar versão, faça <code>grep</code> por <code>#</code> e por <code>--areia-/--primaria-/--acento-</code> em <code>components/</code>.
+        </p>
+        <p style={{margin:'8px 0 0',fontSize:13,color:'var(--cor-texto-suave)'}}>
+          <code>data-tema="escuro"</code> força o escuro. <code>data-tema="auto"</code> segue o sistema operacional.
+          Funciona em qualquer elemento, não só no <code>&lt;html&gt;</code> — os dois painéis acima estão na mesma página.
+        </p>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script></body></html>

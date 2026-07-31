@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Componentes — Feedback" name="Alerta, modal, menu, aviso" subtitle="Mensagens neutras · sobreposições com sombra média" viewport="880x520" -->
+<html lang="pt-BR"><head><meta charset="UTF-8"><title>Feedback</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>html,body{margin:0;padding:0}body{width:880px;box-sizing:border-box;padding:var(--espaco-6);background:var(--cor-fundo)}
+.bloco{display:flex;flex-direction:column;gap:var(--espaco-5)}
+.rot{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--cor-texto-suave)}
+.linha{display:flex;gap:var(--espaco-3);align-items:center;flex-wrap:wrap}
+.grade{display:grid;gap:var(--espaco-4)}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+</head><body><div id="root"></div>
+<script type="text/babel">
+const { Alerta, Modal, MenuSuspenso, Aviso, Botao, Campo } = window.AADesignSystem_ada6b1;
+
+function Demo() {
+  return (
+    <div className="grade" style={{gridTemplateColumns:'1fr 1fr'}}>
+      <div className="bloco">
+        <div className="rot">Alertas</div>
+        <Alerta>Seus dados foram salvos automaticamente.</Alerta>
+        <Alerta variante="sucesso" titulo="Projeto concluído">Você pode arquivar quando quiser.</Alerta>
+        <Alerta variante="atencao">Duas tarefas passaram do prazo.</Alerta>
+        <Alerta variante="erro" aoFechar={() => {}}>Não foi possível salvar. Tente de novo.</Alerta>
+        <div className="rot" style={{marginTop:8}}>Avisos (toast)</div>
+        <Aviso variante="sucesso" titulo="Salvo" mensagem="Reforma da cozinha foi atualizada." aoFechar={() => {}} />
+        <div className="rot" style={{marginTop:8}}>Menu suspenso</div>
+        <MenuSuspenso rotulo="Ações do projeto" itens={[
+          {id:'editar',rotulo:'Editar'},
+          {id:'duplicar',rotulo:'Duplicar'},
+          {separador:true},
+          {id:'excluir',rotulo:'Excluir projeto',perigo:true},
+        ]} />
+      </div>
+      <div>
+        <div className="rot" style={{marginBottom:12}}>Modal</div>
+        <div style={{position:'relative',height:340,borderRadius:'var(--raio-grande)',overflow:'hidden',border:'1px solid var(--cor-borda)'}}>
+          <div style={{position:'absolute',inset:0,background:'rgba(34,31,26,0.38)'}} />
+          <div style={{position:'absolute',inset:0,display:'flex',alignItems:'center',justifyContent:'center',padding:16}}>
+            <div style={{width:'100%',maxWidth:380,background:'var(--cor-superficie)',borderRadius:'var(--raio-grande)',border:'1px solid var(--cor-borda)',boxShadow:'var(--sombra-grande)',padding:24,fontFamily:'var(--fonte-ui)'}}>
+              <div className="rot" style={{marginBottom:4}}>Novo projeto</div>
+              <h2 style={{margin:'0 0 16px',fontFamily:'var(--fonte-display)',fontSize:24,fontWeight:600,lineHeight:1.2,color:'var(--cor-texto-forte)'}}>Começar do zero</h2>
+              <Campo rotulo="Nome" valor="" placeholder="Reforma da cozinha" dica="Aparece na lista da página inicial." />
+              <div style={{display:'flex',justifyContent:'flex-end',gap:12,marginTop:24}}>
+                <Botao variante="texto">Cancelar</Botao>
+                <Botao>Criar projeto</Botao>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script></body></html>

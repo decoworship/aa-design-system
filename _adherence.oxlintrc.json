@@ -1,0 +1,621 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "components/acoes/**",
+              "components/dados/**",
+              "components/estrutura/**",
+              "components/feedback/**",
+              "components/formulario/**",
+              "components/graficos/**",
+              "components/navegacao/**",
+              "ui_kits/casa-projetos/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Fraunces|Hanken Grotesk))/i]",
+        "message": "Font not provided by the design system. Available: Fraunces, Hanken Grotesk."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Abas'] > JSXAttribute > JSXIdentifier[name!=/^(?:abas|ativa|aoMudar|style|key|ref|className|style|children)$/]",
+        "message": "<Abas> doesn't accept that prop. Declared props: abas, ativa, aoMudar, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Alerta'] > JSXAttribute > JSXIdentifier[name!=/^(?:variante|titulo|children|aoFechar|style|key|ref|className|style|children)$/]",
+        "message": "<Alerta> doesn't accept that prop. Declared props: variante, titulo, children, aoFechar, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Alerta'] > JSXAttribute[name.name='variante'] > Literal[value!=/^(?:info|sucesso|atencao|erro)$/]",
+        "message": "<Alerta> variante must be one of 'info' | 'sucesso' | 'atencao' | 'erro'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='AreaTexto'] > JSXAttribute > JSXIdentifier[name!=/^(?:rotulo|valor|aoMudar|placeholder|dica|erro|linhas|obrigatorio|desabilitado|style|key|ref|className|style|children)$/]",
+        "message": "<AreaTexto> doesn't accept that prop. Declared props: rotulo, valor, aoMudar, placeholder, dica, erro, linhas, obrigatorio, desabilitado, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Avatar'] > JSXAttribute > JSXIdentifier[name!=/^(?:nome|src|tamanho|style|key|ref|className|style|children)$/]",
+        "message": "<Avatar> doesn't accept that prop. Declared props: nome, src, tamanho, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Aviso'] > JSXAttribute > JSXIdentifier[name!=/^(?:variante|titulo|mensagem|aoFechar|style|key|ref|className|style|children)$/]",
+        "message": "<Aviso> doesn't accept that prop. Declared props: variante, titulo, mensagem, aoFechar, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Aviso'] > JSXAttribute[name.name='variante'] > Literal[value!=/^(?:info|sucesso|atencao|erro)$/]",
+        "message": "<Aviso> variante must be one of 'info' | 'sucesso' | 'atencao' | 'erro'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='BarraLateral'] > JSXAttribute > JSXIdentifier[name!=/^(?:marca|subtitulo|grupos|ativo|aoNavegar|rodape|largura|style|key|ref|className|style|children)$/]",
+        "message": "<BarraLateral> doesn't accept that prop. Declared props: marca, subtitulo, grupos, ativo, aoNavegar, rodape, largura, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='BarraSuperior'] > JSXAttribute > JSXIdentifier[name!=/^(?:rotulo|titulo|acoes|style|key|ref|className|style|children)$/]",
+        "message": "<BarraSuperior> doesn't accept that prop. Declared props: rotulo, titulo, acoes, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Botao'] > JSXAttribute > JSXIdentifier[name!=/^(?:variante|tamanho|bloco|desabilitado|carregando|onClick|type|children|style|key|ref|className|style|children)$/]",
+        "message": "<Botao> doesn't accept that prop. Declared props: variante, tamanho, bloco, desabilitado, carregando, onClick, type, children, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Botao'] > JSXAttribute[name.name='variante'] > Literal[value!=/^(?:primario|secundario|texto|perigo)$/]",
+        "message": "<Botao> variante must be one of 'primario' | 'secundario' | 'texto' | 'perigo'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Botao'] > JSXAttribute[name.name='tamanho'] > Literal[value!=/^(?:pequeno|medio|grande)$/]",
+        "message": "<Botao> tamanho must be one of 'pequeno' | 'medio' | 'grande'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Botao'] > JSXAttribute[name.name='type'] > Literal[value!=/^(?:button|submit|reset)$/]",
+        "message": "<Botao> type must be one of 'button' | 'submit' | 'reset'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Busca'] > JSXAttribute > JSXIdentifier[name!=/^(?:valor|aoMudar|placeholder|largura|style|key|ref|className|style|children)$/]",
+        "message": "<Busca> doesn't accept that prop. Declared props: valor, aoMudar, placeholder, largura, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='CalendarioIntervalo'] > JSXAttribute > JSXIdentifier[name!=/^(?:inicio|fim|key|ref|className|style|children)$/]",
+        "message": "<CalendarioIntervalo> doesn't accept that prop. Declared props: inicio, fim."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Campo'] > JSXAttribute > JSXIdentifier[name!=/^(?:rotulo|valor|aoMudar|placeholder|dica|erro|tipo|obrigatorio|desabilitado|prefixo|sufixo|style|key|ref|className|style|children)$/]",
+        "message": "<Campo> doesn't accept that prop. Declared props: rotulo, valor, aoMudar, placeholder, dica, erro, tipo, obrigatorio, desabilitado, prefixo, sufixo, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Campo'] > JSXAttribute[name.name='tipo'] > Literal[value!=/^(?:text|email|password|number|tel|url|date)$/]",
+        "message": "<Campo> tipo must be one of 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'date'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Cartao'] > JSXAttribute > JSXIdentifier[name!=/^(?:titulo|rotulo|acoes|rodape|compacto|children|style|key|ref|className|style|children)$/]",
+        "message": "<Cartao> doesn't accept that prop. Declared props: titulo, rotulo, acoes, rodape, compacto, children, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Dica'] > JSXAttribute > JSXIdentifier[name!=/^(?:texto|posicao|children|key|ref|className|style|children)$/]",
+        "message": "<Dica> doesn't accept that prop. Declared props: texto, posicao, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Dica'] > JSXAttribute[name.name='posicao'] > Literal[value!=/^(?:cima|baixo|esquerda|direita)$/]",
+        "message": "<Dica> posicao must be one of 'cima' | 'baixo' | 'esquerda' | 'direita'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Divisor'] > JSXAttribute > JSXIdentifier[name!=/^(?:rotulo|style|key|ref|className|style|children)$/]",
+        "message": "<Divisor> doesn't accept that prop. Declared props: rotulo, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Escolha'] > JSXAttribute > JSXIdentifier[name!=/^(?:tipo|rotulo|descricao|marcado|aoMudar|nome|valor|desabilitado|style|key|ref|className|style|children)$/]",
+        "message": "<Escolha> doesn't accept that prop. Declared props: tipo, rotulo, descricao, marcado, aoMudar, nome, valor, desabilitado, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Escolha'] > JSXAttribute[name.name='tipo'] > Literal[value!=/^(?:caixa|radio)$/]",
+        "message": "<Escolha> tipo must be one of 'caixa' | 'radio'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Esqueleto'] > JSXAttribute > JSXIdentifier[name!=/^(?:linhas|altura|largura|formato|style|key|ref|className|style|children)$/]",
+        "message": "<Esqueleto> doesn't accept that prop. Declared props: linhas, altura, largura, formato, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Esqueleto'] > JSXAttribute[name.name='formato'] > Literal[value!=/^(?:linha|bloco|circulo)$/]",
+        "message": "<Esqueleto> formato must be one of 'linha' | 'bloco' | 'circulo'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Etiqueta'] > JSXAttribute > JSXIdentifier[name!=/^(?:variante|ponto|children|style|key|ref|className|style|children)$/]",
+        "message": "<Etiqueta> doesn't accept that prop. Declared props: variante, ponto, children, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Etiqueta'] > JSXAttribute[name.name='variante'] > Literal[value!=/^(?:neutro|info|sucesso|atencao|erro|destaque)$/]",
+        "message": "<Etiqueta> variante must be one of 'neutro' | 'info' | 'sucesso' | 'atencao' | 'erro' | 'destaque'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='GraficoBarras'] > JSXAttribute > JSXIdentifier[name!=/^(?:dados|series|empilhado|orientacao|altura|mostrarGrade|mostrarLegenda|formatar|realce|style|key|ref|className|style|children)$/]",
+        "message": "<GraficoBarras> doesn't accept that prop. Declared props: dados, series, empilhado, orientacao, altura, mostrarGrade, mostrarLegenda, formatar, realce, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='GraficoBarras'] > JSXAttribute[name.name='orientacao'] > Literal[value!=/^(?:vertical|horizontal)$/]",
+        "message": "<GraficoBarras> orientacao must be one of 'vertical' | 'horizontal'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='GraficoDispersao'] > JSXAttribute > JSXIdentifier[name!=/^(?:pontos|altura|rotuloX|rotuloY|formatarX|formatarY|tamanhoBolha|style|key|ref|className|style|children)$/]",
+        "message": "<GraficoDispersao> doesn't accept that prop. Declared props: pontos, altura, rotuloX, rotuloY, formatarX, formatarY, tamanhoBolha, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='GraficoFunil'] > JSXAttribute > JSXIdentifier[name!=/^(?:etapas|mostrarConversao|formatar|style|key|ref|className|style|children)$/]",
+        "message": "<GraficoFunil> doesn't accept that prop. Declared props: etapas, mostrarConversao, formatar, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='GraficoLinhas'] > JSXAttribute > JSXIdentifier[name!=/^(?:dados|series|area|altura|mostrarGrade|mostrarPontos|mostrarLegenda|formatar|referencia|style|key|ref|className|style|children)$/]",
+        "message": "<GraficoLinhas> doesn't accept that prop. Declared props: dados, series, area, altura, mostrarGrade, mostrarPontos, mostrarLegenda, formatar, referencia, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='GraficoMedidor'] > JSXAttribute > JSXIdentifier[name!=/^(?:valor|max|rotulo|tamanho|faixas|formatar|style|key|ref|className|style|children)$/]",
+        "message": "<GraficoMedidor> doesn't accept that prop. Declared props: valor, max, rotulo, tamanho, faixas, formatar, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='GraficoRosca'] > JSXAttribute > JSXIdentifier[name!=/^(?:dados|rosca|tamanho|legenda|centroRotulo|centroValor|formatar|style|key|ref|className|style|children)$/]",
+        "message": "<GraficoRosca> doesn't accept that prop. Declared props: dados, rosca, tamanho, legenda, centroRotulo, centroValor, formatar, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Interruptor'] > JSXAttribute > JSXIdentifier[name!=/^(?:rotulo|descricao|ligado|aoMudar|desabilitado|style|key|ref|className|style|children)$/]",
+        "message": "<Interruptor> doesn't accept that prop. Declared props: rotulo, descricao, ligado, aoMudar, desabilitado, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='MapaDeCalor'] > JSXAttribute > JSXIdentifier[name!=/^(?:linhas|colunas|valores|tamanhoCelula|formatar|legenda|style|key|ref|className|style|children)$/]",
+        "message": "<MapaDeCalor> doesn't accept that prop. Declared props: linhas, colunas, valores, tamanhoCelula, formatar, legenda, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='MenuSuspenso'] > JSXAttribute > JSXIdentifier[name!=/^(?:gatilho|rotulo|itens|aoEscolher|alinhamento|style|key|ref|className|style|children)$/]",
+        "message": "<MenuSuspenso> doesn't accept that prop. Declared props: gatilho, rotulo, itens, aoEscolher, alinhamento, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='MenuSuspenso'] > JSXAttribute[name.name='alinhamento'] > Literal[value!=/^(?:esquerda|direita)$/]",
+        "message": "<MenuSuspenso> alinhamento must be one of 'esquerda' | 'direita'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Metrica'] > JSXAttribute > JSXIdentifier[name!=/^(?:rotulo|valor|delta|tendencia|serie|unidade|style|key|ref|className|style|children)$/]",
+        "message": "<Metrica> doesn't accept that prop. Declared props: rotulo, valor, delta, tendencia, serie, unidade, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Metrica'] > JSXAttribute[name.name='tendencia'] > Literal[value!=/^(?:alta|baixa|neutra|atencao)$/]",
+        "message": "<Metrica> tendencia must be one of 'alta' | 'baixa' | 'neutra' | 'atencao'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Migalhas'] > JSXAttribute > JSXIdentifier[name!=/^(?:itens|aoNavegar|style|key|ref|className|style|children)$/]",
+        "message": "<Migalhas> doesn't accept that prop. Declared props: itens, aoNavegar, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Minigrafico'] > JSXAttribute > JSXIdentifier[name!=/^(?:dados|tipo|cor|largura|altura|realceUltimo|style|key|ref|className|style|children)$/]",
+        "message": "<Minigrafico> doesn't accept that prop. Declared props: dados, tipo, cor, largura, altura, realceUltimo, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Minigrafico'] > JSXAttribute[name.name='tipo'] > Literal[value!=/^(?:linha|barra)$/]",
+        "message": "<Minigrafico> tipo must be one of 'linha' | 'barra'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Modal'] > JSXAttribute > JSXIdentifier[name!=/^(?:aberto|titulo|rotulo|aoFechar|acoes|largura|children|key|ref|className|style|children)$/]",
+        "message": "<Modal> doesn't accept that prop. Declared props: aberto, titulo, rotulo, aoFechar, acoes, largura, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Paginacao'] > JSXAttribute > JSXIdentifier[name!=/^(?:pagina|total|aoMudar|style|key|ref|className|style|children)$/]",
+        "message": "<Paginacao> doesn't accept that prop. Declared props: pagina, total, aoMudar, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Progresso'] > JSXAttribute > JSXIdentifier[name!=/^(?:valor|max|rotulo|formato|cor|tamanho|mostrarValor|style|key|ref|className|style|children)$/]",
+        "message": "<Progresso> doesn't accept that prop. Declared props: valor, max, rotulo, formato, cor, tamanho, mostrarValor, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Progresso'] > JSXAttribute[name.name='formato'] > Literal[value!=/^(?:barra|anel)$/]",
+        "message": "<Progresso> formato must be one of 'barra' | 'anel'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Selecao'] > JSXAttribute > JSXIdentifier[name!=/^(?:rotulo|valor|aoMudar|opcoes|placeholder|dica|erro|obrigatorio|desabilitado|style|key|ref|className|style|children)$/]",
+        "message": "<Selecao> doesn't accept that prop. Declared props: rotulo, valor, aoMudar, opcoes, placeholder, dica, erro, obrigatorio, desabilitado, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Periodo'] > JSXAttribute > JSXIdentifier[name!=/^(?:chave|inicio|fim|comparar|comparacao|key|ref|className|style|children)$/]",
+        "message": "<Periodo> doesn't accept that prop. Declared props: chave, inicio, fim, comparar, comparacao."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Periodo'] > JSXAttribute[name.name='chave'] > Literal[value!=/^(?:hoje|7d|30d|mes|ano|custom)$/]",
+        "message": "<Periodo> chave must be one of 'hoje' | '7d' | '30d' | 'mes' | 'ano' | 'custom'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TabelaColuna'] > JSXAttribute > JSXIdentifier[name!=/^(?:chave|rotulo|numerica|largura|render|key|ref|className|style|children)$/]",
+        "message": "<TabelaColuna> doesn't accept that prop. Declared props: chave, rotulo, numerica, largura, render."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Vazio'] > JSXAttribute > JSXIdentifier[name!=/^(?:titulo|descricao|acao|style|key|ref|className|style|children)$/]",
+        "message": "<Vazio> doesn't accept that prop. Declared props: titulo, descricao, acao, style."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {
+      "Abas": {
+        "replaces": []
+      },
+      "Alerta": {
+        "replaces": []
+      },
+      "AreaTexto": {
+        "replaces": []
+      },
+      "Avatar": {
+        "replaces": []
+      },
+      "Aviso": {
+        "replaces": []
+      },
+      "BarraLateral": {
+        "replaces": []
+      },
+      "BarraSuperior": {
+        "replaces": []
+      },
+      "Botao": {
+        "replaces": []
+      },
+      "Busca": {
+        "replaces": []
+      },
+      "CalendarioIntervalo": {
+        "replaces": []
+      },
+      "Campo": {
+        "replaces": []
+      },
+      "Cartao": {
+        "replaces": []
+      },
+      "Dica": {
+        "replaces": []
+      },
+      "Divisor": {
+        "replaces": []
+      },
+      "Escolha": {
+        "replaces": []
+      },
+      "Esqueleto": {
+        "replaces": []
+      },
+      "Etiqueta": {
+        "replaces": []
+      },
+      "GraficoBarras": {
+        "replaces": []
+      },
+      "GraficoDispersao": {
+        "replaces": []
+      },
+      "GraficoFunil": {
+        "replaces": []
+      },
+      "GraficoLinhas": {
+        "replaces": []
+      },
+      "GraficoMedidor": {
+        "replaces": []
+      },
+      "GraficoRosca": {
+        "replaces": []
+      },
+      "Interruptor": {
+        "replaces": []
+      },
+      "MapaDeCalor": {
+        "replaces": []
+      },
+      "MenuSuspenso": {
+        "replaces": []
+      },
+      "Metrica": {
+        "replaces": []
+      },
+      "Migalhas": {
+        "replaces": []
+      },
+      "Minigrafico": {
+        "replaces": []
+      },
+      "Modal": {
+        "replaces": []
+      },
+      "Paginacao": {
+        "replaces": []
+      },
+      "Progresso": {
+        "replaces": []
+      },
+      "Selecao": {
+        "replaces": []
+      },
+      "Periodo": {
+        "replaces": []
+      },
+      "TabelaColuna": {
+        "replaces": []
+      },
+      "Vazio": {
+        "replaces": []
+      }
+    },
+    "tokens": [
+      "--acento-100",
+      "--acento-300",
+      "--acento-50",
+      "--acento-500",
+      "--acento-600",
+      "--acento-700",
+      "--anel-foco",
+      "--anel-foco-erro",
+      "--areia-100",
+      "--areia-200",
+      "--areia-300",
+      "--areia-400",
+      "--areia-50",
+      "--areia-500",
+      "--areia-600",
+      "--areia-700",
+      "--areia-800",
+      "--areia-900",
+      "--cor-acao",
+      "--cor-acao-ativa",
+      "--cor-acao-hover",
+      "--cor-acao-suave",
+      "--cor-acao-suave-2",
+      "--cor-atencao",
+      "--cor-atencao-bg",
+      "--cor-borda",
+      "--cor-borda-controle",
+      "--cor-borda-controle-hover",
+      "--cor-borda-forte",
+      "--cor-destaque",
+      "--cor-destaque-bg",
+      "--cor-destaque-texto",
+      "--cor-erro",
+      "--cor-erro-bg",
+      "--cor-fundo",
+      "--cor-info",
+      "--cor-info-bg",
+      "--cor-linha-hover",
+      "--cor-link-sublinhado",
+      "--cor-sucesso",
+      "--cor-sucesso-bg",
+      "--cor-superficie",
+      "--cor-superficie-2",
+      "--cor-texto",
+      "--cor-texto-forte",
+      "--cor-texto-invertido",
+      "--cor-texto-suave",
+      "--dados-1",
+      "--dados-2",
+      "--dados-3",
+      "--dados-4",
+      "--dados-5",
+      "--dados-6",
+      "--dados-7",
+      "--dados-8",
+      "--div-1",
+      "--div-2",
+      "--div-3",
+      "--div-4",
+      "--div-5",
+      "--espaco-1",
+      "--espaco-2",
+      "--espaco-3",
+      "--espaco-4",
+      "--espaco-5",
+      "--espaco-6",
+      "--espaco-7",
+      "--espaco-8",
+      "--fonte-display",
+      "--fonte-mono",
+      "--fonte-ui",
+      "--grafico-area",
+      "--grafico-eixo",
+      "--grafico-grade",
+      "--grafico-realce",
+      "--grafico-referencia",
+      "--grafico-rotulo",
+      "--largura-leitura",
+      "--largura-maxima",
+      "--primaria-100",
+      "--primaria-200",
+      "--primaria-300",
+      "--primaria-400",
+      "--primaria-50",
+      "--primaria-500",
+      "--primaria-600",
+      "--primaria-700",
+      "--primaria-800",
+      "--primaria-900",
+      "--quebra-mobile",
+      "--raio-grande",
+      "--raio-medio",
+      "--raio-pequeno",
+      "--raio-pilula",
+      "--seq-1",
+      "--seq-2",
+      "--seq-3",
+      "--seq-4",
+      "--seq-5",
+      "--sombra-grande",
+      "--sombra-media",
+      "--sombra-pequena",
+      "--texto-corpo",
+      "--texto-display",
+      "--texto-heroi",
+      "--texto-pequeno",
+      "--texto-rotulo",
+      "--texto-titulo-g",
+      "--texto-titulo-m",
+      "--transicao",
+      "--transicao-lenta",
+      "--transicao-rapida",
+      "--z-aviso",
+      "--z-base",
+      "--z-cortina",
+      "--z-modal",
+      "--z-suspenso"
+    ],
+    "tokenKinds": {
+      "--areia-50": "color",
+      "--areia-100": "color",
+      "--areia-200": "color",
+      "--areia-300": "color",
+      "--areia-400": "color",
+      "--areia-500": "color",
+      "--areia-600": "color",
+      "--areia-700": "color",
+      "--areia-800": "color",
+      "--areia-900": "color",
+      "--primaria-50": "color",
+      "--primaria-100": "color",
+      "--primaria-200": "color",
+      "--primaria-300": "color",
+      "--primaria-400": "color",
+      "--primaria-500": "color",
+      "--primaria-600": "color",
+      "--primaria-700": "color",
+      "--primaria-800": "color",
+      "--primaria-900": "color",
+      "--acento-50": "color",
+      "--acento-100": "color",
+      "--acento-300": "color",
+      "--acento-500": "color",
+      "--acento-600": "color",
+      "--acento-700": "color",
+      "--cor-fundo": "color",
+      "--cor-superficie": "color",
+      "--cor-superficie-2": "color",
+      "--cor-borda": "color",
+      "--cor-borda-forte": "color",
+      "--cor-borda-controle": "color",
+      "--cor-texto": "color",
+      "--cor-texto-suave": "color",
+      "--cor-texto-forte": "color",
+      "--cor-texto-invertido": "color",
+      "--cor-acao": "color",
+      "--cor-acao-hover": "color",
+      "--cor-acao-ativa": "color",
+      "--cor-destaque": "color",
+      "--cor-destaque-texto": "color",
+      "--cor-acao-suave": "color",
+      "--cor-acao-suave-2": "color",
+      "--cor-destaque-bg": "color",
+      "--cor-borda-controle-hover": "color",
+      "--cor-linha-hover": "color",
+      "--cor-link-sublinhado": "color",
+      "--cor-sucesso": "color",
+      "--cor-sucesso-bg": "color",
+      "--cor-atencao": "color",
+      "--cor-atencao-bg": "color",
+      "--cor-erro": "color",
+      "--cor-erro-bg": "color",
+      "--cor-info": "color",
+      "--cor-info-bg": "color",
+      "--dados-1": "color",
+      "--dados-2": "color",
+      "--dados-3": "color",
+      "--dados-4": "color",
+      "--dados-5": "color",
+      "--dados-6": "color",
+      "--dados-7": "color",
+      "--dados-8": "color",
+      "--seq-1": "color",
+      "--seq-2": "color",
+      "--seq-3": "color",
+      "--seq-4": "color",
+      "--seq-5": "color",
+      "--div-1": "color",
+      "--div-2": "color",
+      "--div-3": "color",
+      "--div-4": "color",
+      "--div-5": "color",
+      "--grafico-grade": "color",
+      "--grafico-eixo": "color",
+      "--grafico-rotulo": "color",
+      "--grafico-area": "color",
+      "--grafico-realce": "color",
+      "--grafico-referencia": "color",
+      "--fonte-display": "font",
+      "--fonte-ui": "font",
+      "--fonte-mono": "font",
+      "--texto-heroi": "spacing",
+      "--texto-display": "spacing",
+      "--texto-titulo-g": "spacing",
+      "--texto-titulo-m": "spacing",
+      "--texto-corpo": "spacing",
+      "--texto-pequeno": "spacing",
+      "--texto-rotulo": "spacing",
+      "--espaco-1": "spacing",
+      "--espaco-2": "spacing",
+      "--espaco-3": "spacing",
+      "--espaco-4": "spacing",
+      "--espaco-5": "spacing",
+      "--espaco-6": "spacing",
+      "--espaco-7": "spacing",
+      "--espaco-8": "spacing",
+      "--raio-pequeno": "spacing",
+      "--raio-medio": "spacing",
+      "--raio-grande": "spacing",
+      "--raio-pilula": "spacing",
+      "--sombra-pequena": "shadow",
+      "--sombra-media": "shadow",
+      "--sombra-grande": "shadow",
+      "--transicao-rapida": "other",
+      "--transicao": "other",
+      "--transicao-lenta": "other",
+      "--anel-foco": "color",
+      "--anel-foco-erro": "color",
+      "--z-base": "other",
+      "--z-suspenso": "other",
+      "--z-cortina": "other",
+      "--z-modal": "other",
+      "--z-aviso": "other",
+      "--largura-maxima": "spacing",
+      "--largura-leitura": "spacing",
+      "--quebra-mobile": "spacing"
+    },
+    "fontFamilies": [
+      "Fraunces",
+      "Hanken Grotesk"
+    ]
+  }
+}

@@ -9,3 +9,6 @@ Thumbs.db
 
 # Dependências (caso adicione ferramentas depois)
 node_modules/
+
+# Pacotes vindos do Claude Design
+*.zip

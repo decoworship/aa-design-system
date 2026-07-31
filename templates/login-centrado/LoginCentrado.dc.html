@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Login — cartão centrado" description="Entrada padrão do AA: cartão sobre fundo areia, e-mail + senha, entrada social opcional." -->
+<helmet><script src="./ds-base.js"></script>
+<style>*{box-sizing:border-box}body{margin:0}</style>
+</helmet>
+<div style="min-height:100vh;background:var(--cor-fundo);display:flex;align-items:center;justify-content:center;padding:32px;font-family:var(--fonte-ui)">
+<div style="width:100%;max-width:400px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center">
+<div style="width:34px;height:34px;background:var(--cor-texto-forte);-webkit-mask:url(../../assets/logo-aa.svg) center/contain no-repeat;mask:url(../../assets/logo-aa.svg) center/contain no-repeat"></div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<h1 style="margin:0;font-family:var(--fonte-display);font-size:36px;font-weight:600;line-height:1.1;letter-spacing:-0.01em;color:var(--cor-texto-forte)">Bom te ver de novo</h1>
+<p style="margin:0;font-size:15px;line-height:1.55;color:var(--cor-texto-suave)">Entre para ver seus projetos e o resumo do mês.</p>
+</div>
+</div>
+<form onSubmit="{{ enviar }}" style="background:var(--cor-superficie);border:1px solid var(--cor-borda);border-radius:var(--raio-grande);padding:32px;display:flex;flex-direction:column;gap:20px">
+<sc-if value="{{ erro }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;gap:12px;padding:12px 16px;border-radius:var(--raio-medio);background:var(--cor-erro-bg);color:#7C2E25;font-size:13px;line-height:1.5;align-items:flex-start">
+<span style="width:8px;height:8px;border-radius:999px;background:var(--cor-erro);margin-top:6px;flex:none"></span>
+<span>E-mail ou senha não conferem. Tente de novo.</span>
+</div>
+</sc-if>
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Campo" rotulo="E-mail" tipo="email" placeholder="voce@exemplo.com" valor="{{ email }}" aoMudar="{{ setEmail }}" hint-size="100%,70px"></x-import>
+<div style="display:flex;flex-direction:column;gap:8px">
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Campo" rotulo="Senha" tipo="password" placeholder="••••••••" valor="{{ senha }}" aoMudar="{{ setSenha }}" hint-size="100%,70px"></x-import>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Escolha" rotulo="Continuar conectado" marcado="{{ lembrar }}" aoMudar="{{ setLembrar }}" hint-size="180px,24px"></x-import>
+<a href="#" style="font-size:13px;color:var(--cor-acao);text-decoration:none">Esqueci a senha</a>
+</div>
+</div>
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Botao" type="submit" bloco="{{ true }}" carregando="{{ enviando }}" tamanho="grande" hint-size="100%,48px">Entrar</x-import>
+<sc-if value="{{ mostrarSocial }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--cor-texto-suave)">
+<span style="flex:1;height:1px;background:var(--cor-borda)"></span>ou<span style="flex:1;height:1px;background:var(--cor-borda)"></span>
+</div>
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Botao" variante="secundario" bloco="{{ true }}" hint-size="100%,44px">Entrar com um link por e-mail</x-import>
+</div>
+</sc-if>
+</form>
+<p style="margin:0;text-align:center;font-size:13px;color:var(--cor-texto-suave)">Ainda não tem conta? <a href="#" style="color:var(--cor-acao);text-decoration:none;font-weight:600">Criar uma agora</a></p>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;mostrarSocial&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Conteúdo&quot;},&quot;erro&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estados&quot;}}">
+class Component extends DCLogic {
+  state = { email: '', senha: '', lembrar: true, enviando: false, erro: false };
+  renderVals() {
+    return {
+      email: this.state.email,
+      senha: this.state.senha,
+      lembrar: this.state.lembrar,
+      enviando: this.state.enviando,
+      erro: this.props.erro ?? this.state.erro,
+      mostrarSocial: this.props.mostrarSocial ?? true,
+      setEmail: (v) => this.setState({ email: v, erro: false }),
+      setSenha: (v) => this.setState({ senha: v, erro: false }),
+      setLembrar: (v) => this.setState({ lembrar: v }),
+      enviar: (e) => {
+        e.preventDefault();
+        this.setState({ enviando: true });
+        setTimeout(() => this.setState({ enviando: false, erro: !this.state.email.includes('@') }), 900);
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>

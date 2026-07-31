@@ -44,7 +44,7 @@ function NewProjectModal({ open, onClose, onCreate }) {
         display: 'flex', flexDirection: 'column',
       }}>
         <div style={{ padding: '24px 28px 8px', display: 'flex', flexDirection: 'column', gap: 6 }}>
-          <Eyebrow color="var(--acento-500)">Criar</Eyebrow>
+          <Eyebrow color="var(--cor-destaque-texto)">Criar</Eyebrow>
           <h2 style={{
             fontFamily: 'var(--fonte-display)', fontSize: 24, fontWeight: 600,
             color: 'var(--cor-texto-forte)', margin: 0,
@@ -85,7 +85,7 @@ function NewProjectModal({ open, onClose, onCreate }) {
                 borderRadius: 6, background: 'var(--cor-superficie)',
                 outline: 'none',
               }}
-              onFocus={(e) => { e.currentTarget.style.borderColor = 'var(--cor-acao)'; e.currentTarget.style.boxShadow = '0 0 0 3px var(--primaria-50)'; }}
+              onFocus={(e) => { e.currentTarget.style.borderColor = 'var(--cor-acao)'; e.currentTarget.style.boxShadow = 'var(--anel-foco)'; }}
               onBlur={(e) => { e.currentTarget.style.borderColor = 'var(--cor-borda-forte)'; e.currentTarget.style.boxShadow = 'none'; }}
             />
           </label>

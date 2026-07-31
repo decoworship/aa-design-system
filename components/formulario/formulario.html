@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Componentes — Formulário" name="Campo, seleção, escolha, interruptor" subtitle="Rótulo acima · dica abaixo · anel de foco azul · estado de erro" viewport="880x520" -->
+<html lang="pt-BR"><head><meta charset="UTF-8"><title>Formulário</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>html,body{margin:0;padding:0}body{width:880px;box-sizing:border-box;padding:var(--espaco-6);background:var(--cor-fundo)}
+.bloco{display:flex;flex-direction:column;gap:var(--espaco-5)}
+.rot{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--cor-texto-suave)}
+.linha{display:flex;gap:var(--espaco-3);align-items:center;flex-wrap:wrap}
+.grade{display:grid;gap:var(--espaco-4)}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+</head><body><div id="root"></div>
+<script type="text/babel">
+const { Campo, Selecao, AreaTexto, Escolha, Interruptor, Busca } = window.AADesignSystem_ada6b1;
+
+const { useState } = React;
+function Demo() {
+  const [nome, setNome] = useState('Reforma da cozinha');
+  const [tipo, setTipo] = useState('casa');
+  const [marcado, setMarcado] = useState(true);
+  const [radio, setRadio] = useState('mensal');
+  const [ligado, setLigado] = useState(true);
+  const [busca, setBusca] = useState('');
+  return (
+    <div className="grade" style={{gridTemplateColumns:'1fr 1fr'}}>
+      <div className="bloco">
+        <Campo rotulo="Nome do projeto" valor={nome} aoMudar={setNome} dica="Aparece na lista da página inicial." obrigatorio />
+        <Campo rotulo="Orçamento" valor="12.400" prefixo="R$" dica="Só o valor aprovado." />
+        <Campo rotulo="E-mail" valor="ana@" erro="Endereço incompleto." tipo="email" />
+        <Selecao rotulo="Categoria" valor={tipo} aoMudar={setTipo}
+          opcoes={[{valor:'casa',rotulo:'Casa'},{valor:'trabalho',rotulo:'Trabalho'},{valor:'pessoal',rotulo:'Pessoal'}]} />
+      </div>
+      <div className="bloco">
+        <AreaTexto rotulo="Notas" valor="Trocar a bancada por uma de madeira maciça." linhas={3} dica="Só para você — não aparece em relatórios." />
+        <div className="bloco" style={{gap:12}}>
+          <div className="rot">Escolhas</div>
+          <Escolha rotulo="Avisar quando concluir" descricao="Um e-mail, no fim do dia." marcado={marcado} aoMudar={setMarcado} />
+          <Escolha tipo="radio" rotulo="Resumo mensal" marcado={radio==='mensal'} aoMudar={() => setRadio('mensal')} />
+          <Escolha tipo="radio" rotulo="Resumo semanal" marcado={radio==='semanal'} aoMudar={() => setRadio('semanal')} />
+          <Interruptor rotulo="Salvar rascunho automaticamente" ligado={ligado} aoMudar={setLigado} />
+        </div>
+        <div className="bloco" style={{gap:12}}>
+          <div className="rot">Busca</div>
+          <Busca valor={busca} aoMudar={setBusca} placeholder="Buscar projeto…" largura="100%" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script></body></html>

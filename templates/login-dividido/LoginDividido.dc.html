@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Login — tela dividida" description="Marca à esquerda em azul calmo, formulário à direita. Para produtos com uma frase a dizer." -->
+<helmet><script src="./ds-base.js"></script>
+<style>*{box-sizing:border-box}body{margin:0}@media (max-width:860px){#painel-marca{display:none!important}}</style>
+</helmet>
+<div style="min-height:100vh;display:grid;grid-template-columns:1.05fr 1fr;font-family:var(--fonte-ui);background:var(--cor-superficie)">
+<aside id="painel-marca" style="background:var(--primaria-500);color:var(--areia-50);padding:64px;display:flex;flex-direction:column;justify-content:space-between">
+<div style="width:30px;height:30px;background:var(--areia-50);-webkit-mask:url(../../assets/logo-aa.svg) center/contain no-repeat;mask:url(../../assets/logo-aa.svg) center/contain no-repeat"></div>
+<div style="display:flex;flex-direction:column;gap:24px;max-width:34ch">
+<p style="margin:0;font-family:var(--fonte-display);font-size:36px;font-weight:600;line-height:1.2;letter-spacing:-0.01em">Tudo o que está em andamento em casa, num lugar só.</p>
+<p style="margin:0;font-size:15px;line-height:1.6;color:var(--primaria-100)">Projetos, tarefas e o que já foi gasto — sem planilha, sem app novo para aprender.</p>
+</div>
+<div style="display:flex;gap:32px;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--primaria-200)">
+<span>Casa &amp; projetos</span><span>Versão 0.2</span>
+</div>
+</aside>
+<main style="display:flex;align-items:center;justify-content:center;padding:48px 32px;background:var(--cor-fundo)">
+<div style="width:100%;max-width:360px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--cor-texto-suave)">Entrar</span>
+<h1 style="margin:0;font-family:var(--fonte-display);font-size:36px;font-weight:600;line-height:1.1;letter-spacing:-0.01em;color:var(--cor-texto-forte)">Sua conta</h1>
+</div>
+<form onSubmit="{{ enviar }}" style="display:flex;flex-direction:column;gap:20px">
+<sc-if value="{{ erro }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;gap:12px;padding:12px 16px;border-radius:var(--raio-medio);background:var(--cor-erro-bg);color:#7C2E25;font-size:13px;line-height:1.5;align-items:flex-start">
+<span style="width:8px;height:8px;border-radius:999px;background:var(--cor-erro);margin-top:6px;flex:none"></span>
+<span>E-mail ou senha não conferem. Tente de novo.</span>
+</div>
+</sc-if>
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Campo" rotulo="E-mail" tipo="email" placeholder="voce@exemplo.com" valor="{{ email }}" aoMudar="{{ setEmail }}" hint-size="100%,70px"></x-import>
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Campo" rotulo="Senha" tipo="password" placeholder="••••••••" valor="{{ senha }}" aoMudar="{{ setSenha }}" hint-size="100%,70px"></x-import>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Escolha" rotulo="Continuar conectado" marcado="{{ lembrar }}" aoMudar="{{ setLembrar }}" hint-size="180px,24px"></x-import>
+<a href="#" style="font-size:13px;color:var(--cor-acao);text-decoration:none">Esqueci a senha</a>
+</div>
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Botao" type="submit" bloco="{{ true }}" carregando="{{ enviando }}" tamanho="grande" hint-size="100%,48px">Entrar</x-import>
+</form>
+<p style="margin:0;font-size:13px;color:var(--cor-texto-suave)">Ainda não tem conta? <a href="#" style="color:var(--cor-acao);text-decoration:none;font-weight:600">Criar uma agora</a></p>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:860},&quot;erro&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estados&quot;}}">
+class Component extends DCLogic {
+  state = { email: '', senha: '', lembrar: true, enviando: false, erro: false };
+  renderVals() {
+    return {
+      email: this.state.email,
+      senha: this.state.senha,
+      lembrar: this.state.lembrar,
+      enviando: this.state.enviando,
+      erro: this.props.erro ?? this.state.erro,
+      setEmail: (v) => this.setState({ email: v, erro: false }),
+      setSenha: (v) => this.setState({ senha: v, erro: false }),
+      setLembrar: (v) => this.setState({ lembrar: v }),
+      enviar: (e) => {
+        e.preventDefault();
+        this.setState({ enviando: true });
+        setTimeout(() => this.setState({ enviando: false, erro: !this.state.email.includes('@') }), 900);
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>

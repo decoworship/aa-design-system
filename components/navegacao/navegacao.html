@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Componentes — Navegação" name="Barra lateral e barra superior" subtitle="Casca de dashboard: navegação agrupada + cabeçalho em Fraunces" viewport="880x420" -->
+<html lang="pt-BR"><head><meta charset="UTF-8"><title>Navegação</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>html,body{margin:0;padding:0}body{width:880px;box-sizing:border-box;padding:var(--espaco-6);background:var(--cor-fundo)}
+.bloco{display:flex;flex-direction:column;gap:var(--espaco-5)}
+.rot{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--cor-texto-suave)}
+.linha{display:flex;gap:var(--espaco-3);align-items:center;flex-wrap:wrap}
+.grade{display:grid;gap:var(--espaco-4)}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+</head><body><div id="root"></div>
+<script type="text/babel">
+const { BarraLateral, BarraSuperior, Botao, Avatar, Busca } = window.AADesignSystem_ada6b1;
+
+function Demo() {
+  return (
+    <div style={{display:'flex',height:360,border:'1px solid var(--cor-borda)',borderRadius:'var(--raio-grande)',overflow:'hidden',background:'var(--cor-superficie)'}}>
+      <BarraLateral marca="Casa & projetos" subtitulo="AA" ativo="projetos"
+        grupos={[
+          { rotulo:'Visão geral', itens:[{id:'inicio',rotulo:'Início'},{id:'projetos',rotulo:'Projetos',contagem:7},{id:'tarefas',rotulo:'Tarefas',contagem:4}] },
+          { rotulo:'Registro', itens:[{id:'gastos',rotulo:'Gastos'},{id:'arquivo',rotulo:'Arquivo'}] },
+        ]}
+        rodape={<div style={{display:'flex',alignItems:'center',gap:8,fontSize:13,color:'var(--cor-texto-suave)'}}><Avatar nome="Ana Alves" tamanho={26} />Ana Alves</div>} />
+      <div style={{flex:1,display:'flex',flexDirection:'column',minWidth:0}}>
+        <BarraSuperior rotulo="Resumo do mês" titulo="Casa & projetos"
+          acoes={<><Busca placeholder="Buscar…" largura={190} /><Botao>Novo projeto</Botao></>} />
+        <div style={{flex:1,background:'var(--cor-fundo)'}} />
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script></body></html>

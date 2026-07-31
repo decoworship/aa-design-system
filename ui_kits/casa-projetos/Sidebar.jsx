@@ -68,7 +68,7 @@ function Sidebar({ section, onSection, projectCount }) {
       <div style={{ borderTop: '1px solid var(--cor-borda)', paddingTop: 16, display: 'flex', alignItems: 'center', gap: 10 }}>
         <div style={{
           width: 32, height: 32, borderRadius: 999,
-          background: 'var(--acento-500)', color: 'var(--areia-50)',
+          background: 'var(--cor-destaque)', color: 'var(--cor-texto-invertido)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           fontFamily: 'var(--fonte-display)', fontSize: 14, fontWeight: 600,
         }}>A</div>

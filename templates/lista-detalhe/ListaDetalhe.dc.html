@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Lista e detalhe" description="O CRUD do dia a dia: filtros à esquerda, tabela ao centro, detalhe à direita. Com os quatro estados — pronto, vazio, carregando e erro." -->
+<helmet><script src="./ds-base.js"></script>
+<style>*{box-sizing:border-box}html,body{margin:0;width:100%;overflow-x:hidden}@media (max-width:1180px){#corpo{grid-template-columns:minmax(0,1fr) 340px!important}#filtros{display:none!important}}@media (max-width:860px){#corpo{grid-template-columns:minmax(0,1fr)!important}#detalhe{display:none!important}}</style>
+</helmet>
+<div style="min-height:100vh;width:100%;display:flex;flex-direction:column;background:var(--cor-fundo);font-family:var(--fonte-ui)">
+<header style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:20px 32px;background:var(--cor-superficie);border-bottom:1px solid var(--cor-borda)">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--cor-texto-suave)">Casa &amp; projetos</span>
+<h1 style="margin:0;font-size:24px;font-weight:600;line-height:1.25;color:var(--cor-texto-forte)">Projetos</h1>
+</div>
+<div style="display:flex;align-items:center;gap:12px">
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Busca" valor="{{ busca }}" aoMudar="{{ setBusca }}" placeholder="Buscar projeto…" largura="260px" hint-size="260px,38px"></x-import>
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Botao" hint-size="150px,40px">Novo projeto</x-import>
+</div>
+</header>
+<div id="corpo" style="flex:1;display:grid;grid-template-columns:262px minmax(0,1fr) 380px;align-items:start;min-height:0">
+<aside id="filtros" style="align-self:stretch;padding:24px 20px;border-right:1px solid var(--cor-borda);display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:10px">
+<span style="font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--cor-texto-suave)">Status</span>
+<sc-for list="{{ filtrosStatus }}" as="f" hint-placeholder-count="3">
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Escolha" rotulo="{{ f.rotulo }}" marcado="{{ f.marcado }}" aoMudar="{{ f.alternar }}" hint-size="100%,24px"></x-import>
+</sc-for>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<span style="font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--cor-texto-suave)">Período</span>
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Calendario" modo="intervalo" valor="{{ faixa }}" aoSelecionar="{{ setFaixa }}" mesInicial="{{ hoje }}" hint-size="100%,270px"></x-import>
+</div>
+<button type="button" onClick="{{ limpar }}" style="align-self:flex-start;font:inherit;font-size:13px;font-weight:600;color:var(--cor-acao);background:none;border:none;padding:0;cursor:pointer">Limpar filtros</button>
+</aside>
+<main style="min-width:0;padding:24px 28px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+<span style="font-size:13px;color:var(--cor-texto-suave)">{{ resumo }}</span>
+<span style="font-size:13px;color:var(--cor-texto-suave)">Ordene clicando no cabeçalho</span>
+</div>
+<section style="background:var(--cor-superficie);border:1px solid var(--cor-borda);border-radius:var(--raio-grande);overflow:hidden">
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Tabela" colunas="{{ colunas }}" linhas="{{ visiveis }}" ordenavel="{{ true }}" estado="{{ estadoTabela }}" erro="{{ mensagemErro }}" aoTentarNovamente="{{ recarregar }}" linhasCarregando="{{ 6 }}" aoClicarLinha="{{ selecionar }}" linhaAtiva="{{ selecionadoId }}" vazio="{{ textoVazio }}" hint-size="100%,320px"></x-import>
+</section>
+</main>
+<aside id="detalhe" style="align-self:stretch;border-left:1px solid var(--cor-borda);background:var(--cor-superficie);min-height:100%">
+<sc-if value="{{ temSelecao }}" hint-placeholder-val="{{ true }}">
+<div style="padding:24px;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<span style="font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--cor-texto-suave)">Detalhe</span>
+<h2 style="margin:0;font-size:18px;font-weight:600;line-height:1.35;color:var(--cor-texto-forte)">{{ selecionado.projeto }}</h2>
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Etiqueta" variante="{{ selecionado.tom }}" hint-size="110px,22px">{{ selecionado.statusNome }}</x-import>
+</div>
+<dl style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 20px;font-size:14px">
+<dt style="color:var(--cor-texto-suave)">Responsável</dt><dd style="margin:0;color:var(--cor-texto)">{{ selecionado.responsavel }}</dd>
+<dt style="color:var(--cor-texto-suave)">Prazo</dt><dd style="margin:0;color:var(--cor-texto);font-variant-numeric:tabular-nums">{{ selecionado.prazo }}</dd>
+<dt style="color:var(--cor-texto-suave)">Gasto</dt><dd style="margin:0;color:var(--cor-texto);font-variant-numeric:tabular-nums">{{ selecionado.gastoFmt }}</dd>
+<dt style="color:var(--cor-texto-suave)">Orçamento</dt><dd style="margin:0;color:var(--cor-texto);font-variant-numeric:tabular-nums">{{ selecionado.orcamentoFmt }}</dd>
+</dl>
+<div style="display:flex;flex-direction:column;gap:8px">
+<span style="font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--cor-texto-suave)">Consumo do orçamento</span>
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Progresso" valor="{{ selecionado.consumo }}" rotulo="{{ selecionado.consumoRotulo }}" hint-size="100%,36px"></x-import>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<span style="font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--cor-texto-suave)">Notas</span>
+<p style="margin:0;font-size:14px;line-height:1.55;color:var(--cor-texto);text-wrap:pretty">{{ selecionado.notas }}</p>
+</div>
+<div style="display:flex;gap:10px;padding-top:20px;border-top:1px solid var(--cor-borda)">
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Botao" hint-size="90px,40px">Editar</x-import>
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Botao" variante="secundario" hint-size="110px,40px">Duplicar</x-import>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ semSelecao }}" hint-placeholder-val="{{ false }}">
+<div style="padding:48px 28px;text-align:center;display:flex;flex-direction:column;gap:6px">
+<span style="font-size:15px;font-weight:600;color:var(--cor-texto-forte)">Nenhum projeto aberto</span>
+<span style="font-size:13px;color:var(--cor-texto-suave);text-wrap:pretty">Clique em uma linha da lista e o detalhe aparece aqui.</span>
+</div>
+</sc-if>
+</aside>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;estado&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;pronto&quot;,&quot;carregando&quot;,&quot;erro&quot;,&quot;vazio&quot;],&quot;default&quot;:&quot;pronto&quot;,&quot;tsType&quot;:&quot;'pronto' | 'carregando' | 'erro' | 'vazio'&quot;,&quot;section&quot;:&quot;Estado da lista&quot;}}">
+class Component extends DCLogic {
+  state = { busca: '', status: { andamento: true, concluido: true, atrasado: true }, selecionadoId: 1, faixa: { inicio: null, fim: null } };
+
+  static TONS = { andamento: 'info', concluido: 'sucesso', atrasado: 'atencao' };
+  static NOMES = { andamento: 'Em andamento', concluido: 'Concluído', atrasado: 'Atrasado' };
+
+  dados() {
+    return [
+      { id: 1, projeto: 'Reforma da cozinha', status: 'andamento', responsavel: 'Ana', prazo: '12 mar', gasto: 12400, orcamento: 18000, notas: 'Trocar a bancada por uma de madeira maciça. O marceneiro confirmou a medida na segunda.' },
+      { id: 2, projeto: 'Horta da varanda', status: 'concluido', responsavel: 'Ana', prazo: '28 fev', gasto: 860, orcamento: 900, notas: 'Terminada. Falta só decidir se entra manjericão no vaso do canto.' },
+      { id: 3, projeto: 'Pintura do corredor', status: 'atrasado', responsavel: 'Rafa', prazo: '04 mar', gasto: 2140, orcamento: 2000, notas: 'Passou do orçamento em duas demãos extras. Reagendar com o pintor.' },
+      { id: 4, projeto: 'Troca do chuveiro', status: 'andamento', responsavel: 'Rafa', prazo: '19 mar', gasto: 430, orcamento: 1200, notas: 'Peça encomendada, chega na quinta.' },
+      { id: 5, projeto: 'Estante da sala', status: 'concluido', responsavel: 'Ana', prazo: '10 fev', gasto: 3200, orcamento: 3000, notas: 'Ficou 20 cm mais alta que o previsto e ainda assim melhor.' },
+      { id: 6, projeto: 'Impermeabilizar o terraço', status: 'atrasado', responsavel: 'Rafa', prazo: '22 fev', gasto: 0, orcamento: 5400, notas: 'Parado esperando três orçamentos. Só um chegou.' },
+    ];
+  }
+
+  reais(n) { return 'R$ ' + n.toLocaleString('pt-BR'); }
+
+  renderVals() {
+    const NS = window.AADesignSystem_ada6b1 || {};
+    const { Etiqueta } = NS;
+    const el = React.createElement;
+    const T = Component.TONS, N = Component.NOMES;
+    const estado = this.props.estado || 'pronto';
+
+    const busca = this.state.busca.trim().toLowerCase();
+    let visiveis = this.dados()
+      .filter((l) => this.state.status[l.status])
+      .filter((l) => !busca || l.projeto.toLowerCase().includes(busca) || l.responsavel.toLowerCase().includes(busca));
+    if (estado === 'vazio') visiveis = [];
+
+    const sel = visiveis.find((l) => l.id === this.state.selecionadoId) || null;
+    const mostraDetalhe = estado === 'pronto' && !!sel;
+
+    return {
+      busca: this.state.busca,
+      setBusca: (v) => this.setState({ busca: v }),
+      hoje: new Date(2026, 6, 31),
+      faixa: this.state.faixa,
+      setFaixa: (f) => this.setState({ faixa: f }),
+
+      filtrosStatus: Object.keys(N).map((k) => ({
+        chave: k, rotulo: N[k], marcado: !!this.state.status[k],
+        alternar: () => this.setState((s) => ({ status: { ...s.status, [k]: !s.status[k] } })),
+      })),
+      limpar: () => this.setState({ busca: '', status: { andamento: true, concluido: true, atrasado: true }, faixa: { inicio: null, fim: null } }),
+
+      estadoTabela: estado === 'vazio' ? 'pronto' : estado,
+      mensagemErro: 'A lista não voltou do servidor. Nada do que você filtrou foi perdido.',
+      recarregar: () => this.forceUpdate(),
+      /* Vazio por filtro e vazio de verdade são coisas diferentes: um pede
+         para afrouxar o filtro, o outro pede para criar o primeiro item. */
+      textoVazio: busca || estado === 'vazio'
+        ? 'Nenhum projeto com esses filtros. Tente afrouxar a busca.'
+        : 'Nada por aqui ainda. Crie o primeiro projeto e ele aparece nesta lista.',
+
+      resumo: estado === 'carregando' ? 'Carregando…'
+        : estado === 'erro' ? 'Não foi possível carregar'
+        : visiveis.length === 0 ? 'Nenhum projeto'
+        : visiveis.length === 1 ? '1 projeto' : visiveis.length + ' projetos',
+
+      colunas: [
+        { chave: 'projeto', rotulo: 'Projeto' },
+        { chave: 'status', rotulo: 'Status', render: (l) => (Etiqueta ? el(Etiqueta, { variante: T[l.status] }, N[l.status]) : N[l.status]) },
+        { chave: 'responsavel', rotulo: 'Responsável' },
+        { chave: 'gasto', rotulo: 'Gasto', numerica: true, render: (l) => this.reais(l.gasto) },
+        { chave: 'prazo', rotulo: 'Prazo', numerica: true },
+      ],
+      visiveis,
+      selecionar: (l) => this.setState({ selecionadoId: l.id }),
+      selecionadoId: this.state.selecionadoId,
+      temSelecao: mostraDetalhe,
+      semSelecao: !mostraDetalhe,
+      selecionado: sel ? {
+        ...sel,
+        tom: T[sel.status],
+        statusNome: N[sel.status],
+        gastoFmt: this.reais(sel.gasto),
+        orcamentoFmt: this.reais(sel.orcamento),
+        consumo: Math.round((sel.gasto / sel.orcamento) * 100),
+        consumoRotulo: Math.round((sel.gasto / sel.orcamento) * 100) + '% de ' + this.reais(sel.orcamento),
+      } : {},
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Componentes — Dados" name="Métrica, tabela, progresso, vazio" subtitle="Peças de dashboard: KPI com faísca, tabela ordenável, paginação" viewport="880x620" -->
+<html lang="pt-BR"><head><meta charset="UTF-8"><title>Dados</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>html,body{margin:0;padding:0}body{width:880px;box-sizing:border-box;padding:var(--espaco-6);background:var(--cor-fundo)}
+.bloco{display:flex;flex-direction:column;gap:var(--espaco-5)}
+.rot{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--cor-texto-suave)}
+.linha{display:flex;gap:var(--espaco-3);align-items:center;flex-wrap:wrap}
+.grade{display:grid;gap:var(--espaco-4)}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+</head><body><div id="root"></div>
+<script type="text/babel">
+const { Metrica, Tabela, Progresso, Paginacao, Vazio, Esqueleto, Etiqueta, Botao } = window.AADesignSystem_ada6b1;
+
+function Demo() {
+  const linhas = [
+    { id:1, projeto:'Reforma da cozinha', status:'andamento', gasto: 12400, prazo:'12 mar' },
+    { id:2, projeto:'Horta da varanda', status:'concluido', gasto: 860, prazo:'28 fev' },
+    { id:3, projeto:'Pintura do corredor', status:'atrasado', gasto: 2140, prazo:'04 mar' },
+  ];
+  const TONS = { andamento:'info', concluido:'sucesso', atrasado:'atencao' };
+  const NOMES = { andamento:'Em andamento', concluido:'Concluído', atrasado:'Atrasado' };
+  return (
+    <div className="bloco">
+      <div className="grade" style={{gridTemplateColumns:'repeat(4,1fr)'}}>
+        <Metrica rotulo="Projetos ativos" valor="7" delta="+2 no mês" tendencia="alta" serie={[3,4,4,5,6,6,7]} />
+        <Metrica rotulo="Concluídos" valor="23" delta="+5 no mês" tendencia="alta" serie={[12,14,15,18,19,21,23]} />
+        <Metrica rotulo="Pendências" valor="4" delta="2 atrasadas" tendencia="atencao" serie={[6,5,5,4,5,4,4]} />
+        <Metrica rotulo="Gasto do mês" valor="15,4" unidade="mil" delta="dentro do previsto" tendencia="neutra" />
+      </div>
+      <div style={{background:'var(--cor-superficie)',border:'1px solid var(--cor-borda)',borderRadius:'var(--raio-grande)',overflow:'hidden'}}>
+        <Tabela ordenavel
+          colunas={[
+            { chave:'projeto', rotulo:'Projeto' },
+            { chave:'status', rotulo:'Status', render:(l) => <Etiqueta variante={TONS[l.status]}>{NOMES[l.status]}</Etiqueta> },
+            { chave:'gasto', rotulo:'Gasto', numerica:true, render:(l) => 'R$ ' + l.gasto.toLocaleString('pt-BR') },
+            { chave:'prazo', rotulo:'Prazo', numerica:true },
+          ]}
+          linhas={linhas} />
+      </div>
+      <div className="linha" style={{justifyContent:'space-between'}}>
+        <Paginacao pagina={2} total={9} />
+        <div style={{display:'flex',gap:24,alignItems:'center'}}>
+          <Progresso rotulo="Orçamento usado" valor={68} mostrarValor style={{width:200}} />
+          <Progresso formato="anel" valor={68} rotulo="68%" tamanho={54} />
+        </div>
+      </div>
+      <div className="grade" style={{gridTemplateColumns:'1.2fr 1fr'}}>
+        <Vazio titulo="Nenhum projeto arquivado"
+          descricao="Você adiciona quando um projeto real precisar — e aí a lista nasce já testada por uso."
+          acao={<Botao variante="secundario" tamanho="pequeno">Ver todos</Botao>} />
+        <div style={{background:'var(--cor-superficie)',border:'1px solid var(--cor-borda)',borderRadius:'var(--raio-grande)',padding:24,display:'flex',flexDirection:'column',gap:16}}>
+          <div className="rot">Carregando</div>
+          <Esqueleto linhas={4} />
+          <Esqueleto formato="bloco" altura={48} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script></body></html>

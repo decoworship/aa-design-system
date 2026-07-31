@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Componentes — Estrutura" name="Cartão, abas, divisor, migalhas" subtitle="Contêineres e navegação secundária" viewport="880x420" -->
+<html lang="pt-BR"><head><meta charset="UTF-8"><title>Estrutura</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>html,body{margin:0;padding:0}body{width:880px;box-sizing:border-box;padding:var(--espaco-6);background:var(--cor-fundo)}
+.bloco{display:flex;flex-direction:column;gap:var(--espaco-5)}
+.rot{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--cor-texto-suave)}
+.linha{display:flex;gap:var(--espaco-3);align-items:center;flex-wrap:wrap}
+.grade{display:grid;gap:var(--espaco-4)}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+</head><body><div id="root"></div>
+<script type="text/babel">
+const { Cartao, Abas, Divisor, Migalhas, Botao, Etiqueta } = window.AADesignSystem_ada6b1;
+
+const { useState } = React;
+function Demo() {
+  const [aba, setAba] = useState('tarefas');
+  return (
+    <div className="bloco">
+      <Migalhas itens={['Casa & projetos','Reforma da cozinha','Tarefas']} />
+      <Abas ativa={aba} aoMudar={setAba} abas={[
+        {id:'tarefas',rotulo:'Tarefas',contagem:4},
+        {id:'notas',rotulo:'Notas'},
+        {id:'orcamento',rotulo:'Orçamento',contagem:2},
+      ]} />
+      <div className="grade" style={{gridTemplateColumns:'1.4fr 1fr'}}>
+        <Cartao rotulo="Resumo do mês" titulo="Reforma da cozinha"
+          acoes={<Etiqueta variante="info">Em andamento</Etiqueta>}
+          rodape={<><Botao variante="texto">Arquivar</Botao><Botao>Marcar como concluído</Botao></>}>
+          <p style={{margin:0,fontSize:15,lineHeight:1.55,color:'var(--cor-texto)',maxWidth:'60ch'}}>
+            Trocar a bancada por uma de madeira maciça, refazer a parte elétrica das tomadas baixas
+            e manter os armários superiores.
+          </p>
+          <Divisor rotulo="Próximo passo" />
+          <p style={{margin:0,fontSize:13,color:'var(--cor-texto-suave)'}}>Combinar o dia da entrega da bancada.</p>
+        </Cartao>
+        <Cartao compacto rotulo="Contato">
+          <div style={{display:'flex',flexDirection:'column',gap:8,fontSize:14}}>
+            <span>João — marcenaria</span>
+            <span style={{color:'var(--cor-texto-suave)'}}>Orçamento aprovado em 12/03</span>
+          </div>
+        </Cartao>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script></body></html>

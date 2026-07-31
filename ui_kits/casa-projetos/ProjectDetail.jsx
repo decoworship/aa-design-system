@@ -47,7 +47,7 @@ function ProjectDetail({ project, onClose, onToggleTask }) {
           display: 'flex', flexDirection: 'column', gap: 8,
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16 }}>
-            <Eyebrow color="var(--acento-500)">Projeto</Eyebrow>
+            <Eyebrow color="var(--cor-destaque-texto)">Projeto</Eyebrow>
             <button onClick={onClose} style={{
               all: 'unset', cursor: 'pointer',
               width: 28, height: 28, borderRadius: 8,
@@ -123,7 +123,7 @@ function TaskRow({ task, onToggle }) {
         border: `1.5px solid ${task.done ? 'var(--cor-acao)' : 'var(--cor-borda-forte)'}`,
         background: task.done ? 'var(--cor-acao)' : 'transparent',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        color: 'var(--areia-50)',
+        color: 'var(--cor-texto-invertido)',
         transition: 'all 0.15s ease',
       }}>
         {task.done && (

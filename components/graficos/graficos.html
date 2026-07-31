@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Componentes — Gráficos" name="Gráficos de dashboard" subtitle="Barras · linhas/área · rosca · faísca · dispersão · funil · medidor · mapa de calor" viewport="880x900" -->
+<html lang="pt-BR"><head><meta charset="UTF-8"><title>Gráficos</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>html,body{margin:0;padding:0}body{width:880px;box-sizing:border-box;padding:var(--espaco-6);background:var(--cor-fundo)}
+.bloco{display:flex;flex-direction:column;gap:var(--espaco-5)}
+.rot{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--cor-texto-suave)}
+.linha{display:flex;gap:var(--espaco-3);align-items:center;flex-wrap:wrap}
+.grade{display:grid;gap:var(--espaco-4)}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+</head><body><div id="root"></div>
+<script type="text/babel">
+const { GraficoBarras, GraficoLinhas, GraficoRosca, Minigrafico, GraficoDispersao, GraficoFunil, GraficoMedidor, MapaDeCalor, Cartao } = window.AADesignSystem_ada6b1;
+
+const MESES = [
+  { rotulo:'Jan', casa: 2400, trabalho: 1200 },
+  { rotulo:'Fev', casa: 1800, trabalho: 1600 },
+  { rotulo:'Mar', casa: 3200, trabalho: 1100 },
+  { rotulo:'Abr', casa: 2900, trabalho: 1900 },
+  { rotulo:'Mai', casa: 3600, trabalho: 1400 },
+  { rotulo:'Jun', casa: 3100, trabalho: 2100 },
+];
+const SERIES = [{ chave:'casa', nome:'Casa' }, { chave:'trabalho', nome:'Trabalho' }];
+
+function Demo() {
+  return (
+    <div className="bloco">
+      <div className="grade" style={{gridTemplateColumns:'1fr 1fr'}}>
+        <Cartao rotulo="Comparação" titulo="Barras agrupadas"><GraficoBarras dados={MESES} series={SERIES} altura={210} /></Cartao>
+        <Cartao rotulo="Composição no tempo" titulo="Barras empilhadas"><GraficoBarras dados={MESES} series={SERIES} empilhado altura={210} /></Cartao>
+        <Cartao rotulo="Tendência" titulo="Área + meta"><GraficoLinhas dados={MESES} series={[{chave:'casa',nome:'Casa'}]} area mostrarPontos referencia={3000} altura={210} /></Cartao>
+        <Cartao rotulo="Duas séries" titulo="Linhas"><GraficoLinhas dados={MESES} series={SERIES} altura={210} /></Cartao>
+        <Cartao rotulo="Ranking" titulo="Barras horizontais">
+          <GraficoBarras orientacao="horizontal" altura={200} realce="Cozinha" dados={[
+            { rotulo:'Cozinha', valor: 12400 }, { rotulo:'Corredor', valor: 2140 },
+            { rotulo:'Varanda', valor: 860 }, { rotulo:'Escritório', valor: 640 },
+          ]} series={[{chave:'valor',nome:'Gasto'}]} />
+        </Cartao>
+        <Cartao rotulo="Parte do todo" titulo="Rosca">
+          <GraficoRosca tamanho={170} centroRotulo="total" centroValor="16k" dados={[
+            { rotulo:'Cozinha', valor: 12400 }, { rotulo:'Corredor', valor: 2140 },
+            { rotulo:'Varanda', valor: 860 }, { rotulo:'Outros', valor: 640 },
+          ]} />
+        </Cartao>
+        <Cartao rotulo="Correlação" titulo="Dispersão">
+          <GraficoDispersao altura={210} rotuloX="dias" rotuloY="gasto" pontos={[
+            {x:4,y:600,grupo:0},{x:9,y:1400,grupo:0},{x:14,y:2100,grupo:0},{x:21,y:3900,grupo:1},
+            {x:26,y:4200,grupo:1},{x:31,y:6100,grupo:1},{x:12,y:900,grupo:0},{x:18,y:3100,grupo:1},
+          ]} />
+        </Cartao>
+        <Cartao rotulo="Etapas" titulo="Funil">
+          <GraficoFunil etapas={[
+            { rotulo:'Ideias anotadas', valor: 42 }, { rotulo:'Orçadas', valor: 28 },
+            { rotulo:'Aprovadas', valor: 15 }, { rotulo:'Concluídas', valor: 9 },
+          ]} />
+        </Cartao>
+        <Cartao rotulo="Meta única" titulo="Medidor" style={{display:'flex',flexDirection:'column'}}>
+          <div style={{display:'flex',gap:32,alignItems:'center',justifyContent:'center',flex:1}}>
+            <GraficoMedidor valor={68} rotulo="orçamento usado" tamanho={160} />
+            <div style={{display:'flex',flexDirection:'column',gap:12}}>
+              <div><div className="rot" style={{marginBottom:4}}>Faísca — linha</div><Minigrafico dados={[3,4,4,5,6,6,7,7,9]} realceUltimo largura={140} /></div>
+              <div><div className="rot" style={{marginBottom:4}}>Faísca — barra</div><Minigrafico dados={[3,4,4,5,6,6,7,7,9]} tipo="barra" realceUltimo largura={140} /></div>
+            </div>
+          </div>
+        </Cartao>
+        <Cartao rotulo="Densidade" titulo="Mapa de calor">
+          <MapaDeCalor
+            linhas={['Seg','Ter','Qua','Qui','Sex']}
+            colunas={['8h','10h','12h','14h','16h','18h','20h']}
+            valores={[[1,3,0,2,4,5,2],[0,2,1,3,5,4,1],[2,4,2,1,3,5,3],[1,1,0,4,4,2,0],[3,5,2,2,1,3,4]]}
+            tamanhoCelula={26} />
+        </Cartao>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script></body></html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Gráficos" name="Catálogo de gráficos" subtitle="O mapa completo: o que mostrar, qual gráfico usar, o que evitar — e o componente AA correspondente" viewport="1180x3810" -->
+<html lang="pt-BR"><head><meta charset="UTF-8"><title>Catálogo de gráficos</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+html,body{margin:0;padding:0}
+body{width:1180px;box-sizing:border-box;padding:48px;background:var(--cor-fundo);font-family:var(--fonte-ui)}
+h1{font-family:var(--fonte-display);font-size:36px;font-weight:600;line-height:1.1;letter-spacing:-.01em;color:var(--cor-texto-forte);margin:0 0 8px}
+.sub{font-size:15px;color:var(--cor-texto-suave);max-width:64ch;margin:0 0 48px;line-height:1.55}
+.rot{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--cor-texto-suave)}
+.fam{margin-top:48px}
+.fam>.rot{padding-bottom:12px;border-bottom:1px solid var(--cor-borda);margin-bottom:24px;display:flex;justify-content:space-between;align-items:baseline}
+.fam>.rot em{font-style:normal;text-transform:none;letter-spacing:0;font-weight:400;font-size:13px;color:var(--cor-texto-suave)}
+.grade{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.item{background:var(--cor-superficie);border:1px solid var(--cor-borda);border-radius:var(--raio-grande);padding:16px;display:flex;flex-direction:column;gap:10px}
+.esboco{height:74px;background:var(--areia-100);border-radius:var(--raio-pequeno);display:flex;align-items:center;justify-content:center}
+.nome{font-size:15px;font-weight:600;color:var(--cor-texto-forte);line-height:1.3}
+.quando{font-size:12px;line-height:1.5;color:var(--cor-texto);margin:0}
+.evite{font-size:11px;line-height:1.45;color:var(--cor-texto-suave);margin:0}
+.evite b{color:var(--acento-700);font-weight:600}
+.comp{margin-top:auto;padding-top:8px;border-top:1px solid var(--cor-borda);font-family:var(--fonte-mono);font-size:11px;color:var(--primaria-700)}
+.comp.falta{color:var(--cor-texto-suave)}
+.guia{background:var(--cor-superficie);border:1px solid var(--cor-borda);border-radius:var(--raio-grande);padding:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.guia div{display:flex;flex-direction:column;gap:6px}
+.guia p{margin:0;font-size:13px;line-height:1.55;color:var(--cor-texto)}
+.regras{margin-top:48px;background:var(--cor-superficie);border:1px solid var(--cor-borda);border-radius:var(--raio-grande);padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:24px 48px}
+.regras h3{margin:0 0 8px;font-size:15px;font-weight:600;color:var(--cor-texto-forte)}
+.regras ul{margin:0;padding-left:18px;font-size:13px;line-height:1.6;color:var(--cor-texto)}
+.regras li{margin-bottom:4px}
+.regras code{font-family:var(--fonte-mono);font-size:11px;color:var(--primaria-700);background:var(--primaria-50);padding:1px 5px;border-radius:4px}
+</style></head>
+<body>
+<h1>Catálogo de gráficos</h1>
+<p class="sub">Todos os tipos que fazem sentido nos dashboards do AA, agrupados pela pergunta que respondem. Escolha pela pergunta, não pela aparência. O que já existe como componente está marcado; o que não existe tem a receita de como montar com os tokens do sistema.</p>
+
+<div class="guia">
+  <div><span class="rot">Comece pela pergunta</span><p>“Quanto cada um tem?” → comparação. “Como mudou?” → tempo. “De que é feito?” → parte do todo. “Tem relação?” → relação. “Chegamos na meta?” → progresso.</p></div>
+  <div><span class="rot">Uma pergunta por gráfico</span><p>Se você precisa explicar o gráfico em duas frases, ele está respondendo duas perguntas. Divida em dois.</p></div>
+  <div><span class="rot">O número vem antes</span><p>Se um número basta, use <code style="font-family:var(--fonte-mono)">Metrica</code> e pare por aí. Gráfico só quando a forma da série importa.</p></div>
+</div>
+
+<div class="fam">
+  <div class="rot"><span>1 · Comparação — “quanto cada um tem?”</span><em>categorias lado a lado, sem ordem temporal</em></div>
+  <div class="grade">
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><rect x="10" y="18" width="16" height="32" fill="var(--dados-1)" rx="2"/><rect x="34" y="8" width="16" height="42" fill="var(--dados-1)" rx="2"/><rect x="58" y="28" width="16" height="22" fill="var(--dados-1)" rx="2"/><rect x="82" y="22" width="16" height="28" fill="var(--dados-1)" rx="2"/><line x1="6" y1="50" x2="104" y2="50" stroke="var(--grafico-eixo)"/></svg></div>
+      <div class="nome">Barras verticais</div>
+      <p class="quando">Poucas categorias (até 7) com rótulo curto. O padrão do sistema.</p>
+      <p class="evite"><b>Evite</b> se o rótulo não couber na horizontal.</p>
+      <div class="comp">GraficoBarras</div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><rect x="30" y="8" width="70" height="9" fill="var(--grafico-realce)" rx="2"/><rect x="30" y="21" width="48" height="9" fill="var(--dados-1)" rx="2"/><rect x="30" y="34" width="30" height="9" fill="var(--dados-1)" rx="2"/><line x1="30" y1="4" x2="30" y2="48" stroke="var(--grafico-eixo)"/></svg></div>
+      <div class="nome">Barras horizontais</div>
+      <p class="quando">Ranking, nomes longos, mais de 7 categorias. Sempre ordenado por valor.</p>
+      <p class="evite"><b>Evite</b> deixar fora de ordem — ranking desordenado não é ranking.</p>
+      <div class="comp">GraficoBarras orientacao="horizontal"</div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><rect x="14" y="20" width="10" height="30" fill="var(--dados-1)" rx="2"/><rect x="25" y="28" width="10" height="22" fill="var(--dados-2)" rx="2"/><rect x="46" y="12" width="10" height="38" fill="var(--dados-1)" rx="2"/><rect x="57" y="24" width="10" height="26" fill="var(--dados-2)" rx="2"/><rect x="78" y="26" width="10" height="24" fill="var(--dados-1)" rx="2"/><rect x="89" y="18" width="10" height="32" fill="var(--dados-2)" rx="2"/><line x1="8" y1="50" x2="104" y2="50" stroke="var(--grafico-eixo)"/></svg></div>
+      <div class="nome">Barras agrupadas</div>
+      <p class="quando">Comparar 2–3 séries dentro de cada categoria.</p>
+      <p class="evite"><b>Evite</b> acima de 3 séries — vira cerca.</p>
+      <div class="comp">GraficoBarras series={[…]}</div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><rect x="16" y="26" width="16" height="24" fill="var(--dados-1)" rx="2"/><rect x="16" y="14" width="16" height="12" fill="var(--dados-2)"/><rect x="46" y="20" width="16" height="30" fill="var(--dados-1)" rx="2"/><rect x="46" y="8" width="16" height="12" fill="var(--dados-2)"/><rect x="76" y="30" width="16" height="20" fill="var(--dados-1)" rx="2"/><rect x="76" y="16" width="16" height="14" fill="var(--dados-2)"/><line x1="8" y1="50" x2="104" y2="50" stroke="var(--grafico-eixo)"/></svg></div>
+      <div class="nome">Barras empilhadas</div>
+      <p class="quando">Total <em>e</em> composição na mesma barra.</p>
+      <p class="evite"><b>Evite</b> comparar os segmentos do meio — só o de baixo e o total são legíveis.</p>
+      <div class="comp">GraficoBarras empilhado</div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><rect x="16" y="8" width="16" height="42" fill="var(--dados-2)" rx="2"/><rect x="16" y="26" width="16" height="24" fill="var(--dados-1)"/><rect x="46" y="8" width="16" height="42" fill="var(--dados-2)" rx="2"/><rect x="46" y="18" width="16" height="32" fill="var(--dados-1)"/><rect x="76" y="8" width="16" height="42" fill="var(--dados-2)" rx="2"/><rect x="76" y="32" width="16" height="18" fill="var(--dados-1)"/></svg></div>
+      <div class="nome">Empilhadas 100%</div>
+      <p class="quando">Só a proporção importa, não o tamanho absoluto.</p>
+      <p class="evite"><b>Evite</b> quando o total varia muito — some a informação mais importante.</p>
+      <div class="comp falta">receita: normalize os valores para 100 e use <em>empilhado</em></div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><line x1="30" y1="12" x2="86" y2="12" stroke="var(--cor-borda-forte)" stroke-width="1.5"/><line x1="30" y1="27" x2="66" y2="27" stroke="var(--cor-borda-forte)" stroke-width="1.5"/><line x1="30" y1="42" x2="52" y2="42" stroke="var(--cor-borda-forte)" stroke-width="1.5"/><circle cx="86" cy="12" r="5" fill="var(--dados-1)"/><circle cx="66" cy="27" r="5" fill="var(--dados-1)"/><circle cx="52" cy="42" r="5" fill="var(--dados-1)"/><line x1="30" y1="6" x2="30" y2="48" stroke="var(--grafico-eixo)"/></svg></div>
+      <div class="nome">Pirulito (lollipop)</div>
+      <p class="quando">Mesmo papel do ranking, com menos tinta. Bom em listas longas.</p>
+      <p class="evite"><b>Evite</b> se os valores forem muito próximos.</p>
+      <div class="comp falta">receita: <em>GraficoBarras horizontal</em> com barra de 1.5px + círculo na ponta</div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><rect x="12" y="14" width="86" height="10" fill="var(--areia-200)" rx="2"/><rect x="12" y="14" width="58" height="10" fill="var(--dados-1)" rx="2"/><line x1="80" y1="11" x2="80" y2="27" stroke="var(--areia-900)" stroke-width="2"/><rect x="12" y="32" width="86" height="10" fill="var(--areia-200)" rx="2"/><rect x="12" y="32" width="76" height="10" fill="var(--dados-3)" rx="2"/><line x1="70" y1="29" x2="70" y2="45" stroke="var(--areia-900)" stroke-width="2"/></svg></div>
+      <div class="nome">Bullet</div>
+      <p class="quando">Valor + meta + faixa aceitável, num espaço mínimo. Ideal em tabela.</p>
+      <p class="evite"><b>Evite</b> mais de uma meta por linha.</p>
+      <div class="comp falta">receita: <em>Progresso</em> + linha vertical <code>--areia-900</code> na meta</div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><line x1="26" y1="16" x2="84" y2="16" stroke="var(--cor-borda)" stroke-width="1"/><line x1="26" y1="38" x2="84" y2="38" stroke="var(--cor-borda)" stroke-width="1"/><circle cx="40" cy="16" r="5" fill="var(--dados-2)"/><circle cx="80" cy="16" r="5" fill="var(--dados-1)"/><circle cx="34" cy="38" r="5" fill="var(--dados-2)"/><circle cx="58" cy="38" r="5" fill="var(--dados-1)"/></svg></div>
+      <div class="nome">Halteres (dumbbell)</div>
+      <p class="quando">Antes × depois, ou dois períodos, por categoria.</p>
+      <p class="evite"><b>Evite</b> com mais de dois pontos por linha.</p>
+      <div class="comp falta">receita: linha <code>--cor-borda</code> + dois círculos <code>--dados-1/2</code></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="fam">
+  <div class="rot"><span>2 · Tempo — “como mudou?”</span><em>o eixo X é sempre o tempo, sempre da esquerda para a direita</em></div>
+  <div class="grade">
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><polyline points="12,40 30,30 48,34 66,16 84,20 98,10" fill="none" stroke="var(--dados-1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="8" y1="48" x2="104" y2="48" stroke="var(--grafico-eixo)"/></svg></div>
+      <div class="nome">Linha</div>
+      <p class="quando">Série contínua com muitos pontos. A tendência é o assunto.</p>
+      <p class="evite"><b>Evite</b> com menos de 5 pontos — use barras.</p>
+      <div class="comp">GraficoLinhas</div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><polyline points="12,38 30,26 48,32 66,14 84,22 98,12" fill="none" stroke="var(--dados-1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="12,44 30,40 48,42 66,34 84,36 98,30" fill="none" stroke="var(--dados-2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="8" y1="48" x2="104" y2="48" stroke="var(--grafico-eixo)"/></svg></div>
+      <div class="nome">Multi-linhas</div>
+      <p class="quando">Comparar até 4 séries no mesmo período.</p>
+      <p class="evite"><b>Evite</b> acima de 4 — vire pequenos múltiplos.</p>
+      <div class="comp">GraficoLinhas series={[…]}</div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><path d="M12 38 L30 26 L48 32 L66 14 L84 22 L98 12 L98 48 L12 48 Z" fill="var(--grafico-area)"/><polyline points="12,38 30,26 48,32 66,14 84,22 98,12" fill="none" stroke="var(--dados-1)" stroke-width="2" stroke-linejoin="round"/><line x1="8" y1="48" x2="104" y2="48" stroke="var(--grafico-eixo)"/></svg></div>
+      <div class="nome">Área</div>
+      <p class="quando">Uma série só, quando o volume acumulado importa tanto quanto a direção.</p>
+      <p class="evite"><b>Evite</b> sobrepor áreas — uma esconde a outra.</p>
+      <div class="comp">GraficoLinhas area</div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><path d="M12 30 L34 22 L56 26 L78 14 L98 18 L98 48 L12 48 Z" fill="var(--dados-1)" opacity=".85"/><path d="M12 30 L34 22 L56 26 L78 14 L98 18 L98 8 L78 4 L56 12 L34 10 L12 16 Z" fill="var(--dados-2)" opacity=".55"/></svg></div>
+      <div class="nome">Área empilhada</div>
+      <p class="quando">Como o total se decompõe ao longo do tempo.</p>
+      <p class="evite"><b>Evite</b> ler as camadas de cima — só a de baixo tem linha de base reta.</p>
+      <div class="comp falta">receita: <em>GraficoLinhas area</em> com valores acumulados</div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><polyline points="14,34 28,28 42,32 56,20 70,24 84,14 96,18" fill="none" stroke="var(--dados-1)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="96" cy="18" r="3" fill="var(--grafico-realce)"/></svg></div>
+      <div class="nome">Faísca (sparkline)</div>
+      <p class="quando">Dentro de um KPI ou de uma célula de tabela. Sem eixo, sem grade.</p>
+      <p class="evite"><b>Evite</b> pôr números nela — a forma é a mensagem.</p>
+      <div class="comp">Minigrafico · Metrica serie={[…]}</div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><rect x="12" y="30" width="9" height="20" fill="var(--dados-1)" rx="1.5"/><rect x="26" y="24" width="9" height="26" fill="var(--dados-1)" rx="1.5"/><rect x="40" y="34" width="9" height="16" fill="var(--dados-1)" rx="1.5"/><rect x="54" y="18" width="9" height="32" fill="var(--dados-1)" rx="1.5"/><rect x="68" y="26" width="9" height="24" fill="var(--dados-1)" rx="1.5"/><rect x="82" y="12" width="9" height="38" fill="var(--grafico-realce)" rx="1.5"/><line x1="8" y1="50" x2="104" y2="50" stroke="var(--grafico-eixo)"/></svg></div>
+      <div class="nome">Barras no tempo</div>
+      <p class="quando">Períodos discretos e contáveis (meses, semanas). Realce o período atual.</p>
+      <p class="evite"><b>Evite</b> com mais de ~20 barras — vire linha.</p>
+      <div class="comp">GraficoBarras realce="Jun"</div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><rect x="12" y="30" width="14" height="18" fill="var(--dados-1)" rx="1.5"/><rect x="31" y="22" width="14" height="8" fill="var(--div-1)" rx="1.5"/><rect x="50" y="30" width="14" height="10" fill="var(--div-5)" rx="1.5"/><rect x="69" y="16" width="14" height="14" fill="var(--div-1)" rx="1.5"/><rect x="88" y="16" width="14" height="32" fill="var(--areia-600)" rx="1.5"/><line x1="8" y1="48" x2="106" y2="48" stroke="var(--grafico-eixo)"/></svg></div>
+      <div class="nome">Cascata (waterfall)</div>
+      <p class="quando">Como o saldo saiu de A e chegou em B — entradas e saídas.</p>
+      <p class="evite"><b>Evite</b> com mais de 8 passos.</p>
+      <div class="comp falta">receita: barras flutuantes com <code>--div-1</code> / <code>--div-5</code>, total em <code>--areia-600</code></div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><g stroke="var(--dados-1)" stroke-width="1.6"><polyline points="10,36 22,30 34,32" fill="none"/><polyline points="42,34 54,24 66,28" fill="none"/><polyline points="74,30 86,18 98,22" fill="none"/></g><g stroke="var(--cor-borda)"><line x1="6" y1="42" x2="34" y2="42"/><line x1="38" y1="42" x2="66" y2="42"/><line x1="70" y1="42" x2="98" y2="42"/></g></svg></div>
+      <div class="nome">Pequenos múltiplos</div>
+      <p class="quando">Muitas séries com a mesma escala. Substitui espaguete de linhas.</p>
+      <p class="evite"><b>Evite</b> escalas diferentes entre painéis — invalida a comparação.</p>
+      <div class="comp falta">receita: grade de <em>GraficoLinhas</em> com o mesmo <em>referencia</em></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="fam">
+  <div class="rot"><span>3 · Parte do todo — “de que é feito?”</span><em>use só quando o total é conhecido e as fatias somam 100%</em></div>
+  <div class="grade">
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><circle cx="55" cy="27" r="22" fill="none" stroke="var(--dados-1)" stroke-width="11" stroke-dasharray="72 66"/><circle cx="55" cy="27" r="22" fill="none" stroke="var(--dados-2)" stroke-width="11" stroke-dasharray="36 102" stroke-dashoffset="-72"/><circle cx="55" cy="27" r="22" fill="none" stroke="var(--dados-3)" stroke-width="11" stroke-dasharray="30 108" stroke-dashoffset="-108"/></svg></div>
+      <div class="nome">Rosca</div>
+      <p class="quando">3–5 fatias, com o total no centro. A forma preferida do sistema.</p>
+      <p class="evite"><b>Evite</b> acima de 5 fatias — vire barras horizontais.</p>
+      <div class="comp">GraficoRosca</div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><path d="M55 27 L55 5 A22 22 0 0 1 73 38 Z" fill="var(--dados-1)"/><path d="M55 27 L73 38 A22 22 0 0 1 36 39 Z" fill="var(--dados-2)"/><path d="M55 27 L36 39 A22 22 0 0 1 55 5 Z" fill="var(--dados-3)"/></svg></div>
+      <div class="nome">Pizza</div>
+      <p class="quando">Só com 2–3 fatias muito distintas. Prefira a rosca.</p>
+      <p class="evite"><b>Evite</b> fatias parecidas — o olho não compara ângulos.</p>
+      <div class="comp">GraficoRosca rosca={false}</div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><rect x="12" y="8" width="48" height="24" fill="var(--dados-1)" rx="2"/><rect x="62" y="8" width="36" height="24" fill="var(--dados-2)" rx="2"/><rect x="12" y="34" width="30" height="14" fill="var(--dados-3)" rx="2"/><rect x="44" y="34" width="26" height="14" fill="var(--dados-4)" rx="2"/><rect x="72" y="34" width="26" height="14" fill="var(--dados-5)" rx="2"/></svg></div>
+      <div class="nome">Treemap</div>
+      <p class="quando">Muitas categorias hierárquicas num espaço fixo.</p>
+      <p class="evite"><b>Evite</b> quando os valores forem próximos — as áreas ficam ambíguas.</p>
+      <div class="comp falta">receita: grade CSS com <code>flex-grow</code> proporcional ao valor</div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><rect x="14" y="14" width="82" height="10" rx="2" fill="var(--dados-1)"/><rect x="14" y="30" width="60" height="10" rx="2" fill="var(--dados-2)"/><rect x="74" y="30" width="22" height="10" rx="2" fill="var(--areia-300)"/></svg></div>
+      <div class="nome">Barra 100% única</div>
+      <p class="quando">Uma proporção simples (usado × disponível). Cabe em qualquer canto.</p>
+      <p class="evite"><b>Evite</b> mais de 3 segmentos.</p>
+      <div class="comp">Progresso</div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><rect x="14" y="8" width="82" height="8" rx="2" fill="var(--dados-1)"/><rect x="22" y="20" width="66" height="8" rx="2" fill="var(--dados-2)"/><rect x="32" y="32" width="46" height="8" rx="2" fill="var(--dados-3)"/><rect x="42" y="44" width="26" height="8" rx="2" fill="var(--dados-4)"/></svg></div>
+      <div class="nome">Funil</div>
+      <p class="quando">Etapas sequenciais com perda entre elas. Mostre a % de conversão.</p>
+      <p class="evite"><b>Evite</b> quando as etapas não são um caminho único.</p>
+      <div class="comp">GraficoFunil</div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><path d="M14 12 C50 12 60 40 96 40" stroke="var(--dados-1)" stroke-width="9" fill="none" opacity=".6"/><path d="M14 28 C50 28 60 18 96 18" stroke="var(--dados-2)" stroke-width="6" fill="none" opacity=".6"/><rect x="10" y="6" width="5" height="34" fill="var(--areia-600)" rx="1"/><rect x="95" y="10" width="5" height="36" fill="var(--areia-600)" rx="1"/></svg></div>
+      <div class="nome">Sankey</div>
+      <p class="quando">Fluxo entre dois ou mais estágios (de onde veio → para onde foi).</p>
+      <p class="evite"><b>Evite</b> em dashboard pequeno — precisa de espaço e legenda.</p>
+      <div class="comp falta">fora do escopo v0.2 — peça se um projeto real precisar</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="fam">
+  <div class="rot"><span>4 · Relação e distribuição — “tem padrão aqui?”</span><em>quando a pergunta é sobre a forma da nuvem, não sobre um valor</em></div>
+  <div class="grade">
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><g fill="var(--dados-1)" opacity=".72"><circle cx="20" cy="42" r="4"/><circle cx="34" cy="36" r="4"/><circle cx="44" cy="28" r="4"/><circle cx="58" cy="30" r="4"/><circle cx="66" cy="18" r="4"/><circle cx="80" cy="20" r="4"/><circle cx="92" cy="10" r="4"/></g><line x1="12" y1="48" x2="104" y2="48" stroke="var(--grafico-eixo)"/></svg></div>
+      <div class="nome">Dispersão</div>
+      <p class="quando">Duas variáveis numéricas — existe correlação?</p>
+      <p class="evite"><b>Evite</b> com menos de ~15 pontos: qualquer padrão é ruído.</p>
+      <div class="comp">GraficoDispersao</div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><g fill="var(--dados-2)" opacity=".6"><circle cx="26" cy="38" r="6"/><circle cx="48" cy="26" r="11"/><circle cx="72" cy="32" r="7"/><circle cx="90" cy="16" r="9"/></g><line x1="12" y1="48" x2="104" y2="48" stroke="var(--grafico-eixo)"/></svg></div>
+      <div class="nome">Bolhas</div>
+      <p class="quando">Três variáveis: X, Y e tamanho. Máximo 20 bolhas.</p>
+      <p class="evite"><b>Evite</b> codificar o tamanho pelo raio — use área (o componente já faz).</p>
+      <div class="comp">GraficoDispersao tamanhoBolha</div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><g rx="2">
+        <rect x="14" y="10" width="13" height="13" fill="var(--seq-1)" rx="2"/><rect x="30" y="10" width="13" height="13" fill="var(--seq-3)" rx="2"/><rect x="46" y="10" width="13" height="13" fill="var(--seq-5)" rx="2"/><rect x="62" y="10" width="13" height="13" fill="var(--seq-2)" rx="2"/><rect x="78" y="10" width="13" height="13" fill="var(--seq-4)" rx="2"/>
+        <rect x="14" y="26" width="13" height="13" fill="var(--seq-4)" rx="2"/><rect x="30" y="26" width="13" height="13" fill="var(--seq-2)" rx="2"/><rect x="46" y="26" width="13" height="13" fill="var(--seq-1)" rx="2"/><rect x="62" y="26" width="13" height="13" fill="var(--seq-5)" rx="2"/><rect x="78" y="26" width="13" height="13" fill="var(--seq-3)" rx="2"/></g></svg></div>
+      <div class="nome">Mapa de calor</div>
+      <p class="quando">Densidade em duas dimensões categóricas (dia × hora).</p>
+      <p class="evite"><b>Evite</b> a paleta categórica aqui — use a escala sequencial <code>--seq-*</code>.</p>
+      <div class="comp">MapaDeCalor</div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><rect x="16" y="34" width="12" height="14" fill="var(--dados-1)" rx="1"/><rect x="30" y="22" width="12" height="26" fill="var(--dados-1)" rx="1"/><rect x="44" y="12" width="12" height="36" fill="var(--dados-1)" rx="1"/><rect x="58" y="20" width="12" height="28" fill="var(--dados-1)" rx="1"/><rect x="72" y="32" width="12" height="16" fill="var(--dados-1)" rx="1"/><rect x="86" y="40" width="12" height="8" fill="var(--dados-1)" rx="1"/><line x1="12" y1="48" x2="104" y2="48" stroke="var(--grafico-eixo)"/></svg></div>
+      <div class="nome">Histograma</div>
+      <p class="quando">Como os valores se distribuem em faixas. Barras coladas, sem espaço.</p>
+      <p class="evite"><b>Evite</b> confundir com barras de categoria — aqui o eixo X é contínuo.</p>
+      <div class="comp falta">receita: <em>GraficoBarras</em> com faixas pré-calculadas e gap zero</div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><g stroke="var(--dados-1)" stroke-width="1.6" fill="none"><line x1="34" y1="8" x2="34" y2="46"/><rect x="22" y="18" width="24" height="18" fill="var(--primaria-50)"/><line x1="22" y1="27" x2="46" y2="27" stroke-width="2.4"/><line x1="76" y1="12" x2="76" y2="44"/><rect x="64" y="20" width="24" height="16" fill="var(--primaria-50)"/><line x1="64" y1="30" x2="88" y2="30" stroke-width="2.4"/></g></svg></div>
+      <div class="nome">Boxplot</div>
+      <p class="quando">Mediana, quartis e outliers — comparar distribuições entre grupos.</p>
+      <p class="evite"><b>Evite</b> num dashboard pessoal: exige leitor treinado.</p>
+      <div class="comp falta">fora do escopo v0.2</div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><polygon points="55,8 88,26 76,46 34,46 22,26" fill="none" stroke="var(--cor-borda-forte)"/><polygon points="55,16 78,28 68,42 40,40 32,27" fill="var(--dados-1)" opacity=".28" stroke="var(--dados-1)" stroke-width="1.6"/></svg></div>
+      <div class="nome">Radar</div>
+      <p class="quando">Perfil em 5–7 eixos comparáveis (avaliação, cobertura).</p>
+      <p class="evite"><b>Evite</b> com escalas diferentes por eixo — a área vira ficção.</p>
+      <div class="comp falta">fora do escopo v0.2</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="fam">
+  <div class="rot"><span>5 · Progresso e meta — “chegamos lá?”</span><em>um número contra um alvo</em></div>
+  <div class="grade">
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><path d="M28 44 A27 27 0 0 1 82 44" fill="none" stroke="var(--areia-200)" stroke-width="9" stroke-linecap="round"/><path d="M28 44 A27 27 0 0 1 72 22" fill="none" stroke="var(--dados-1)" stroke-width="9" stroke-linecap="round"/></svg></div>
+      <div class="nome">Medidor (gauge)</div>
+      <p class="quando">Um único número contra uma escala fixa e conhecida.</p>
+      <p class="evite"><b>Evite</b> vários medidores lado a lado — vire tabela com barras.</p>
+      <div class="comp">GraficoMedidor</div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><circle cx="55" cy="27" r="19" fill="none" stroke="var(--areia-200)" stroke-width="7"/><circle cx="55" cy="27" r="19" fill="none" stroke="var(--dados-1)" stroke-width="7" stroke-dasharray="80 39" stroke-linecap="round" transform="rotate(-90 55 27)"/></svg></div>
+      <div class="nome">Anel de progresso</div>
+      <p class="quando">Percentual de conclusão, ao lado de um rótulo curto.</p>
+      <p class="evite"><b>Evite</b> para valores acima de 100% — o anel mente.</p>
+      <div class="comp">Progresso formato="anel"</div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><rect x="14" y="24" width="82" height="7" rx="3.5" fill="var(--areia-200)"/><rect x="14" y="24" width="56" height="7" rx="3.5" fill="var(--dados-1)"/></svg></div>
+      <div class="nome">Barra de progresso</div>
+      <p class="quando">A forma mais legível de todas. Use por padrão.</p>
+      <p class="evite"><b>Evite</b> animar por mais de 240ms.</p>
+      <div class="comp">Progresso</div>
+    </div>
+
+    <div class="item">
+      <div class="esboco"><svg width="110" height="54" viewBox="0 0 110 54"><text x="55" y="30" text-anchor="middle" font-family="var(--fonte-display)" font-size="26" font-weight="600" fill="var(--cor-texto-forte)">23</text><text x="55" y="44" text-anchor="middle" font-family="var(--fonte-ui)" font-size="9" letter-spacing="1" fill="var(--grafico-rotulo)">+5 NO MÊS</text></svg></div>
+      <div class="nome">Número (KPI)</div>
+      <p class="quando">Quando um número basta. Fraunces 36px + delta em 11px.</p>
+      <p class="evite"><b>Evite</b> transformar em gráfico o que cabe num número.</p>
+      <div class="comp">Metrica</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="regras">
+  <div>
+    <h3>Cor em gráfico — as cinco regras</h3>
+    <ul>
+      <li>Categórica: <code>--dados-1…8</code>, <b>nesta ordem</b>. A ordem é a hierarquia.</li>
+      <li>Uma variável, do pouco ao muito: escala sequencial <code>--seq-1…5</code>.</li>
+      <li>Desvio em torno de zero (saldo, variação): escala divergente <code>--div-1…5</code>.</li>
+      <li>Nunca use cor de feedback (<code>--cor-erro</code>, <code>--cor-sucesso</code>) numa série. Feedback é estado, não dado.</li>
+      <li>Para destacar UM ponto: deixe o resto em <code>--dados-1</code> e use <code>--grafico-realce</code> (terracota) uma única vez.</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Forma e leitura</h3>
+    <ul>
+      <li>Eixo de valor começa em zero em qualquer gráfico de barras. Sem exceção.</li>
+      <li>Grade em <code>--grafico-grade</code>, no máximo 5 linhas, nunca vertical em série temporal.</li>
+      <li>Rótulos em <code>--grafico-rotulo</code>, 10–11px. Números com <code>tabular-nums</code>.</li>
+      <li>Sem sombra, sem gradiente, sem 3D, sem borda em fatia. O gráfico é plano como o resto do sistema.</li>
+      <li>Legenda só com 2+ séries; com uma série, o título já diz o que é.</li>
+      <li>Animação: só na entrada do valor (240ms). Nada de sequência de desenho.</li>
+    </ul>
+  </div>
+</div>
+
+</body></html>

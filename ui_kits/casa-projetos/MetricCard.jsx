@@ -2,9 +2,9 @@
 
 function MetricCard({ label, value, delta, deltaTone = 'flat' }) {
   const deltaColor = {
-    up:   '#3C5639',
-    warn: '#8a5e1f',
-    down: '#7C2E25',
+    up:   'var(--cor-sucesso)',
+    warn: 'var(--cor-atencao)',
+    down: 'var(--cor-erro)',
     flat: 'var(--cor-texto-suave)',
   }[deltaTone];
   return (

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Painel — dashboard" description="Casca completa: barra lateral, cabeçalho, quatro KPIs, gráficos e tabela. O ponto de partida para qualquer painel AA." -->
+<helmet><script src="./ds-base.js"></script>
+<style>*{box-sizing:border-box}html,body{margin:0;width:100%;overflow-x:hidden}@media (max-width:1100px){#graficos{grid-template-columns:minmax(0,1fr)!important}}@media (max-width:900px){#casca{grid-template-columns:minmax(0,1fr)!important}#lateral{display:none!important}#kpis{grid-template-columns:repeat(2,minmax(0,1fr))!important}}</style>
+</helmet>
+<div id="casca" style="min-height:100vh;width:100%;display:grid;grid-template-columns:232px minmax(0,1fr);background:var(--cor-fundo);font-family:var(--fonte-ui)">
+<div id="lateral">
+<x-import component-from-global-scope="AADesignSystem_ada6b1.BarraLateral" marca="Casa &amp; projetos" subtitulo="AA" ativo="{{ secao }}" aoNavegar="{{ setSecao }}" grupos="{{ grupos }}" style="min-height:100vh" hint-size="232px,100%"></x-import>
+</div>
+<main style="display:flex;flex-direction:column;min-width:0;overflow:hidden">
+<x-import component-from-global-scope="AADesignSystem_ada6b1.BarraSuperior" rotulo="Resumo do mês" titulo="Casa &amp; projetos" acoes="{{ acoesTopo }}" hint-size="100%,110px"></x-import>
+<div style="padding:32px;display:flex;flex-direction:column;gap:32px;min-width:0">
+<div id="kpis" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px">
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Metrica" rotulo="Projetos ativos" valor="7" delta="+2 no mês" tendencia="alta" serie="{{ serieAtivos }}" hint-size="100%,124px"></x-import>
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Metrica" rotulo="Concluídos" valor="23" delta="+5 no mês" tendencia="alta" serie="{{ serieConcluidos }}" hint-size="100%,124px"></x-import>
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Metrica" rotulo="Pendências" valor="4" delta="2 atrasadas" tendencia="atencao" serie="{{ seriePendencias }}" hint-size="100%,124px"></x-import>
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Metrica" rotulo="Gasto do mês" valor="15,4" unidade="mil" delta="dentro do previsto" tendencia="neutra" serie="{{ serieGasto }}" hint-size="100%,124px"></x-import>
+</div>
+<div id="graficos" style="display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:16px">
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Cartao" rotulo="Últimos 6 meses" titulo="Gasto por frente" hint-size="100%,320px">
+<x-import component-from-global-scope="AADesignSystem_ada6b1.GraficoBarras" dados="{{ meses }}" series="{{ series }}" altura="{{ 220 }}" hint-size="100%,240px"></x-import>
+</x-import>
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Cartao" rotulo="Distribuição" titulo="Onde foi o dinheiro" hint-size="100%,320px">
+<x-import component-from-global-scope="AADesignSystem_ada6b1.GraficoRosca" dados="{{ fatias }}" tamanho="{{ 150 }}" legenda="{{ false }}" centroRotulo="total" centroValor="16k" hint-size="100%,180px"></x-import>
+</x-import>
+</div>
+<section style="background:var(--cor-superficie);border:1px solid var(--cor-borda);border-radius:var(--raio-grande);overflow:hidden">
+<header style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:24px 24px 16px">
+<div style="display:flex;flex-direction:column;gap:4px">
+<span style="font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--cor-texto-suave)">Em andamento</span>
+<h3 style="margin:0;font-size:18px;font-weight:600;line-height:1.35;color:var(--cor-texto-forte)">Projetos</h3>
+</div>
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Botao" variante="texto" tamanho="pequeno" hint-size="90px,32px">Ver todos</x-import>
+</header>
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Tabela" colunas="{{ colunas }}" linhas="{{ linhas }}" ordenavel="{{ true }}" hint-size="100%,220px"></x-import>
+</section>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:980}}">
+class Component extends DCLogic {
+  state = { secao: 'projetos' };
+
+  renderVals() {
+    const NS = window.AADesignSystem_ada6b1 || {};
+    const { Botao, Busca, Etiqueta } = NS;
+    const el = React.createElement;
+
+    const TONS = { andamento: 'info', concluido: 'sucesso', atrasado: 'atencao' };
+    const NOMES = { andamento: 'Em andamento', concluido: 'Concluído', atrasado: 'Atrasado' };
+
+    return {
+      secao: this.state.secao,
+      setSecao: (id) => this.setState({ secao: id }),
+
+      grupos: [
+        { rotulo: 'Visão geral', itens: [
+          { id: 'inicio', rotulo: 'Início' },
+          { id: 'projetos', rotulo: 'Projetos', contagem: 7 },
+          { id: 'tarefas', rotulo: 'Tarefas', contagem: 4 },
+        ] },
+        { rotulo: 'Registro', itens: [
+          { id: 'gastos', rotulo: 'Gastos' },
+          { id: 'arquivo', rotulo: 'Arquivo' },
+        ] },
+      ],
+
+      acoesTopo: Busca && Botao ? [
+        el(Busca, { key: 'b', placeholder: 'Buscar projeto\u2026', largura: 200 }),
+        el(Botao, { key: 'n' }, 'Novo projeto'),
+      ] : null,
+
+      serieAtivos: [3, 4, 4, 5, 6, 6, 7],
+      serieConcluidos: [12, 14, 15, 18, 19, 21, 23],
+      seriePendencias: [6, 5, 5, 4, 5, 4, 4],
+      serieGasto: [9, 11, 10, 13, 12, 14, 15],
+
+      meses: [
+        { rotulo: 'Jan', casa: 2400, trabalho: 1200 },
+        { rotulo: 'Fev', casa: 1800, trabalho: 1600 },
+        { rotulo: 'Mar', casa: 3200, trabalho: 1100 },
+        { rotulo: 'Abr', casa: 2900, trabalho: 1900 },
+        { rotulo: 'Mai', casa: 3600, trabalho: 1400 },
+        { rotulo: 'Jun', casa: 3100, trabalho: 2100 },
+      ],
+      series: [{ chave: 'casa', nome: 'Casa' }, { chave: 'trabalho', nome: 'Trabalho' }],
+
+      fatias: [
+        { rotulo: 'Cozinha', valor: 12400 },
+        { rotulo: 'Corredor', valor: 2140 },
+        { rotulo: 'Varanda', valor: 860 },
+        { rotulo: 'Outros', valor: 640 },
+      ],
+
+      colunas: [
+        { chave: 'projeto', rotulo: 'Projeto' },
+        { chave: 'status', rotulo: 'Status', render: (l) => Etiqueta ? el(Etiqueta, { variante: TONS[l.status] }, NOMES[l.status]) : NOMES[l.status] },
+        { chave: 'gasto', rotulo: 'Gasto', numerica: true, render: (l) => 'R$ ' + l.gasto.toLocaleString('pt-BR') },
+        { chave: 'prazo', rotulo: 'Prazo', numerica: true },
+      ],
+      linhas: [
+        { id: 1, projeto: 'Reforma da cozinha', status: 'andamento', gasto: 12400, prazo: '12 mar' },
+        { id: 2, projeto: 'Horta da varanda', status: 'concluido', gasto: 860, prazo: '28 fev' },
+        { id: 3, projeto: 'Pintura do corredor', status: 'atrasado', gasto: 2140, prazo: '04 mar' },
+        { id: 4, projeto: 'Escritório novo', status: 'andamento', gasto: 640, prazo: '19 mar' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

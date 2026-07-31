@@ -2,7 +2,7 @@
 
 > A calm, neutral, warm-sand design system for personal **web & mobile dashboards and tools.** Built around two fonts (Fraunces + Hanken Grotesk), a single sand neutral scale, one quiet blue, and a rare terracotta accent. Originally written in **Brazilian Portuguese** (`pt-BR`) — token names, copy, and component labels follow Portuguese conventions.
 
-**Version:** 0.1.1 — font path fix
+**Version:** 0.3.0 — modo escuro, período, estados de tabela, lista/detalhe
 
 ---
 
@@ -34,21 +34,41 @@ It is **not** Material, Apple HIG, or any corporate system. Three words guide ev
 ```
 ├── README.md                  → this file
 ├── SKILL.md                   → portable skill manifest (Agent Skills compatible)
+├── styles.css                 → SINGLE ENTRY POINT — link only this
 ├── colors_and_type.css        → tokens as CSS vars + semantic .t-* classes
+├── componentes.css            → the same components as plain CSS classes (.aa-*)
+├── thumbnail.html             → brand tile
 ├── tokens/
 │   ├── tokens.css             → tokens as CSS vars (mirrors colors_and_type)
 │   └── tokens.json            → source-of-truth tokens (edit this first)
 ├── docs/
-│   └── guia-de-design.md      → original Portuguese design guide
+│   ├── guia-de-design.md      → original Portuguese design guide
+│   ├── acessibilidade.md      → contraste, foco, alvo de toque
+│   └── voz.md                 → voice & writing rules (10 rules, pt-BR)
 ├── assets/
 │   └── logo-aa.svg            → AA monogram (recolorable via currentColor)
-├── preview/                   → individual design-system cards (one concept each)
+├── components/                → 36 React components, grouped by role
+│   ├── acoes/ formulario/ estrutura/
+│   └── dados/ feedback/ navegacao/ graficos/
+├── templates/                 → ready-to-copy starting pages
+│   ├── login-centrado/ login-dividido/ login-codigo/
+│   ├── painel/                → dashboard shell
+│   └── lista-detalhe/         → list + detail CRUD, with all four states
+├── preview/                   → design-system reference cards
+│   ├── graficos-catalogo.html → the full chart-type map
+│   ├── contraste.html         → WCAG audit, both themes, 58 pairs
+│   ├── tema-escuro.html       → dark mode, side by side with light
+│   ├── periodo.html           → period selector + calendar
+│   └── voz.html               → the writing rules as cards
 └── ui_kits/
     └── casa-projetos/         → "Home & Projects" personal dashboard kit
-        ├── index.html
-        ├── README.md
-        └── *.jsx              → reusable components
 ```
+
+---
+
+## Voice & writing
+
+Full rules in [`docs/voz.md`](docs/voz.md) with a card version at `preview/voz.html`. The short form: **a competent person talking to another — informal, direct, pt-BR, selling nothing.** Buttons are verbs the person is performing ("Entrar", not "Efetuar login"). Errors always carry the next step. Empty states are invitations, not statements. No exclamation marks, no emoji, no "com sucesso". Fixed vocabulary — pick a word and never swap it, because a synonym in a UI reads as a different feature.
 
 ---
 
@@ -103,6 +123,22 @@ The system has a **distinct, recognizable look**. Follow these closely; they're 
 - **Terracotta (`--acento-500` = `#C57B57`) is the destaque (highlight).** Use sparingly: eyebrow labels, a single bar in a chart, a divider accent. If you find yourself using it more than once or twice per screen, you're overusing it.
 - **Feedback colors are intentionally muted** (sage green, amber, terra red). They should not "shout".
 - **The data palette is separate** from feedback and UI colors. Never use feedback colors in charts; never use chart colors in buttons.
+
+### Dark mode
+- **Turn it on with `data-tema="escuro"`** on `<html>` (or on any wrapper — it works per-subtree). `data-tema="auto"` follows the OS.
+- **Only the semantic tokens are redefined.** The raw ramps (`--areia-*`, `--primaria-*`, `--acento-*`) are untouched.
+- **No component may write a literal color or a raw ramp** — semantic tokens only. This is the rule dark mode enforces: a literal passes in light and fails in dark, because the background flips and the text doesn't. Interaction states are tokens for exactly this reason (`--cor-acao-suave`, `--cor-acao-suave-2`, `--cor-destaque-bg`, `--cor-linha-hover`, `--cor-borda-controle-hover`, `--cor-link-sublinhado`). Auditing tokens is not enough — grep `components/` for `#` and for the raw ramps before shipping.
+- **The dark base is warm charcoal-brown (`#1A1714`), never cool grey.** The system is sand; sand in the dark stays warm.
+- **In dark, separation is tone and border — not shadow.** Surfaces step up in tone as they step up in layer. Shadows are still declared but do very little.
+- **Chart series keep the same order and the same hue,** just lighter. Order is hierarchy; reshuffling it in dark would break the reading for anyone who already knows the chart.
+- Both themes are audited: see `preview/tema-escuro.html` and `preview/contraste.html`.
+
+### Accessibility
+- **Target is WCAG 2.1 AA, and it's verified, not assumed.** All 58 text/background pairs across both themes are measured in `preview/contraste.html`. Re-run the audit whenever a semantic color changes — contrast is a silent regression.
+- **`--cor-destaque` is decorative and never text** (fill, rule, icon). For emphasis in writing use `--cor-destaque-texto`.
+- **Control borders differ from decorative ones.** Fields, checkboxes and radios use `--cor-borda-controle` (needs 3:1); separators use `--cor-borda` (exempt).
+- **Color is never the only signal.** Errors, successes and chart series always carry text or a label too.
+- **Focus is always visible** (`--anel-foco`), on `:focus-visible`, never removed. Touch targets never below 44px. Full rules in `docs/acessibilidade.md`.
 
 ### Typography
 - **Two fonts, both local.** Fraunces (variable serif, full SOFT/WONK/opsz/wght axes — italic + roman) for display ONLY, loaded from `fonts/Fraunces/Fraunces-VariableFont.ttf` and `fonts/Fraunces/Fraunces-Italic-VariableFont.ttf`. Hanken Grotesk (variable sans, weight axis 100–900, italic + roman) for everything else: headings ≤24px, body, UI — loaded from `fonts/Hanken_Grotesk/HankenGrotesk-VariableFont_wght.ttf` and `fonts/Hanken_Grotesk/HankenGrotesk-Italic-VariableFont_wght.ttf`. Nothing comes from Google Fonts; the system runs fully offline.
@@ -177,32 +213,74 @@ The AA system is **almost iconless on purpose.** The original project ships ONE 
 
 ## Components
 
-The base v0.1.0 includes ONLY:
+Link **`styles.css`** (it imports everything) and read components off the compiled bundle:
 
-- **Button** — three variants: `btn-primario` (blue, one per screen), `btn-secundario` (sand outline), `btn-texto` (link-style). Plus disabled.
-- **Campo de texto** (text field) — label above, hint below, 3px blue focus ring on `--primaria-50`.
-- **Badge** — pill-shaped status chip in 4 variants: neutro / sucesso / atencao / erro.
-- **Alerta** — feedback row with a dot + message in 3 variants: info / sucesso / erro.
+```html
+<link rel="stylesheet" href="styles.css">
+<script src="_ds_bundle.js"></script>
+<script>const { Botao, Campo, Metrica } = window.AADesignSystem_ada6b1;</script>
+```
 
-Anything else (tables, modals, navigation, tabs, charts beyond bars, date pickers) **does not exist** in the system. The original guide explicitly says: don't create components "just in case"; let real projects pull new components into existence as they need them.
+No React? `componentes.css` ships the same pieces as plain classes (`.aa-btn`, `.aa-campo`, `.aa-tabela`, `.aa-etiqueta`…).
 
-When extending the system in a project, mimic the existing components' construction: build from tokens (no hex codes inline), include hover/focus/disabled states, name in Portuguese (`cartao`, `aba`, `menu-suspenso`).
+**Ações** — `Botao` (primário / secundário / texto / perigo · 3 tamanhos · carregando · desabilitado), `Etiqueta` (badge, 6 tons), `Avatar`, `Dica` (tooltip).
+
+**Formulário** — `Campo` (com prefixo/sufixo, dica, erro, obrigatório), `Selecao`, `AreaTexto`, `Escolha` (caixa e rádio), `Interruptor`, `Busca`, `SeletorPeriodo` (atalhos + intervalo custom + comparação com período anterior), `Calendario` (dia ou intervalo, pt-BR).
+
+**Estrutura** — `Cartao`, `Abas`, `Divisor`, `Migalhas`.
+
+**Dados** — `Metrica` (KPI com faísca embutida), `Tabela` (ordenável, coluna numérica, render por célula, **estados de carregando e erro embutidos**, linha ativa para lista+detalhe), `Progresso` (barra e anel), `Paginacao`, `Vazio`, `Esqueleto`.
+
+**Feedback** — `Alerta`, `Modal`, `MenuSuspenso`, `Aviso` (toast).
+
+**Navegação** — `BarraLateral` (grupos, contagens), `BarraSuperior`.
+
+**Gráficos** — `GraficoBarras` (vertical / horizontal / agrupado / empilhado), `GraficoLinhas` (linha / área / multi-série / linha de meta), `GraficoRosca` (rosca e pizza), `GraficoDispersao` (pontos e bolhas), `GraficoFunil`, `GraficoMedidor`, `MapaDeCalor`, `Minigrafico` (sparkline).
+
+Every prop name is Portuguese (`rotulo`, `valor`, `aoMudar`, `variante`, `desabilitado`) — keep it that way when you extend the system. Each component has a `.d.ts` next to it with the full prop list.
+
+**What still doesn't exist**, on purpose: árvore, editor de texto rico, arraste-e-solte, tabela com colunas fixas, combobox com busca. The original rule holds — a component is born when a real project needs it, not before.
 
 ---
 
+## Gráficos
+
+The chart set is the biggest addition of the 0.2 line, because dashboards are what this system is for. **Read [`preview/graficos-catalogo.html`](preview/graficos-catalogo.html)** — it maps every chart type worth using here, grouped by the question it answers (comparação · tempo · parte do todo · relação · progresso), with what to use it for, what to avoid, and the AA component that implements it. Types outside the built set (cascata, treemap, histograma, bullet, pirulito, pequenos múltiplos) carry a one-line recipe using existing tokens instead of a component.
+
+Chart colors live in their own token families and never mix with UI or feedback colors:
+
+- `--dados-1…8` — categorical, **used in order**; the order is the hierarchy.
+- `--seq-1…5` — sequential, light→dark, for one variable (heatmap, density).
+- `--div-1…5` — diverging, terracotta ↔ blue, for deviation around zero.
+- `--grafico-grade / -eixo / -rotulo / -area / -realce / -referencia` — chart chrome.
+
+Hard rules: bar charts start at zero, always. Max 5 grid lines. No shadow, no gradient, no 3D. Terracotta (`--grafico-realce`) highlights exactly one thing per chart, or nothing.
+
+---
+
+## Templates
+
+Four starting pages under `templates/`. Copy the folder, point `ds-base.js` at the design system, edit the markup.
+
+- **`login-centrado/`** — the default entry: card on sand background, e-mail + senha, optional e-mail-link sign-in.
+- **`login-dividido/`** — split screen, brand panel in `--primaria-500` on the left, form on the right. For when the product has a sentence to say.
+- **`login-codigo/`** — passwordless: e-mail, then a six-digit code. Two steps, no card.
+- **`painel/`** — the full dashboard shell: sidebar, header, four KPIs, charts, sortable table.
+- **`lista-detalhe/`** — the everyday CRUD: filter sidebar, sortable list, detail panel on the right. Ships with all four states (pronto / vazio / carregando / erro) switchable as a tweak.
+
 ## Language conventions
 
-This repository is intentionally **bilingual**, with a strict split between developer-facing process artifacts and brand-facing content.
+This repository is intentionally **bilingual**, with a split between developer-facing process artifacts and brand-facing content.
 
-**English** — anything developer-facing:
+**English** — developer-facing:
 - This `README.md` and `SKILL.md`.
-- `CHANGELOG.md`.
-- Code comments.
+- Code comments in `.jsx`/`.d.ts` files.
 - Commit messages, PR descriptions, issue bodies.
 
 **Brazilian Portuguese (`pt-BR`)** — anything that carries the brand voice:
 - Token names: `--cor-acao`, `--espaco-4`, `--areia-500`, `--fonte-display`. These are intentional and **must not be renamed** to English equivalents — they are part of the system's identity and what makes it not just "another tan-colored Tailwind config."
-- Sample UI copy in `preview/` and `ui_kits/`: `Casa & projetos`, `Reforma da cozinha`, `Resumo do mês`, etc. Examples stay domestic and small-scale.
-- [`docs/guia-de-design.md`](docs/guia-de-design.md) — the authoritative design guide, written in the AA brand voice (calm, second-person-informal `você`). Keep it pt-BR; new English readers get an orientation paragraph at the top plus this README.
+- Sample UI copy in `preview/`, `templates/` and `ui_kits/`: `Casa & projetos`, `Reforma da cozinha`, `Resumo do mês`, etc. Examples stay domestic and small-scale.
+- [`docs/guia-de-design.md`](docs/guia-de-design.md), [`docs/voz.md`](docs/voz.md) and [`docs/acessibilidade.md`](docs/acessibilidade.md) — the authoritative guides, written in the AA brand voice (calm, second-person-informal `você`).
+- `CHANGELOG.md` — pt-BR from `0.2.0` on, since the release notes read as design rationale rather than as a build log. The `0.1.1` entry was translated to match.
 
 When generating UI copy for AA projects, default to Portuguese unless explicitly told otherwise — the system was written for personal Brazilian Portuguese projects and the voice is part of the brand.

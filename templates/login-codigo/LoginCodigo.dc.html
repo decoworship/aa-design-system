@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Login — código por e-mail" description="Sem senha: pede o e-mail, depois o código de 6 dígitos. Duas etapas, sem cartão." -->
+<helmet><script src="./ds-base.js"></script>
+<style>*{box-sizing:border-box}body{margin:0}input.aa-digito::-webkit-outer-spin-button,input.aa-digito::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}</style>
+</helmet>
+<div style="min-height:100vh;background:var(--cor-fundo);display:flex;align-items:center;justify-content:center;padding:32px;font-family:var(--fonte-ui)">
+<div style="width:100%;max-width:380px;display:flex;flex-direction:column;gap:40px">
+<div style="width:30px;height:30px;background:var(--cor-texto-forte);-webkit-mask:url(../../assets/logo-aa.svg) center/contain no-repeat;mask:url(../../assets/logo-aa.svg) center/contain no-repeat"></div>
+<sc-if value="{{ etapaEmail }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<h1 style="margin:0;font-family:var(--fonte-display);font-size:36px;font-weight:600;line-height:1.1;letter-spacing:-0.01em;color:var(--cor-texto-forte)">Entrar</h1>
+<p style="margin:0;font-size:15px;line-height:1.55;color:var(--cor-texto-suave);max-width:44ch">Digite seu e-mail. A gente manda um código de seis dígitos — sem senha para lembrar.</p>
+</div>
+<form onSubmit="{{ pedirCodigo }}" style="display:flex;flex-direction:column;gap:20px">
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Campo" rotulo="E-mail" tipo="email" placeholder="voce@exemplo.com" valor="{{ email }}" aoMudar="{{ setEmail }}" hint-size="100%,70px"></x-import>
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Botao" type="submit" bloco="{{ true }}" carregando="{{ enviando }}" tamanho="grande" hint-size="100%,48px">Enviar código</x-import>
+</form>
+</div>
+</sc-if>
+<sc-if value="{{ etapaCodigo }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<h1 style="margin:0;font-family:var(--fonte-display);font-size:36px;font-weight:600;line-height:1.1;letter-spacing:-0.01em;color:var(--cor-texto-forte)">Confira o e-mail</h1>
+<p style="margin:0;font-size:15px;line-height:1.55;color:var(--cor-texto-suave);max-width:44ch">Mandamos seis dígitos para <strong style="color:var(--cor-texto);font-weight:600">{{ email }}</strong>. O código vale por dez minutos.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:20px">
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px">
+<input class="aa-digito" inputmode="numeric" maxlength="1" value="4" style="height:56px;text-align:center;font-family:var(--fonte-ui);font-size:22px;font-weight:600;color:var(--cor-texto-forte);border:1px solid var(--cor-borda-forte);border-radius:var(--raio-pequeno);background:var(--cor-superficie);outline:none" />
+<input class="aa-digito" inputmode="numeric" maxlength="1" value="1" style="height:56px;text-align:center;font-family:var(--fonte-ui);font-size:22px;font-weight:600;color:var(--cor-texto-forte);border:1px solid var(--cor-borda-forte);border-radius:var(--raio-pequeno);background:var(--cor-superficie);outline:none" />
+<input class="aa-digito" inputmode="numeric" maxlength="1" value="9" style="height:56px;text-align:center;font-family:var(--fonte-ui);font-size:22px;font-weight:600;color:var(--cor-texto-forte);border:1px solid var(--cor-borda-forte);border-radius:var(--raio-pequeno);background:var(--cor-superficie);outline:none" />
+<input class="aa-digito" inputmode="numeric" maxlength="1" value="" style="height:56px;text-align:center;font-family:var(--fonte-ui);font-size:22px;font-weight:600;color:var(--cor-texto-forte);border:1px solid var(--cor-acao);border-radius:var(--raio-pequeno);background:var(--cor-superficie);outline:none;box-shadow:var(--anel-foco)" />
+<input class="aa-digito" inputmode="numeric" maxlength="1" value="" style="height:56px;text-align:center;font-family:var(--fonte-ui);font-size:22px;font-weight:600;color:var(--cor-texto-forte);border:1px solid var(--cor-borda-forte);border-radius:var(--raio-pequeno);background:var(--cor-superficie);outline:none" />
+<input class="aa-digito" inputmode="numeric" maxlength="1" value="" style="height:56px;text-align:center;font-family:var(--fonte-ui);font-size:22px;font-weight:600;color:var(--cor-texto-forte);border:1px solid var(--cor-borda-forte);border-radius:var(--raio-pequeno);background:var(--cor-superficie);outline:none" />
+</div>
+<x-import component-from-global-scope="AADesignSystem_ada6b1.Botao" bloco="{{ true }}" tamanho="grande" hint-size="100%,48px">Confirmar</x-import>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:13px;color:var(--cor-texto-suave)">
+<button onClick="{{ voltar }}" style="background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:13px;color:var(--cor-acao)">Trocar o e-mail</button>
+<span>Reenviar em 0:42</span>
+</div>
+</div>
+</div>
+</sc-if>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:800},&quot;etapa&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;email&quot;,&quot;codigo&quot;],&quot;default&quot;:&quot;email&quot;,&quot;tsType&quot;:&quot;'email' | 'codigo'&quot;,&quot;section&quot;:&quot;Estados&quot;}}">
+class Component extends DCLogic {
+  state = { email: '', etapa: 'email', enviando: false };
+  renderVals() {
+    const etapa = this.props.etapa ?? this.state.etapa;
+    return {
+      email: this.state.email || 'voce@exemplo.com',
+      etapaEmail: etapa === 'email',
+      etapaCodigo: etapa === 'codigo',
+      enviando: this.state.enviando,
+      setEmail: (v) => this.setState({ email: v }),
+      pedirCodigo: (e) => {
+        e.preventDefault();
+        this.setState({ enviando: true });
+        setTimeout(() => this.setState({ enviando: false, etapa: 'codigo' }), 900);
+      },
+      voltar: () => this.setState({ etapa: 'email' }),
+    };
+  }
+}
+</script>
+</body>
+</html>

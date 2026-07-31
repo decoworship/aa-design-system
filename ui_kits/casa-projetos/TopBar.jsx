@@ -9,7 +9,7 @@ function TopBar({ title, eyebrow, onNew, month, onPrevMonth, onNextMonth }) {
       borderBottom: '1px solid var(--cor-borda)',
     }}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0, flexShrink: 1 }}>
-        {eyebrow && <Eyebrow color="var(--acento-500)">{eyebrow}</Eyebrow>}
+        {eyebrow && <Eyebrow color="var(--cor-destaque-texto)">{eyebrow}</Eyebrow>}
         <h1 style={{
           fontFamily: 'var(--fonte-display)', fontSize: 36, fontWeight: 600,
           lineHeight: 1.1, letterSpacing: '-0.01em',

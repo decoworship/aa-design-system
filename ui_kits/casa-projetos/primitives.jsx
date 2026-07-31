@@ -54,11 +54,11 @@ function Button({ variant = 'primario', children, onClick, type = 'button', disa
           transform: 'translateY(1px)',
         },
         secundario: {
-          background: 'var(--areia-300)',
-          borderColor: 'var(--areia-500)',
+          background: 'var(--cor-superficie-2)',
+          borderColor: 'var(--cor-borda-controle-hover)',
           boxShadow: 'inset 0 1px 2px rgba(34,31,26,0.10)',
         },
-        texto: { background: 'var(--primaria-100)', color: 'var(--cor-acao-ativa)' },
+        texto: { background: 'var(--cor-acao-suave-2)', color: 'var(--cor-acao-ativa)' },
       }[variant];
     } else if (hover) {
       stateStyle = {
@@ -69,9 +69,9 @@ function Button({ variant = 'primario', children, onClick, type = 'button', disa
         },
         secundario: {
           background: 'var(--cor-superficie-2)',
-          borderColor: 'var(--areia-500)',
+          borderColor: 'var(--cor-borda-controle-hover)',
         },
-        texto: { background: 'var(--primaria-50)' },
+        texto: { background: 'var(--cor-acao-suave)' },
       }[variant];
     }
     if (focus) {
@@ -79,13 +79,13 @@ function Button({ variant = 'primario', children, onClick, type = 'button', disa
         ...stateStyle,
         ...({
           primario: {
-            boxShadow: '0 0 0 4px var(--primaria-50), 0 0 0 5px var(--cor-acao-ativa), 0 1px 2px rgba(34,31,26,0.10)',
+            boxShadow: '0 0 0 2px var(--cor-superficie), 0 0 0 5px var(--cor-acao-ativa), 0 1px 2px rgba(34,31,26,0.10)',
           },
           secundario: {
             borderColor: 'var(--cor-acao)',
-            boxShadow: '0 0 0 3px var(--primaria-50)',
+            boxShadow: 'var(--anel-foco)',
           },
-          texto: { boxShadow: '0 0 0 3px var(--primaria-50)' },
+          texto: { boxShadow: 'var(--anel-foco)' },
         }[variant]),
       };
     }
@@ -123,7 +123,7 @@ function Field({ label, value, onChange, placeholder, hint, error, type = 'text'
           borderRadius: 6, background: 'var(--cor-superficie)',
           outline: 'none',
           borderColor: focus ? 'var(--cor-acao)' : (error ? 'var(--cor-erro)' : 'var(--cor-borda-forte)'),
-          boxShadow: focus ? '0 0 0 3px var(--primaria-50)' : 'none',
+          boxShadow: focus ? 'var(--anel-foco)' : 'none',
           transition: 'border-color 0.15s ease, box-shadow 0.15s ease',
         }}
       />
@@ -138,11 +138,11 @@ function Field({ label, value, onChange, placeholder, hint, error, type = 'text'
 
 // ---------- Badge ----------
 const BADGE_STYLES = {
-  neutro:  { bg: '#E9E1D2', fg: '#5F584A', dot: '#847A63' },
-  info:    { bg: '#EAEEF4', fg: '#26405A', dot: '#3D6189' },
-  sucesso: { bg: '#E7EDE4', fg: '#3C5639', dot: '#5C7E58' },
-  atencao: { bg: '#F5EBD8', fg: '#8a5e1f', dot: '#C2893C' },
-  erro:    { bg: '#F3E0DC', fg: '#7C2E25', dot: '#AE4A3C' },
+  neutro:  { bg: 'var(--cor-superficie-2)', fg: 'var(--cor-texto-suave)', dot: 'var(--cor-borda-controle)' },
+  info:    { bg: 'var(--cor-info-bg)', fg: 'var(--cor-info)', dot: 'var(--cor-info)' },
+  sucesso: { bg: 'var(--cor-sucesso-bg)', fg: 'var(--cor-sucesso)', dot: 'var(--cor-sucesso)' },
+  atencao: { bg: 'var(--cor-atencao-bg)', fg: 'var(--cor-atencao)', dot: 'var(--cor-atencao)' },
+  erro:    { bg: 'var(--cor-erro-bg)', fg: 'var(--cor-erro)', dot: 'var(--cor-erro)' },
 };
 function Badge({ variant = 'neutro', dot = true, children }) {
   const s = BADGE_STYLES[variant];
