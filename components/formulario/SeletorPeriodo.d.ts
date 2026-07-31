@@ -42,3 +42,10 @@ export declare function SeletorPeriodo(props: SeletorPeriodoProps): JSX.Element 
   periodoAnterior: typeof periodoAnterior;
   ATALHOS: typeof ATALHOS;
 };
+
+/** As mesmas contas, agrupadas sob um nome que o bundle expõe. */
+export declare const Periodo: {
+  doAtalho: typeof periodoDoAtalho;
+  anterior: typeof periodoAnterior;
+  atalhos: typeof ATALHOS;
+};

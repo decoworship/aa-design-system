@@ -153,6 +153,14 @@
         "message": "<Etiqueta> variante must be one of 'neutro' | 'info' | 'sucesso' | 'atencao' | 'erro' | 'destaque'."
       },
       {
+        "selector": "JSXOpeningElement[name.name='Gaveta'] > JSXAttribute > JSXIdentifier[name!=/^(?:aberta|lado|titulo|rotulo|aoFechar|largura|altura|acoes|children|style|key|ref|className|style|children)$/]",
+        "message": "<Gaveta> doesn't accept that prop. Declared props: aberta, lado, titulo, rotulo, aoFechar, largura, altura, acoes, children, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Gaveta'] > JSXAttribute[name.name='lado'] > Literal[value!=/^(?:direita|esquerda|baixo)$/]",
+        "message": "<Gaveta> lado must be one of 'direita' | 'esquerda' | 'baixo'."
+      },
+      {
         "selector": "JSXOpeningElement[name.name='GraficoBarras'] > JSXAttribute > JSXIdentifier[name!=/^(?:dados|series|empilhado|orientacao|altura|mostrarGrade|mostrarLegenda|formatar|realce|style|key|ref|className|style|children)$/]",
         "message": "<GraficoBarras> doesn't accept that prop. Declared props: dados, series, empilhado, orientacao, altura, mostrarGrade, mostrarLegenda, formatar, realce, style."
       },
@@ -221,8 +229,20 @@
         "message": "<Modal> doesn't accept that prop. Declared props: aberto, titulo, rotulo, aoFechar, acoes, largura, children."
       },
       {
+        "selector": "JSXOpeningElement[name.name='OpcaoMulti'] > JSXAttribute > JSXIdentifier[name!=/^(?:valor|rotulo|key|ref|className|style|children)$/]",
+        "message": "<OpcaoMulti> doesn't accept that prop. Declared props: valor, rotulo."
+      },
+      {
         "selector": "JSXOpeningElement[name.name='Paginacao'] > JSXAttribute > JSXIdentifier[name!=/^(?:pagina|total|aoMudar|style|key|ref|className|style|children)$/]",
         "message": "<Paginacao> doesn't accept that prop. Declared props: pagina, total, aoMudar, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='AvisoDaPilha'] > JSXAttribute > JSXIdentifier[name!=/^(?:id|variante|titulo|mensagem|acao|duracao|key|ref|className|style|children)$/]",
+        "message": "<AvisoDaPilha> doesn't accept that prop. Declared props: id, variante, titulo, mensagem, acao, duracao."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='AvisoDaPilha'] > JSXAttribute[name.name='variante'] > Literal[value!=/^(?:info|sucesso|atencao|erro)$/]",
+        "message": "<AvisoDaPilha> variante must be one of 'info' | 'sucesso' | 'atencao' | 'erro'."
       },
       {
         "selector": "JSXOpeningElement[name.name='Progresso'] > JSXAttribute > JSXIdentifier[name!=/^(?:valor|max|rotulo|formato|cor|tamanho|mostrarValor|style|key|ref|className|style|children)$/]",
@@ -317,6 +337,9 @@
       "Etiqueta": {
         "replaces": []
       },
+      "Gaveta": {
+        "replaces": []
+      },
       "GraficoBarras": {
         "replaces": []
       },
@@ -356,7 +379,13 @@
       "Modal": {
         "replaces": []
       },
+      "OpcaoMulti": {
+        "replaces": []
+      },
       "Paginacao": {
+        "replaces": []
+      },
+      "AvisoDaPilha": {
         "replaces": []
       },
       "Progresso": {
@@ -423,6 +452,7 @@
       "--cor-texto-forte",
       "--cor-texto-invertido",
       "--cor-texto-suave",
+      "--cor-veu",
       "--dados-1",
       "--dados-2",
       "--dados-3",
@@ -542,6 +572,7 @@
       "--cor-borda-controle-hover": "color",
       "--cor-linha-hover": "color",
       "--cor-link-sublinhado": "color",
+      "--cor-veu": "color",
       "--cor-sucesso": "color",
       "--cor-sucesso-bg": "color",
       "--cor-atencao": "color",

@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"AADesignSystem_ada6b1","components":[{"name":"Avatar","sourcePath":"components/acoes/Avatar.jsx"},{"name":"Botao","sourcePath":"components/acoes/Botao.jsx"},{"name":"Dica","sourcePath":"components/acoes/Dica.jsx"},{"name":"Etiqueta","sourcePath":"components/acoes/Etiqueta.jsx"},{"name":"Esqueleto","sourcePath":"components/dados/Esqueleto.jsx"},{"name":"Metrica","sourcePath":"components/dados/Metrica.jsx"},{"name":"Paginacao","sourcePath":"components/dados/Paginacao.jsx"},{"name":"Progresso","sourcePath":"components/dados/Progresso.jsx"},{"name":"Tabela","sourcePath":"components/dados/Tabela.jsx"},{"name":"Vazio","sourcePath":"components/dados/Vazio.jsx"},{"name":"Abas","sourcePath":"components/estrutura/Abas.jsx"},{"name":"Cartao","sourcePath":"components/estrutura/Cartao.jsx"},{"name":"Divisor","sourcePath":"components/estrutura/Divisor.jsx"},{"name":"Migalhas","sourcePath":"components/estrutura/Migalhas.jsx"},{"name":"Alerta","sourcePath":"components/feedback/Alerta.jsx"},{"name":"Aviso","sourcePath":"components/feedback/Aviso.jsx"},{"name":"MenuSuspenso","sourcePath":"components/feedback/MenuSuspenso.jsx"},{"name":"Modal","sourcePath":"components/feedback/Modal.jsx"},{"name":"AreaTexto","sourcePath":"components/formulario/AreaTexto.jsx"},{"name":"Busca","sourcePath":"components/formulario/Busca.jsx"},{"name":"Calendario","sourcePath":"components/formulario/Calendario.jsx"},{"name":"Campo","sourcePath":"components/formulario/Campo.jsx"},{"name":"Escolha","sourcePath":"components/formulario/Escolha.jsx"},{"name":"Interruptor","sourcePath":"components/formulario/Interruptor.jsx"},{"name":"Selecao","sourcePath":"components/formulario/Selecao.jsx"},{"name":"ATALHOS","sourcePath":"components/formulario/SeletorPeriodo.jsx"},{"name":"SeletorPeriodo","sourcePath":"components/formulario/SeletorPeriodo.jsx"},{"name":"GraficoBarras","sourcePath":"components/graficos/GraficoBarras.jsx"},{"name":"GraficoDispersao","sourcePath":"components/graficos/GraficoDispersao.jsx"},{"name":"GraficoFunil","sourcePath":"components/graficos/GraficoFunil.jsx"},{"name":"GraficoLinhas","sourcePath":"components/graficos/GraficoLinhas.jsx"},{"name":"GraficoMedidor","sourcePath":"components/graficos/GraficoMedidor.jsx"},{"name":"GraficoRosca","sourcePath":"components/graficos/GraficoRosca.jsx"},{"name":"MapaDeCalor","sourcePath":"components/graficos/MapaDeCalor.jsx"},{"name":"Minigrafico","sourcePath":"components/graficos/Minigrafico.jsx"},{"name":"BarraLateral","sourcePath":"components/navegacao/BarraLateral.jsx"},{"name":"BarraSuperior","sourcePath":"components/navegacao/BarraSuperior.jsx"}],"sourceHashes":{"components/acoes/Avatar.jsx":"a7a7a484ed94","components/acoes/Botao.jsx":"d6138295f63a","components/acoes/Dica.jsx":"4197d69d9222","components/acoes/Etiqueta.jsx":"d2e2ad40a915","components/dados/Esqueleto.jsx":"b7152a5824dd","components/dados/Metrica.jsx":"b5c6db4dc158","components/dados/Paginacao.jsx":"a415d3e03671","components/dados/Progresso.jsx":"33b117e8cd33","components/dados/Tabela.jsx":"5ad1f54a267d","components/dados/Vazio.jsx":"efc60ab3dc11","components/estrutura/Abas.jsx":"d67c87460e2b","components/estrutura/Cartao.jsx":"83062865f017","components/estrutura/Divisor.jsx":"79751a067029","components/estrutura/Migalhas.jsx":"08f959176431","components/feedback/Alerta.jsx":"17a72656e8b1","components/feedback/Aviso.jsx":"1c0a5f24df1f","components/feedback/MenuSuspenso.jsx":"b59d9b7a1539","components/feedback/Modal.jsx":"a1fa5ab2e95b","components/formulario/AreaTexto.jsx":"7bb908367aae","components/formulario/Busca.jsx":"cd0c3e5c1b20","components/formulario/Calendario.jsx":"08fade00b25a","components/formulario/Campo.jsx":"6b35cc568813","components/formulario/Escolha.jsx":"acbb9b8abfe5","components/formulario/Interruptor.jsx":"74b12440fccd","components/formulario/Selecao.jsx":"03a7b91785aa","components/formulario/SeletorPeriodo.jsx":"8c0d3aef944f","components/graficos/GraficoBarras.jsx":"40310b3d85dd","components/graficos/GraficoDispersao.jsx":"415ccfba7981","components/graficos/GraficoFunil.jsx":"a3d3aa8e40b9","components/graficos/GraficoLinhas.jsx":"ea73f98a7580","components/graficos/GraficoMedidor.jsx":"ee5ee830fa10","components/graficos/GraficoRosca.jsx":"38c857499972","components/graficos/MapaDeCalor.jsx":"6262b7d2cd7a","components/graficos/Minigrafico.jsx":"8c04a8f08ae2","components/navegacao/BarraLateral.jsx":"1d1eb7f7cfaa","components/navegacao/BarraSuperior.jsx":"1fba2221b662","ui_kits/casa-projetos/App.jsx":"04d59691b641","ui_kits/casa-projetos/MetricCard.jsx":"6953d605b0ea","ui_kits/casa-projetos/NewProjectModal.jsx":"bb531ecaa041","ui_kits/casa-projetos/ProjectDetail.jsx":"6f84be66efdd","ui_kits/casa-projetos/ProjectRow.jsx":"87482463c38b","ui_kits/casa-projetos/Sidebar.jsx":"7b78f6b2244a","ui_kits/casa-projetos/TopBar.jsx":"cc1b16f371e9","ui_kits/casa-projetos/primitives.jsx":"443637181e98"},"inlinedExternals":[],"unexposedExports":[{"name":"periodoAnterior","sourcePath":"components/formulario/SeletorPeriodo.jsx"},{"name":"periodoDoAtalho","sourcePath":"components/formulario/SeletorPeriodo.jsx"}]} */
+/* @ds-bundle: {"format":4,"namespace":"AADesignSystem_ada6b1","components":[{"name":"Avatar","sourcePath":"components/acoes/Avatar.jsx"},{"name":"Botao","sourcePath":"components/acoes/Botao.jsx"},{"name":"Dica","sourcePath":"components/acoes/Dica.jsx"},{"name":"Etiqueta","sourcePath":"components/acoes/Etiqueta.jsx"},{"name":"Esqueleto","sourcePath":"components/dados/Esqueleto.jsx"},{"name":"Metrica","sourcePath":"components/dados/Metrica.jsx"},{"name":"Paginacao","sourcePath":"components/dados/Paginacao.jsx"},{"name":"Progresso","sourcePath":"components/dados/Progresso.jsx"},{"name":"Tabela","sourcePath":"components/dados/Tabela.jsx"},{"name":"Vazio","sourcePath":"components/dados/Vazio.jsx"},{"name":"Abas","sourcePath":"components/estrutura/Abas.jsx"},{"name":"Cartao","sourcePath":"components/estrutura/Cartao.jsx"},{"name":"Divisor","sourcePath":"components/estrutura/Divisor.jsx"},{"name":"Gaveta","sourcePath":"components/estrutura/Gaveta.jsx"},{"name":"Migalhas","sourcePath":"components/estrutura/Migalhas.jsx"},{"name":"Alerta","sourcePath":"components/feedback/Alerta.jsx"},{"name":"Aviso","sourcePath":"components/feedback/Aviso.jsx"},{"name":"MenuSuspenso","sourcePath":"components/feedback/MenuSuspenso.jsx"},{"name":"Modal","sourcePath":"components/feedback/Modal.jsx"},{"name":"PilhaAvisos","sourcePath":"components/feedback/PilhaAvisos.jsx"},{"name":"Avisos","sourcePath":"components/feedback/PilhaAvisos.jsx"},{"name":"AreaTexto","sourcePath":"components/formulario/AreaTexto.jsx"},{"name":"Busca","sourcePath":"components/formulario/Busca.jsx"},{"name":"Calendario","sourcePath":"components/formulario/Calendario.jsx"},{"name":"Campo","sourcePath":"components/formulario/Campo.jsx"},{"name":"Escolha","sourcePath":"components/formulario/Escolha.jsx"},{"name":"Interruptor","sourcePath":"components/formulario/Interruptor.jsx"},{"name":"MultiSelecao","sourcePath":"components/formulario/MultiSelecao.jsx"},{"name":"Selecao","sourcePath":"components/formulario/Selecao.jsx"},{"name":"ATALHOS","sourcePath":"components/formulario/SeletorPeriodo.jsx"},{"name":"SeletorPeriodo","sourcePath":"components/formulario/SeletorPeriodo.jsx"},{"name":"Periodo","sourcePath":"components/formulario/SeletorPeriodo.jsx"},{"name":"GraficoBarras","sourcePath":"components/graficos/GraficoBarras.jsx"},{"name":"GraficoDispersao","sourcePath":"components/graficos/GraficoDispersao.jsx"},{"name":"GraficoFunil","sourcePath":"components/graficos/GraficoFunil.jsx"},{"name":"GraficoLinhas","sourcePath":"components/graficos/GraficoLinhas.jsx"},{"name":"GraficoMedidor","sourcePath":"components/graficos/GraficoMedidor.jsx"},{"name":"GraficoRosca","sourcePath":"components/graficos/GraficoRosca.jsx"},{"name":"MapaDeCalor","sourcePath":"components/graficos/MapaDeCalor.jsx"},{"name":"Minigrafico","sourcePath":"components/graficos/Minigrafico.jsx"},{"name":"BarraLateral","sourcePath":"components/navegacao/BarraLateral.jsx"},{"name":"BarraSuperior","sourcePath":"components/navegacao/BarraSuperior.jsx"}],"sourceHashes":{"components/acoes/Avatar.jsx":"a7a7a484ed94","components/acoes/Botao.jsx":"d6138295f63a","components/acoes/Dica.jsx":"4197d69d9222","components/acoes/Etiqueta.jsx":"d2e2ad40a915","components/dados/Esqueleto.jsx":"b7152a5824dd","components/dados/Metrica.jsx":"b5c6db4dc158","components/dados/Paginacao.jsx":"a415d3e03671","components/dados/Progresso.jsx":"33b117e8cd33","components/dados/Tabela.jsx":"5ad1f54a267d","components/dados/Vazio.jsx":"efc60ab3dc11","components/estrutura/Abas.jsx":"d67c87460e2b","components/estrutura/Cartao.jsx":"83062865f017","components/estrutura/Divisor.jsx":"79751a067029","components/estrutura/Gaveta.jsx":"da4418944535","components/estrutura/Migalhas.jsx":"08f959176431","components/feedback/Alerta.jsx":"17a72656e8b1","components/feedback/Aviso.jsx":"1c0a5f24df1f","components/feedback/MenuSuspenso.jsx":"b59d9b7a1539","components/feedback/Modal.jsx":"df61e12883a8","components/feedback/PilhaAvisos.jsx":"30c4f123eb7a","components/formulario/AreaTexto.jsx":"7bb908367aae","components/formulario/Busca.jsx":"cd0c3e5c1b20","components/formulario/Calendario.jsx":"08fade00b25a","components/formulario/Campo.jsx":"6b35cc568813","components/formulario/Escolha.jsx":"acbb9b8abfe5","components/formulario/Interruptor.jsx":"74b12440fccd","components/formulario/MultiSelecao.jsx":"852f3e6881e9","components/formulario/Selecao.jsx":"03a7b91785aa","components/formulario/SeletorPeriodo.jsx":"c4630bbee992","components/graficos/GraficoBarras.jsx":"40310b3d85dd","components/graficos/GraficoDispersao.jsx":"415ccfba7981","components/graficos/GraficoFunil.jsx":"a3d3aa8e40b9","components/graficos/GraficoLinhas.jsx":"ea73f98a7580","components/graficos/GraficoMedidor.jsx":"ee5ee830fa10","components/graficos/GraficoRosca.jsx":"38c857499972","components/graficos/MapaDeCalor.jsx":"6262b7d2cd7a","components/graficos/Minigrafico.jsx":"8c04a8f08ae2","components/navegacao/BarraLateral.jsx":"1d1eb7f7cfaa","components/navegacao/BarraSuperior.jsx":"1fba2221b662","ui_kits/casa-projetos/App.jsx":"04d59691b641","ui_kits/casa-projetos/MetricCard.jsx":"6953d605b0ea","ui_kits/casa-projetos/NewProjectModal.jsx":"bb531ecaa041","ui_kits/casa-projetos/ProjectDetail.jsx":"6f84be66efdd","ui_kits/casa-projetos/ProjectRow.jsx":"87482463c38b","ui_kits/casa-projetos/Sidebar.jsx":"7b78f6b2244a","ui_kits/casa-projetos/TopBar.jsx":"cc1b16f371e9","ui_kits/casa-projetos/primitives.jsx":"443637181e98"},"inlinedExternals":[],"unexposedExports":[{"name":"periodoAnterior","sourcePath":"components/formulario/SeletorPeriodo.jsx"},{"name":"periodoDoAtalho","sourcePath":"components/formulario/SeletorPeriodo.jsx"}]} */
 
 (() => {
 
@@ -1066,6 +1066,171 @@ function Divisor({
 Object.assign(__ds_scope, { Divisor });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/estrutura/Divisor.jsx", error: String((e && e.message) || e) }); }
 
+// components/estrutura/Gaveta.jsx
+try { (() => {
+/* global React */
+const {
+  useEffect,
+  useRef
+} = React;
+const LADOS = {
+  direita: {
+    inset: '0 0 0 auto',
+    borda: 'borderLeft',
+    anim: 'aa-gaveta-direita'
+  },
+  esquerda: {
+    inset: '0 auto 0 0',
+    borda: 'borderRight',
+    anim: 'aa-gaveta-esquerda'
+  },
+  baixo: {
+    inset: 'auto 0 0 0',
+    borda: 'borderTop',
+    anim: 'aa-gaveta-baixo'
+  }
+};
+
+/* Gaveta: painel lateral para tarefa secundária que não merece sair da tela —
+   filtros, detalhe de item, formulário curto. Se a tarefa é a única coisa que
+   importa naquele momento, use Modal; se é navegação, use BarraLateral. */
+function Gaveta({
+  aberta = true,
+  lado = 'direita',
+  titulo,
+  rotulo,
+  aoFechar,
+  largura = 400,
+  altura = '70vh',
+  acoes,
+  children,
+  style
+}) {
+  const painel = useRef(null);
+  const l = LADOS[lado] || LADOS.direita;
+  const deBaixo = lado === 'baixo';
+  useEffect(() => {
+    if (!aberta) return;
+    const h = e => {
+      if (e.key === 'Escape' && aoFechar) aoFechar();
+    };
+    window.addEventListener('keydown', h);
+    const antes = document.activeElement;
+    if (painel.current) painel.current.focus();
+    return () => {
+      window.removeEventListener('keydown', h);
+      if (antes && antes.focus) antes.focus();
+    };
+  }, [aberta, aoFechar]);
+  if (!aberta) return null;
+  return /*#__PURE__*/React.createElement("div", {
+    onClick: aoFechar,
+    style: {
+      position: 'fixed',
+      inset: 0,
+      zIndex: 'var(--z-modal)',
+      background: 'var(--cor-veu)',
+      animation: 'aa-veu-entra 160ms ease'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    ref: painel,
+    role: "dialog",
+    "aria-modal": "true",
+    "aria-label": titulo || 'Painel',
+    tabIndex: -1,
+    onClick: e => e.stopPropagation(),
+    style: {
+      position: 'absolute',
+      inset: l.inset,
+      outline: 'none',
+      width: deBaixo ? 'auto' : largura,
+      maxWidth: '100%',
+      height: deBaixo ? altura : 'auto',
+      maxHeight: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      background: 'var(--cor-superficie)',
+      boxShadow: 'var(--sombra-grande)',
+      [l.borda]: '1px solid var(--cor-borda)',
+      borderRadius: deBaixo ? 'var(--raio-grande) var(--raio-grande) 0 0' : 0,
+      fontFamily: 'var(--fonte-ui)',
+      animation: l.anim + ' 220ms cubic-bezier(0.22,0.61,0.36,1)',
+      ...style
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'flex-start',
+      gap: 16,
+      padding: '20px 24px 16px',
+      borderBottom: '1px solid var(--cor-borda)',
+      flex: 'none'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1,
+      minWidth: 0
+    }
+  }, rotulo ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 12,
+      fontWeight: 600,
+      letterSpacing: '0.06em',
+      textTransform: 'uppercase',
+      color: 'var(--cor-texto-suave)',
+      marginBottom: 4
+    }
+  }, rotulo) : null, titulo ? /*#__PURE__*/React.createElement("h2", {
+    style: {
+      margin: 0,
+      fontFamily: 'var(--fonte-display)',
+      fontSize: 22,
+      fontWeight: 600,
+      lineHeight: 1.2,
+      color: 'var(--cor-texto-forte)'
+    }
+  }, titulo) : null), aoFechar ? /*#__PURE__*/React.createElement("button", {
+    onClick: aoFechar,
+    "aria-label": "Fechar painel",
+    style: {
+      background: 'none',
+      border: 'none',
+      cursor: 'pointer',
+      color: 'var(--cor-texto-suave)',
+      fontSize: 20,
+      lineHeight: 1,
+      padding: 0,
+      flex: 'none',
+      minWidth: 44,
+      minHeight: 44,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'flex-end'
+    }
+  }, "\xD7") : null), /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1,
+      overflow: 'auto',
+      padding: '20px 24px',
+      fontSize: 15,
+      lineHeight: 1.55,
+      color: 'var(--cor-texto)'
+    }
+  }, children), acoes ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      gap: 12,
+      padding: '16px 24px',
+      borderTop: '1px solid var(--cor-borda)',
+      background: 'var(--cor-superficie-2)',
+      flex: 'none'
+    }
+  }, acoes) : null));
+}
+Object.assign(__ds_scope, { Gaveta });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/estrutura/Gaveta.jsx", error: String((e && e.message) || e) }); }
+
 // components/estrutura/Migalhas.jsx
 try { (() => {
 /* global React */
@@ -1437,8 +1602,8 @@ function Modal({
     style: {
       position: 'fixed',
       inset: 0,
-      zIndex: 300,
-      background: 'rgba(34,31,26,0.38)',
+      zIndex: 'var(--z-modal)',
+      background: 'var(--cor-veu)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -1495,6 +1660,204 @@ function Modal({
 }
 Object.assign(__ds_scope, { Modal });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/Modal.jsx", error: String((e && e.message) || e) }); }
+
+// components/feedback/PilhaAvisos.jsx
+try { (() => {
+/* global React */
+const {
+  useState,
+  useCallback,
+  useRef,
+  useEffect
+} = React;
+const CANTOS = {
+  'inferior-direito': {
+    bottom: 'var(--espaco-5)',
+    right: 'var(--espaco-5)',
+    align: 'flex-end'
+  },
+  'inferior-esquerdo': {
+    bottom: 'var(--espaco-5)',
+    left: 'var(--espaco-5)',
+    align: 'flex-start'
+  },
+  'superior-direito': {
+    top: 'var(--espaco-5)',
+    right: 'var(--espaco-5)',
+    align: 'flex-end'
+  },
+  'superior-esquerdo': {
+    top: 'var(--espaco-5)',
+    left: 'var(--espaco-5)',
+    align: 'flex-start'
+  }
+};
+const TONS = {
+  info: 'var(--cor-info)',
+  sucesso: 'var(--cor-sucesso)',
+  atencao: 'var(--cor-atencao)',
+  erro: 'var(--cor-erro)'
+};
+
+/* Fila de avisos: no máximo `limite` na tela, o mais novo empurra o mais antigo.
+   Erro não some sozinho — quem errou precisa ler. */
+function usarAvisos({
+  limite = 3,
+  duracao = 5000
+} = {}) {
+  const [avisos, setAvisos] = useState([]);
+  const seq = useRef(0);
+  const dispensar = useCallback(id => setAvisos(a => a.filter(x => x.id !== id)), []);
+  const avisar = useCallback(aviso => {
+    const id = ++seq.current;
+    setAvisos(a => [...a, {
+      id,
+      variante: 'info',
+      ...aviso
+    }].slice(-limite));
+    return id;
+  }, [limite]);
+  return {
+    avisos,
+    avisar,
+    dispensar
+  };
+}
+function Item({
+  aviso,
+  aoDispensar,
+  duracao
+}) {
+  const permanente = aviso.variante === 'erro' || aviso.acao;
+  useEffect(() => {
+    if (permanente) return;
+    const t = setTimeout(aoDispensar, aviso.duracao ?? duracao);
+    return () => clearTimeout(t);
+  }, [permanente, aviso.duracao, duracao, aoDispensar]);
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      gap: 12,
+      alignItems: 'flex-start',
+      width: 340,
+      maxWidth: '100%',
+      boxSizing: 'border-box',
+      background: 'var(--cor-superficie)',
+      border: '1px solid var(--cor-borda)',
+      borderRadius: 'var(--raio-medio)',
+      boxShadow: 'var(--sombra-media)',
+      padding: '14px 16px',
+      fontFamily: 'var(--fonte-ui)',
+      pointerEvents: 'auto',
+      animation: 'aa-aviso-entra 200ms ease'
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      width: 8,
+      height: 8,
+      borderRadius: 999,
+      background: TONS[aviso.variante] || TONS.info,
+      marginTop: 6,
+      flex: 'none'
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1,
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 2
+    }
+  }, aviso.titulo ? /*#__PURE__*/React.createElement("strong", {
+    style: {
+      fontSize: 14,
+      fontWeight: 600,
+      color: 'var(--cor-texto-forte)'
+    }
+  }, aviso.titulo) : null, aviso.mensagem ? /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 13,
+      lineHeight: 1.5,
+      color: 'var(--cor-texto-suave)'
+    }
+  }, aviso.mensagem) : null, aviso.acao ? /*#__PURE__*/React.createElement("button", {
+    onClick: () => {
+      aviso.acao.ao && aviso.acao.ao();
+      aoDispensar();
+    },
+    style: {
+      alignSelf: 'flex-start',
+      marginTop: 6,
+      background: 'none',
+      border: 'none',
+      padding: 0,
+      cursor: 'pointer',
+      fontFamily: 'var(--fonte-ui)',
+      fontSize: 13,
+      fontWeight: 600,
+      color: 'var(--cor-acao)',
+      textDecoration: 'underline',
+      textDecorationColor: 'var(--cor-link-sublinhado)',
+      textUnderlineOffset: 3
+    }
+  }, aviso.acao.rotulo) : null), /*#__PURE__*/React.createElement("button", {
+    onClick: aoDispensar,
+    "aria-label": "Fechar aviso",
+    style: {
+      background: 'none',
+      border: 'none',
+      cursor: 'pointer',
+      color: 'var(--cor-texto-suave)',
+      fontSize: 15,
+      lineHeight: 1,
+      padding: 0,
+      flex: 'none',
+      minWidth: 20,
+      minHeight: 20
+    }
+  }, "\xD7"));
+}
+function PilhaAvisos({
+  avisos = [],
+  aoDispensar,
+  canto = 'inferior-direito',
+  duracao = 5000,
+  style
+}) {
+  const c = CANTOS[canto] || CANTOS['inferior-direito'];
+  const deBaixo = canto.startsWith('inferior');
+  return /*#__PURE__*/React.createElement("div", {
+    "aria-live": "polite",
+    "aria-atomic": "false",
+    style: {
+      position: 'fixed',
+      zIndex: 'var(--z-aviso)',
+      display: 'flex',
+      flexDirection: deBaixo ? 'column-reverse' : 'column',
+      alignItems: c.align,
+      gap: 'var(--espaco-3)',
+      pointerEvents: 'none',
+      top: c.top,
+      bottom: c.bottom,
+      left: c.left,
+      right: c.right,
+      ...style
+    }
+  }, avisos.map(a => /*#__PURE__*/React.createElement(Item, {
+    key: a.id,
+    aviso: a,
+    duracao: duracao,
+    aoDispensar: () => aoDispensar && aoDispensar(a.id)
+  })));
+}
+
+/* O compilador só expõe nomes com maiúscula e reencapsula a função exportada,
+   então propriedade pendurada no componente não sobrevive. O hook sai como
+   binding próprio, capitalizado: Avisos.usar(). */
+const Avisos = {
+  usar: usarAvisos
+};
+Object.assign(__ds_scope, { PilhaAvisos, Avisos });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/PilhaAvisos.jsx", error: String((e && e.message) || e) }); }
 
 // components/formulario/AreaTexto.jsx
 try { (() => {
@@ -2163,6 +2526,266 @@ function Interruptor({
 Object.assign(__ds_scope, { Interruptor });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/formulario/Interruptor.jsx", error: String((e && e.message) || e) }); }
 
+// components/formulario/MultiSelecao.jsx
+try { (() => {
+/* global React */
+const {
+  useState,
+  useRef,
+  useEffect,
+  useMemo
+} = React;
+function normaliza(o) {
+  return typeof o === 'string' ? {
+    valor: o,
+    rotulo: o
+  } : o;
+}
+
+/* Multi-seleção: fichas do que já foi escolhido + lista com caixas de marcar.
+   Acima de ~8 opções a busca aparece sozinha; abaixo dela seria só ruído. */
+function MultiSelecao({
+  rotulo,
+  opcoes = [],
+  valor = [],
+  aoMudar,
+  placeholder = 'Selecionar…',
+  dica,
+  erro,
+  obrigatorio,
+  desabilitado,
+  limite,
+  maxFichas = 3,
+  style
+}) {
+  const [aberto, setAberto] = useState(false);
+  const [busca, setBusca] = useState('');
+  const [foco, setFoco] = useState(false);
+  const raiz = useRef(null);
+  const itens = useMemo(() => opcoes.map(normaliza), [opcoes]);
+  const comBusca = itens.length > 8;
+  const filtrados = useMemo(() => {
+    const q = busca.trim().toLowerCase();
+    return q ? itens.filter(o => o.rotulo.toLowerCase().includes(q)) : itens;
+  }, [itens, busca]);
+  useEffect(() => {
+    if (!aberto) return;
+    const fora = e => {
+      if (raiz.current && !raiz.current.contains(e.target)) setAberto(false);
+    };
+    const tecla = e => {
+      if (e.key === 'Escape') setAberto(false);
+    };
+    document.addEventListener('mousedown', fora);
+    window.addEventListener('keydown', tecla);
+    return () => {
+      document.removeEventListener('mousedown', fora);
+      window.removeEventListener('keydown', tecla);
+    };
+  }, [aberto]);
+  const cheio = limite != null && valor.length >= limite;
+  const alterna = v => {
+    if (!aoMudar) return;
+    if (valor.includes(v)) aoMudar(valor.filter(x => x !== v));else if (!cheio) aoMudar([...valor, v]);
+  };
+  const escolhidos = itens.filter(o => valor.includes(o.valor));
+  const visiveis = escolhidos.slice(0, maxFichas);
+  const restantes = escolhidos.length - visiveis.length;
+  return /*#__PURE__*/React.createElement("div", {
+    ref: raiz,
+    style: {
+      position: 'relative',
+      fontFamily: 'var(--fonte-ui)',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 6,
+      ...style
+    }
+  }, rotulo ? /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 13,
+      fontWeight: 600,
+      color: 'var(--cor-texto)'
+    }
+  }, rotulo, obrigatorio ? /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: 'var(--cor-destaque-texto)',
+      marginLeft: 2
+    }
+  }, "*") : null) : null, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    disabled: desabilitado,
+    onClick: () => setAberto(a => !a),
+    onFocus: () => setFoco(true),
+    onBlur: () => setFoco(false),
+    "aria-expanded": aberto,
+    "aria-haspopup": "listbox",
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 6,
+      flexWrap: 'wrap',
+      textAlign: 'left',
+      minHeight: 40,
+      width: '100%',
+      boxSizing: 'border-box',
+      padding: '6px 34px 6px 10px',
+      fontFamily: 'var(--fonte-ui)',
+      fontSize: 15,
+      color: 'var(--cor-texto)',
+      background: desabilitado ? 'var(--cor-superficie-2)' : 'var(--cor-superficie)',
+      border: '1px solid ' + (erro ? 'var(--cor-erro)' : foco || aberto ? 'var(--cor-acao)' : 'var(--cor-borda-controle)'),
+      borderRadius: 'var(--raio-pequeno)',
+      outline: 'none',
+      boxShadow: foco || aberto ? erro ? 'var(--anel-foco-erro)' : 'var(--anel-foco)' : 'none',
+      opacity: desabilitado ? 0.55 : 1,
+      cursor: desabilitado ? 'not-allowed' : 'pointer',
+      transition: 'border-color 150ms ease, box-shadow 150ms ease',
+      backgroundImage: 'linear-gradient(45deg, transparent 50%, var(--cor-texto-suave) 50%), linear-gradient(135deg, var(--cor-texto-suave) 50%, transparent 50%)',
+      backgroundPosition: 'calc(100% - 16px) 50%, calc(100% - 11px) 50%',
+      backgroundSize: '5px 5px, 5px 5px',
+      backgroundRepeat: 'no-repeat'
+    }
+  }, escolhidos.length === 0 ? /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: 'var(--cor-texto-suave)'
+    }
+  }, placeholder) : /*#__PURE__*/React.createElement(React.Fragment, null, visiveis.map(o => /*#__PURE__*/React.createElement("span", {
+    key: o.valor,
+    style: {
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: 6,
+      padding: '2px 4px 2px 8px',
+      borderRadius: 999,
+      background: 'var(--cor-acao-suave)',
+      color: 'var(--cor-acao)',
+      fontSize: 13,
+      fontWeight: 600,
+      lineHeight: 1.6
+    }
+  }, o.rotulo, /*#__PURE__*/React.createElement("span", {
+    role: "button",
+    "aria-label": 'Remover ' + o.rotulo,
+    tabIndex: -1,
+    onClick: e => {
+      e.stopPropagation();
+      alterna(o.valor);
+    },
+    style: {
+      cursor: 'pointer',
+      fontSize: 14,
+      lineHeight: 1,
+      padding: '0 3px',
+      opacity: 0.75
+    }
+  }, "\xD7"))), restantes > 0 ? /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 13,
+      color: 'var(--cor-texto-suave)'
+    }
+  }, "+", restantes) : null)), aberto ? /*#__PURE__*/React.createElement("div", {
+    role: "listbox",
+    "aria-multiselectable": "true",
+    style: {
+      position: 'absolute',
+      top: '100%',
+      left: 0,
+      right: 0,
+      marginTop: 4,
+      zIndex: 'var(--z-suspenso)',
+      background: 'var(--cor-superficie)',
+      border: '1px solid var(--cor-borda)',
+      borderRadius: 'var(--raio-medio)',
+      boxShadow: 'var(--sombra-media)',
+      padding: 6,
+      maxHeight: 260,
+      overflow: 'auto'
+    }
+  }, comBusca ? /*#__PURE__*/React.createElement("input", {
+    autoFocus: true,
+    value: busca,
+    onChange: e => setBusca(e.target.value),
+    placeholder: "Filtrar op\xE7\xF5es",
+    "aria-label": "Filtrar op\xE7\xF5es",
+    style: {
+      width: '100%',
+      boxSizing: 'border-box',
+      marginBottom: 6,
+      padding: '7px 10px',
+      fontFamily: 'var(--fonte-ui)',
+      fontSize: 14,
+      color: 'var(--cor-texto)',
+      background: 'var(--cor-superficie-2)',
+      border: '1px solid var(--cor-borda)',
+      borderRadius: 'var(--raio-pequeno)',
+      outline: 'none'
+    }
+  }) : null, filtrados.length === 0 ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '10px 10px 12px',
+      fontSize: 13,
+      color: 'var(--cor-texto-suave)'
+    }
+  }, "Nada com esse nome. Tente menos letras.") : filtrados.map(o => {
+    const marcado = valor.includes(o.valor);
+    const bloqueado = !marcado && cheio;
+    return /*#__PURE__*/React.createElement("div", {
+      key: o.valor,
+      role: "option",
+      "aria-selected": marcado,
+      onClick: () => !bloqueado && alterna(o.valor),
+      style: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: 10,
+        padding: '9px 10px',
+        borderRadius: 'var(--raio-pequeno)',
+        fontSize: 14,
+        minHeight: 20,
+        color: bloqueado ? 'var(--cor-texto-suave)' : 'var(--cor-texto)',
+        background: marcado ? 'var(--cor-acao-suave)' : 'transparent',
+        cursor: bloqueado ? 'not-allowed' : 'pointer',
+        opacity: bloqueado ? 0.6 : 1
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      "aria-hidden": "true",
+      style: {
+        width: 16,
+        height: 16,
+        flex: 'none',
+        borderRadius: 4,
+        border: '1px solid ' + (marcado ? 'var(--cor-acao)' : 'var(--cor-borda-controle)'),
+        background: marcado ? 'var(--cor-acao)' : 'var(--cor-superficie)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: 'var(--cor-texto-invertido)',
+        fontSize: 11,
+        lineHeight: 1,
+        fontWeight: 700
+      }
+    }, marcado ? '✓' : ''), /*#__PURE__*/React.createElement("span", {
+      style: {
+        flex: 1
+      }
+    }, o.rotulo));
+  })) : null, erro ? /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 11,
+      color: 'var(--cor-erro)',
+      fontWeight: 600
+    }
+  }, erro) : /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 11,
+      color: 'var(--cor-texto-suave)'
+    }
+  }, cheio ? 'Máximo de ' + limite + ' — desmarque uma para trocar.' : dica));
+}
+Object.assign(__ds_scope, { MultiSelecao });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/formulario/MultiSelecao.jsx", error: String((e && e.message) || e) }); }
+
 // components/formulario/Selecao.jsx
 try { (() => {
 /* global React */
@@ -2559,7 +3182,15 @@ function CalendarioSlot(props) {
   }, "Calendario n\xE3o carregado.");
   return /*#__PURE__*/React.createElement(Cal, props);
 }
-Object.assign(__ds_scope, { ATALHOS, periodoDoAtalho, periodoAnterior, SeletorPeriodo });
+
+/* Só nomes com maiúscula chegam ao namespace do bundle. As duas contas saem
+   agrupadas: Periodo.doAtalho() e Periodo.anterior(). */
+const Periodo = {
+  doAtalho: periodoDoAtalho,
+  anterior: periodoAnterior,
+  atalhos: ATALHOS
+};
+Object.assign(__ds_scope, { ATALHOS, periodoDoAtalho, periodoAnterior, SeletorPeriodo, Periodo });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/formulario/SeletorPeriodo.jsx", error: String((e && e.message) || e) }); }
 
 // components/graficos/GraficoBarras.jsx
@@ -5398,6 +6029,8 @@ __ds_ns.Cartao = __ds_scope.Cartao;
 
 __ds_ns.Divisor = __ds_scope.Divisor;
 
+__ds_ns.Gaveta = __ds_scope.Gaveta;
+
 __ds_ns.Migalhas = __ds_scope.Migalhas;
 
 __ds_ns.Alerta = __ds_scope.Alerta;
@@ -5407,6 +6040,10 @@ __ds_ns.Aviso = __ds_scope.Aviso;
 __ds_ns.MenuSuspenso = __ds_scope.MenuSuspenso;
 
 __ds_ns.Modal = __ds_scope.Modal;
+
+__ds_ns.PilhaAvisos = __ds_scope.PilhaAvisos;
+
+__ds_ns.Avisos = __ds_scope.Avisos;
 
 __ds_ns.AreaTexto = __ds_scope.AreaTexto;
 
@@ -5420,11 +6057,15 @@ __ds_ns.Escolha = __ds_scope.Escolha;
 
 __ds_ns.Interruptor = __ds_scope.Interruptor;
 
+__ds_ns.MultiSelecao = __ds_scope.MultiSelecao;
+
 __ds_ns.Selecao = __ds_scope.Selecao;
 
 __ds_ns.ATALHOS = __ds_scope.ATALHOS;
 
 __ds_ns.SeletorPeriodo = __ds_scope.SeletorPeriodo;
+
+__ds_ns.Periodo = __ds_scope.Periodo;
 
 __ds_ns.GraficoBarras = __ds_scope.GraficoBarras;
 

@@ -22,7 +22,7 @@
 </div>
 <form onSubmit="{{ enviar }}" style="background:var(--cor-superficie);border:1px solid var(--cor-borda);border-radius:var(--raio-grande);padding:32px;display:flex;flex-direction:column;gap:20px">
 <sc-if value="{{ erro }}" hint-placeholder-val="{{ false }}">
-<div style="display:flex;gap:12px;padding:12px 16px;border-radius:var(--raio-medio);background:var(--cor-erro-bg);color:#7C2E25;font-size:13px;line-height:1.5;align-items:flex-start">
+<div style="display:flex;gap:12px;padding:12px 16px;border-radius:var(--raio-medio);background:var(--cor-erro-bg);color:var(--cor-erro);font-size:13px;line-height:1.5;align-items:flex-start">
 <span style="width:8px;height:8px;border-radius:999px;background:var(--cor-erro);margin-top:6px;flex:none"></span>
 <span>E-mail ou senha não conferem. Tente de novo.</span>
 </div>

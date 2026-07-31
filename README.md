@@ -2,7 +2,7 @@
 
 > A calm, neutral, warm-sand design system for personal **web & mobile dashboards and tools.** Built around two fonts (Fraunces + Hanken Grotesk), a single sand neutral scale, one quiet blue, and a rare terracotta accent. Originally written in **Brazilian Portuguese** (`pt-BR`) — token names, copy, and component labels follow Portuguese conventions.
 
-**Version:** 0.3.0 — modo escuro, período, estados de tabela, lista/detalhe
+**Version:** 0.4.0 — gaveta, fila de avisos, multi-seleção, guia mobile
 
 ---
 
@@ -225,13 +225,13 @@ No React? `componentes.css` ships the same pieces as plain classes (`.aa-btn`, `
 
 **Ações** — `Botao` (primário / secundário / texto / perigo · 3 tamanhos · carregando · desabilitado), `Etiqueta` (badge, 6 tons), `Avatar`, `Dica` (tooltip).
 
-**Formulário** — `Campo` (com prefixo/sufixo, dica, erro, obrigatório), `Selecao`, `AreaTexto`, `Escolha` (caixa e rádio), `Interruptor`, `Busca`, `SeletorPeriodo` (atalhos + intervalo custom + comparação com período anterior), `Calendario` (dia ou intervalo, pt-BR).
+**Formulário** — `Campo` (com prefixo/sufixo, dica, erro, obrigatório), `Selecao`, `AreaTexto`, `Escolha` (caixa e rádio), `Interruptor`, `MultiSelecao` (fichas + caixas de marcar, busca automática acima de 8 opções, limite de escolhas), `Busca`, `SeletorPeriodo` (atalhos + intervalo custom + comparação com período anterior), `Calendario` (dia ou intervalo, pt-BR).
 
-**Estrutura** — `Cartao`, `Abas`, `Divisor`, `Migalhas`.
+**Estrutura** — `Cartao`, `Abas`, `Divisor`, `Migalhas`, `Gaveta` (painel lateral ou de baixo, com rodapé de ações fixo — a variante mobile do modal).
 
 **Dados** — `Metrica` (KPI com faísca embutida), `Tabela` (ordenável, coluna numérica, render por célula, **estados de carregando e erro embutidos**, linha ativa para lista+detalhe), `Progresso` (barra e anel), `Paginacao`, `Vazio`, `Esqueleto`.
 
-**Feedback** — `Alerta`, `Modal`, `MenuSuspenso`, `Aviso` (toast).
+**Feedback** — `Alerta`, `Modal`, `MenuSuspenso`, `Aviso` (toast solto), `PilhaAvisos` (fila de toasts com limite, dispensa automática e ação de desfazer; o hook é `Avisos.usar()`).
 
 **Navegação** — `BarraLateral` (grupos, contagens), `BarraSuperior`.
 
@@ -280,7 +280,7 @@ This repository is intentionally **bilingual**, with a split between developer-f
 **Brazilian Portuguese (`pt-BR`)** — anything that carries the brand voice:
 - Token names: `--cor-acao`, `--espaco-4`, `--areia-500`, `--fonte-display`. These are intentional and **must not be renamed** to English equivalents — they are part of the system's identity and what makes it not just "another tan-colored Tailwind config."
 - Sample UI copy in `preview/`, `templates/` and `ui_kits/`: `Casa & projetos`, `Reforma da cozinha`, `Resumo do mês`, etc. Examples stay domestic and small-scale.
-- [`docs/guia-de-design.md`](docs/guia-de-design.md), [`docs/voz.md`](docs/voz.md) and [`docs/acessibilidade.md`](docs/acessibilidade.md) — the authoritative guides, written in the AA brand voice (calm, second-person-informal `você`).
+- [`docs/guia-de-design.md`](docs/guia-de-design.md), [`docs/voz.md`](docs/voz.md), [`docs/acessibilidade.md`](docs/acessibilidade.md) and [`docs/mobile.md`](docs/mobile.md) — the authoritative guides, written in the AA brand voice (calm, second-person-informal `você`).
 - `CHANGELOG.md` — pt-BR from `0.2.0` on, since the release notes read as design rationale rather than as a build log. The `0.1.1` entry was translated to match.
 
 When generating UI copy for AA projects, default to Portuguese unless explicitly told otherwise — the system was written for personal Brazilian Portuguese projects and the voice is part of the brand.

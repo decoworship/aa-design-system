@@ -3,13 +3,32 @@
 Todas as mudanças relevantes do AA Design System.
 Versionamento: `MAIOR.MENOR.CORRECAO` — correções mudam o último número, adições compatíveis o do meio.
 
+## [0.4.0] — 2026-07-31
+
+Os três buracos que a auditoria apontou, mais o guia de mobile. Nada removido, nada renomeado.
+
+### Adicionado
+- **`Gaveta`** (estrutura) — painel de `lado="direita" | "esquerda" | "baixo"`, com cabeçalho, corpo rolável e rodapé de ações fixo. `baixo` é a variante mobile do modal: sobe do rodapé, não briga com o teclado virtual. Fecha no Esc, no véu e no ×, e devolve o foco a quem abriu.
+- **`PilhaAvisos`** (feedback), com o hook `Avisos.usar()` — fila de toasts com limite (o mais novo empurra o mais antigo), quatro cantos, `aria-live="polite"`. **Aviso de erro e aviso com ação não somem sozinhos**: quem errou precisa ler, e quem tem "Desfazer" precisa de tempo para clicar. `Aviso` continua existindo para o toast solto. O hook sai como binding próprio capitalizado (`Avisos.usar()`): o bundle só expõe nomes com maiúscula, e reencapsula a função exportada, então propriedade pendurada no componente também não sobrevive.
+
+O mesmo bug estava no `SeletorPeriodo` desde o 0.3.0: `periodoDoAtalho` e `periodoAnterior` eram anunciados no README e **nunca chegavam ao namespace**. Agora saem como `Periodo.doAtalho()` e `Periodo.anterior()` (mais `Periodo.atalhos`). **Regra: função utilitária exportada de componente precisa de nome com maiúscula, ou de um objeto capitalizado que a carregue.**
+- **`MultiSelecao`** (formulário) — fichas do escolhido, lista com caixas de marcar, resumo "+N" acima de três, `limite` de escolhas com dica explicando o teto. A busca aparece sozinha a partir de nove opções; abaixo disso seria só ruído.
+- **`docs/mobile.md`** — a quebra é uma só (720px) e as quatro trocas estão escritas: barra lateral → gaveta, modal → gaveta de baixo, tabela → lista de cartões, coluna de filtro → gaveta com contador. Mais o que **não** muda (nenhum token por breakpoint, corpo continua 15px) e o que ainda falta.
+- **`preview/sobreposicoes.html`** — cartão clicável dos três componentes novos.
+- Keyframes `aa-veu-entra`, `aa-aviso-entra` e `aa-gaveta-*` em `componentes.css`, sob o `prefers-reduced-motion` que já existia.
+
+### Corrigido — disciplina de token, segunda passada
+A auditoria do 0.3.0 procurou por `#hex` e escalas cruas, e por isso **passou por cima de `rgba()`**. O véu do `Modal` era `rgba(34,31,26,0.38)` escrito dentro do componente: no escuro, cortina clara demais sobre fundo escuro. Agora é **`--cor-veu`** (novo token, valor próprio em cada tema), usado por `Modal` e `Gaveta`.
+
+Dois literais `#7C2E25` sobraram na mensagem de erro dos templates `login-centrado` e `login-dividido` — trocados por `var(--cor-erro)`. **Ao auditar, faça `grep` por `rgba(` também, não só por `#`.** O `zIndex` fixo `300` do `Modal` virou `var(--z-modal)`; os tokens de camada existiam desde o 0.2.0 e não estavam sendo usados.
+
 ## [0.3.0] — 2026-07-31
 
 Modo escuro, filtro de período, tabela com estados e o template de lista/detalhe. Inclui a auditoria de contraste que estava marcada como 0.2.1 — as duas coisas mexem nos mesmos tokens e saem juntas.
 
 ### Adicionado
 - **Modo escuro.** `[data-tema="escuro"]` redefine **só os tokens semânticos**; as escalas cruas ficam intactas. `[data-tema="auto"]` segue o sistema operacional. Base é marrom-carvão (`#1A1714`), não cinza azulado: areia no escuro continua quente. Séries de gráfico clareiam mantendo a mesma ordem e o mesmo matiz. Cartão em `preview/tema-escuro.html`, com os dois temas lado a lado na mesma página.
-- **`SeletorPeriodo`** — atalhos ("Hoje", "7 dias", "30 dias", "Este mês", "Este ano") mais intervalo pelo calendário, e **comparação com o período anterior** já embutida: mesma duração, colada antes do início. Exporta `periodoDoAtalho()` e `periodoAnterior()` para quem só precisa da conta.
+- **`SeletorPeriodo`** — atalhos ("Hoje", "7 dias", "30 dias", "Este mês", "Este ano") mais intervalo pelo calendário, e **comparação com o período anterior** já embutida: mesma duração, colada antes do início. Exporta `Periodo.doAtalho()` e `Periodo.anterior()` para quem só precisa da conta.
 - **`Calendario`** — mês em pt-BR, semana começando no domingo, modo dia ou intervalo, `min`/`max`. Enquanto só uma ponta está escolhida, o intervalo acompanha o mouse; clique antes do início reordena em silêncio em vez de recusar.
 - **Template `lista-detalhe/`** — filtros à esquerda, lista ordenável ao centro, painel de detalhe à direita, com os quatro estados (pronto, vazio, carregando, erro) trocáveis por tweak. Vazio por filtro e vazio de verdade têm textos diferentes de propósito: um pede para afrouxar o filtro, o outro para criar o primeiro item.
 - **`docs/voz.md`** e `preview/voz.html` — dez regras em pares "escreva assim / não assim", tiradas dos próprios templates, mais vocabulário fixo e regras de caixa e pontuação.

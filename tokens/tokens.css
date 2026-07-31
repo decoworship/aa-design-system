@@ -61,6 +61,7 @@
   --cor-borda-controle-hover: var(--areia-700);/* borda de campo no hover */
   --cor-linha-hover:     var(--areia-100);     /* linha de tabela sob o cursor */
   --cor-link-sublinhado: var(--primaria-200);
+  --cor-veu:             rgba(34,31,26,0.38);
 
   /* --- Feedback --- */
   --cor-sucesso:    #4A6746;  --cor-sucesso-bg: #E7EDE4;
@@ -197,6 +198,7 @@
   --cor-borda-controle-hover: #8A8170;
   --cor-linha-hover:     #2A2620;
   --cor-link-sublinhado: #4F739A;
+  --cor-veu:             rgba(8,6,4,0.62);
 
   /* Feedback: cor clara + fundo escuro tingido do mesmo matiz. */
   --cor-sucesso:    #8FB088;  --cor-sucesso-bg: #263024;
@@ -270,6 +272,8 @@
     --cor-borda-controle-hover: #8A8170;
     --cor-linha-hover:     #2A2620;
     --cor-link-sublinhado: #4F739A;
+    --cor-veu:             rgba(8,6,4,0.62);
+  --cor-veu:             rgba(8,6,4,0.62);
     --cor-sucesso:    #8FB088;  --cor-sucesso-bg: #263024;
     --cor-atencao:    #DCA94E;  --cor-atencao-bg: #33280F;
     --cor-erro:       #E08172;  --cor-erro-bg:    #3A211C;

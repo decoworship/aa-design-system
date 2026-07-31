@@ -108,6 +108,11 @@ select.aa-entrada{appearance:none;background-image:linear-gradient(45deg,transpa
 .aa-esqueleto{background:var(--cor-superficie-2);border-radius:var(--raio-pequeno);animation:aa-pulso 1.4s ease-in-out infinite}
 @keyframes aa-pulso{0%,100%{opacity:1}50%{opacity:.5}}
 @keyframes aa-girar{to{transform:rotate(360deg)}}
+@keyframes aa-veu-entra{from{opacity:0}to{opacity:1}}
+@keyframes aa-aviso-entra{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes aa-gaveta-direita{from{transform:translateX(100%)}to{transform:none}}
+@keyframes aa-gaveta-esquerda{from{transform:translateX(-100%)}to{transform:none}}
+@keyframes aa-gaveta-baixo{from{transform:translateY(100%)}to{transform:none}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 
 /* ---------------- Layout ---------------- */

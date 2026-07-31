@@ -11,7 +11,7 @@ export function Modal({ aberto = true, titulo, rotulo, aoFechar, acoes, largura 
   if (!aberto) return null;
   return (
     <div onClick={aoFechar} style={{
-      position: 'fixed', inset: 0, zIndex: 300, background: 'rgba(34,31,26,0.38)',
+      position: 'fixed', inset: 0, zIndex: 'var(--z-modal)', background: 'var(--cor-veu)',
       display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24,
     }}>
       <div role="dialog" aria-modal="true" onClick={(e) => e.stopPropagation()} style={{

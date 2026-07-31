@@ -138,3 +138,7 @@ function CalendarioSlot(props) {
   if (!Cal) return <div style={{ fontSize: 13, color: 'var(--cor-texto-suave)', width: '100%', maxWidth: 266 }}>Calendario não carregado.</div>;
   return <Cal {...props} />;
 }
+
+/* Só nomes com maiúscula chegam ao namespace do bundle. As duas contas saem
+   agrupadas: Periodo.doAtalho() e Periodo.anterior(). */
+export const Periodo = { doAtalho: periodoDoAtalho, anterior: periodoAnterior, atalhos: ATALHOS };
