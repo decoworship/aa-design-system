@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Tema" name="Camada de material" subtitle="aa e vidro nos dois temas · vidro flutua, conteúdo é opaco" viewport="1100x900" -->
+<html lang="pt-BR"><head><meta charset="UTF-8"><title>Camada de material</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+html,body{margin:0;padding:0}
+body{width:1100px;box-sizing:border-box;padding:var(--espaco-6);background:var(--areia-200);font-family:var(--fonte-ui)}
+.rot{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--cor-texto-suave)}
+.cabeca{max-width:72ch;margin:0 0 var(--espaco-6)}
+.grade{display:grid;grid-template-columns:1fr 1fr;gap:var(--espaco-5)}
+
+/* Cada célula é uma subárvore com seu próprio data-tema/data-estilo.
+   O palco pinta --cor-fundo, então a célula escura fica escura sozinha. */
+.celula{display:flex;flex-direction:column;gap:10px}
+.palco{position:relative;height:330px;border-radius:var(--raio-grande);overflow:hidden;
+  background:var(--cor-fundo);border:1px solid var(--cor-borda)}
+
+/* --- conteúdo: é o que corre ATRÁS da camada. Fica sempre opaco. --- */
+.conteudo{position:absolute;inset:0;padding:16px;display:flex;flex-direction:column;gap:12px}
+.cartao{background:var(--cor-superficie);border:1px solid var(--cor-borda);
+  border-radius:var(--raio-grande);padding:14px 16px}
+.cartao h4{margin:0 0 6px;font-family:var(--fonte-display);font-size:18px;font-weight:600;
+  color:var(--cor-texto-forte);line-height:1.2}
+.cartao p{margin:0;font-size:13px;line-height:1.55;color:var(--cor-texto-suave)}
+/* barras de gráfico: substrato saturado, o pior caso que a camada enfrenta */
+.barras{display:flex;align-items:flex-end;gap:8px;height:96px;padding:0 2px}
+.barras i{flex:1;border-radius:4px 4px 0 0;display:block}
+
+/* --- camada: é ela que vira vidro. Lê os mesmos tokens dos componentes. --- */
+.camada{position:absolute;left:24px;right:24px;bottom:20px;padding:14px 16px;
+  background:var(--cor-camada);border:1px solid var(--cor-borda-camada);
+  border-radius:var(--raio-medio);box-shadow:var(--sombra-grande);
+  backdrop-filter:var(--camada-filtro);-webkit-backdrop-filter:var(--camada-filtro)}
+.camada strong{display:block;font-size:14px;font-weight:600;color:var(--cor-texto-forte);margin-bottom:2px}
+.camada span{font-size:13px;line-height:1.5;color:var(--cor-texto-suave)}
+.camada .linha{display:flex;align-items:center;gap:10px;margin-top:10px}
+/* controle DENTRO da camada: fundo opaco e borda de controle — 3:1 sempre */
+.campo{flex:1;background:var(--cor-superficie);border:1px solid var(--cor-borda-controle);
+  border-radius:var(--raio-pequeno);padding:7px 10px;font-size:13px;color:var(--cor-texto)}
+.botao{border:none;border-radius:var(--raio-medio);padding:8px 14px;font-family:var(--fonte-ui);
+  font-size:13px;font-weight:600;background:var(--cor-acao);color:var(--cor-texto-invertido);cursor:default}
+
+/* --- dica: camada INVERTIDA. Vidro escuro no claro, vidro claro no escuro. --- */
+.dica{position:absolute;top:16px;right:16px;padding:6px 10px;border-radius:var(--raio-pequeno);
+  font-size:12px;line-height:1.4;white-space:nowrap;box-shadow:var(--sombra-media);
+  background:var(--cor-camada-invertida);color:var(--cor-superficie);
+  backdrop-filter:var(--camada-filtro);-webkit-backdrop-filter:var(--camada-filtro)}
+
+.nota{font-size:12px;line-height:1.5;color:var(--cor-texto-suave);margin:0}
+.regra{margin:var(--espaco-6) 0 0;padding:16px 18px;background:var(--cor-superficie);
+  border-left:3px solid var(--cor-destaque);border-radius:var(--raio-pequeno);max-width:78ch}
+.regra p{margin:0;font-size:14px;line-height:1.6;color:var(--cor-texto)}
+.regra p + p{margin-top:8px}
+code{font-family:var(--fonte-mono);font-size:.92em}
+</style></head>
+<body>
+
+<div class="cabeca">
+  <p class="rot" style="margin:0 0 6px">Tema</p>
+  <h1 class="t-display" style="margin:0">Camada de material</h1>
+  <p style="font-size:var(--texto-corpo);color:var(--cor-texto);margin:12px 0 0;text-wrap:pretty">
+    Dois estilos sobre o <strong>mesmo</strong> sistema. Só o material muda — camada, borda, raio e
+    sombra. Paleta, fontes e escala tipográfica são idênticas nos dois. Liga com
+    <code>data-estilo="vidro"</code> e combina com <code>data-tema</code>, por subárvore.
+    As quatro células abaixo são a mesma marcação: só o atributo da célula muda.
+  </p>
+</div>
+
+<div class="grade">
+
+  <div class="celula" data-estilo="aa">
+    <div class="rot">aa · claro <span style="color:var(--cor-texto-suave);font-weight:400;text-transform:none;letter-spacing:0">— o padrão</span></div>
+    <div class="palco">
+      <div class="conteudo">
+        <div class="cartao"><h4>Reforma da cozinha</h4><p>Superfície de leitura. Opaca nos dois estilos — texto longo sobre blur cansa.</p></div>
+        <div class="barras">
+          <i style="height:54%;background:var(--dados-1)"></i><i style="height:78%;background:var(--dados-2)"></i>
+          <i style="height:38%;background:var(--dados-3)"></i><i style="height:92%;background:var(--dados-4)"></i>
+          <i style="height:64%;background:var(--dados-5)"></i><i style="height:46%;background:var(--dados-6)"></i>
+        </div>
+      </div>
+      <div class="dica">Dica flutuante</div>
+      <div class="camada">
+        <strong>Camada que flutua</strong>
+        <span>Areia chapada, borda, sombra discreta.</span>
+        <div class="linha"><span class="campo">Buscar projeto</span><button class="botao">Salvar</button></div>
+      </div>
+    </div>
+    <p class="nota">Sem <code>backdrop-filter</code>. A borda é que separa.</p>
+  </div>
+
+  <div class="celula" data-estilo="vidro">
+    <div class="rot">vidro · claro</div>
+    <div class="palco">
+      <div class="conteudo">
+        <div class="cartao"><h4>Reforma da cozinha</h4><p>Superfície de leitura. Opaca nos dois estilos — texto longo sobre blur cansa.</p></div>
+        <div class="barras">
+          <i style="height:54%;background:var(--dados-1)"></i><i style="height:78%;background:var(--dados-2)"></i>
+          <i style="height:38%;background:var(--dados-3)"></i><i style="height:92%;background:var(--dados-4)"></i>
+          <i style="height:64%;background:var(--dados-5)"></i><i style="height:46%;background:var(--dados-6)"></i>
+        </div>
+      </div>
+      <div class="dica">Dica flutuante</div>
+      <div class="camada">
+        <strong>Camada que flutua</strong>
+        <span>Translúcida com blur, raio maior, sombra mais presente.</span>
+        <div class="linha"><span class="campo">Buscar projeto</span><button class="botao">Salvar</button></div>
+      </div>
+    </div>
+    <p class="nota">As barras aparecem <em>lavadas</em> atrás da camada — é o blur trabalhando. O cartão continua opaco.</p>
+  </div>
+
+  <div class="celula" data-tema="escuro" data-estilo="aa">
+    <div class="rot">aa · escuro</div>
+    <div class="palco">
+      <div class="conteudo">
+        <div class="cartao"><h4>Reforma da cozinha</h4><p>No escuro a separação é tom de superfície e borda, não sombra.</p></div>
+        <div class="barras">
+          <i style="height:54%;background:var(--dados-1)"></i><i style="height:78%;background:var(--dados-2)"></i>
+          <i style="height:38%;background:var(--dados-3)"></i><i style="height:92%;background:var(--dados-4)"></i>
+          <i style="height:64%;background:var(--dados-5)"></i><i style="height:46%;background:var(--dados-6)"></i>
+        </div>
+      </div>
+      <div class="dica">Dica flutuante</div>
+      <div class="camada">
+        <strong>Camada que flutua</strong>
+        <span>Um degrau de tom acima da superfície.</span>
+        <div class="linha"><span class="campo">Buscar projeto</span><button class="botao">Salvar</button></div>
+      </div>
+    </div>
+    <p class="nota">Camada é <code>#2E2A24</code> — o mesmo degrau de <code>--cor-superficie-2</code>.</p>
+  </div>
+
+  <div class="celula" data-tema="escuro" data-estilo="vidro">
+    <div class="rot">vidro · escuro</div>
+    <div class="palco">
+      <div class="conteudo">
+        <div class="cartao"><h4>Reforma da cozinha</h4><p>No escuro a separação é tom de superfície e borda, não sombra.</p></div>
+        <div class="barras">
+          <i style="height:54%;background:var(--dados-1)"></i><i style="height:78%;background:var(--dados-2)"></i>
+          <i style="height:38%;background:var(--dados-3)"></i><i style="height:92%;background:var(--dados-4)"></i>
+          <i style="height:64%;background:var(--dados-5)"></i><i style="height:46%;background:var(--dados-6)"></i>
+        </div>
+      </div>
+      <div class="dica">Dica flutuante</div>
+      <div class="camada">
+        <strong>Camada que flutua</strong>
+        <span>O vidro <em>escurece</em>: claro translúcido sobre carvão vira névoa.</span>
+        <div class="linha"><span class="campo">Buscar projeto</span><button class="botao">Salvar</button></div>
+      </div>
+    </div>
+    <p class="nota">A borda de luz é <code>rgba(237,231,219,0.14)</code> — filete, não contorno.</p>
+  </div>
+
+</div>
+
+<div class="regra">
+  <p><strong>Vidro flutua, conteúdo é opaco.</strong> Se a camada <strong>cobre</strong> conteúdo
+  (barra, modal, gaveta, menu, aviso, dica), pode ser vidro. Se a camada <strong>é</strong> o
+  conteúdo (cartão, tabela, barra lateral, gráfico), fica opaca. É a transparência ser escassa
+  que deixa o vidro mais leve que o <code>aa</code> sem mexer na leitura.</p>
+  <p>O alfa da camada é <strong>medido, não escolhido a olho</strong>: camada translúcida herda o
+  contraste do que corre atrás. <code>0.82</code> no claro e <code>0.85</code> no escuro são o
+  mínimo que mantém AA no pior substrato que o sistema consegue pintar — inclusive sob o véu do
+  modal, que escurece o fundo antes do vidro compor em cima. Medição par por par em
+  <code>preview/contraste.html</code>. É o blur que faz parecer vidro, não o alfa.</p>
+  <p>Sem suporte a <code>backdrop-filter</code>, a camada cai para opaca pelo próprio token —
+  nunca para ilegível.</p>
+</div>
+
+</body></html>

@@ -5,7 +5,8 @@ export function BarraSuperior({ rotulo, titulo, acoes, style }) {
       display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
       gap: 24, flexWrap: 'wrap', minWidth: 0,
       padding: '24px 32px', borderBottom: '1px solid var(--cor-borda)',
-      background: 'var(--cor-superficie)', fontFamily: 'var(--fonte-ui)', ...style,
+      background: 'var(--cor-camada)', fontFamily: 'var(--fonte-ui)',
+      backdropFilter: 'var(--camada-filtro)', WebkitBackdropFilter: 'var(--camada-filtro)', ...style,
     }}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 4, flex: '1 1 240px', minWidth: 0 }}>
         {rotulo ? <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--cor-texto-suave)', whiteSpace: 'nowrap' }}>{rotulo}</span> : null}

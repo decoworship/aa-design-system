@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!-- @dsCard group="Componentes — Feedback" name="Gaveta, pilha de avisos, multi-seleção" subtitle="Sobreposições e escolha múltipla · clique para ver" viewport="880x560" -->
+<!-- @dsCard group="Componentes — Feedback" name="Gaveta, pilha de avisos, multi-seleção" subtitle="Sobreposições e escolha múltipla · troque o estilo e clique para ver" viewport="880x640" -->
 <html lang="pt-BR"><head><meta charset="UTF-8"><title>Sobreposições</title>
 <link rel="stylesheet" href="../styles.css">
-<style>html,body{margin:0;padding:0}body{width:880px;height:560px;box-sizing:border-box;padding:var(--espaco-6);background:var(--cor-fundo);overflow:hidden}
+<style>html,body{margin:0;padding:0}body{width:880px;height:640px;box-sizing:border-box;padding:var(--espaco-6);background:var(--cor-fundo);overflow:hidden}
 .rot{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--cor-texto-suave)}
 .col{display:flex;flex-direction:column;gap:var(--espaco-4)}</style>
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
@@ -17,11 +17,22 @@ const EQUIPE = ['Ana Prado','Bruno Sá','Carla Nunes','Diego Alves','Elisa Rocha
 
 function Demo() {
   const { avisos, avisar, dispensar } = Avisos.usar({ limite: 3 });
+  const [estilo, setEstilo] = React.useState('aa');
+  React.useEffect(() => { document.documentElement.setAttribute('data-estilo', estilo); }, [estilo]);
   const [lado, setLado] = React.useState(null);
   const [resp, setResp] = React.useState(['Ana Prado','Bruno Sá']);
   const [etapas, setEtapas] = React.useState([]);
   return (
     <React.Fragment>
+      <div style={{display:'flex',alignItems:'center',gap:'var(--espaco-3)',marginBottom:'var(--espaco-5)'}}>
+        <span className="rot">Estilo</span>
+        {['aa','vidro'].map((e) => (
+          <Botao key={e} variante={estilo === e ? 'primario' : 'secundario'} onClick={() => setEstilo(e)}>{e}</Botao>
+        ))}
+        <span style={{fontSize:13,color:'var(--cor-texto-suave)'}}>
+          Só a camada que flutua muda. Abra a gaveta ou um aviso para ver.
+        </span>
+      </div>
       <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'var(--espaco-6)'}}>
         <div className="col">
           <div className="rot">Multi-seleção</div>

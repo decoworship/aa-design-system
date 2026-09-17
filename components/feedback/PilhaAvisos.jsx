@@ -37,9 +37,10 @@ function Item({ aviso, aoDispensar, duracao }) {
   return (
     <div style={{
       display: 'flex', gap: 12, alignItems: 'flex-start', width: 340, maxWidth: '100%',
-      boxSizing: 'border-box', background: 'var(--cor-superficie)',
-      border: '1px solid var(--cor-borda)', borderRadius: 'var(--raio-medio)',
+      boxSizing: 'border-box', background: 'var(--cor-camada)',
+      border: '1px solid var(--cor-borda-camada)', borderRadius: 'var(--raio-medio)',
       boxShadow: 'var(--sombra-media)', padding: '14px 16px',
+      backdropFilter: 'var(--camada-filtro)', WebkitBackdropFilter: 'var(--camada-filtro)',
       fontFamily: 'var(--fonte-ui)', pointerEvents: 'auto',
       animation: 'aa-aviso-entra 200ms ease',
     }}>

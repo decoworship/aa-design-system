@@ -34,9 +34,10 @@ function ProjectDetail({ project, onClose, onToggleTask }) {
       <aside style={{
         position: 'fixed', right: 0, top: 0, bottom: 0,
         width: 480,
-        background: 'var(--cor-superficie)',
-        borderLeft: '1px solid var(--cor-borda)',
-        boxShadow: '0 12px 28px rgba(34,31,26,0.12)',
+        background: 'var(--cor-camada)',
+        borderLeft: '1px solid var(--cor-borda-camada)',
+        boxShadow: 'var(--sombra-grande)',
+        backdropFilter: 'var(--camada-filtro)', WebkitBackdropFilter: 'var(--camada-filtro)',
         zIndex: 60,
         display: 'flex', flexDirection: 'column',
       }}>

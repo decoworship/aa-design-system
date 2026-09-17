@@ -84,8 +84,9 @@ export function SeletorPeriodo({
         {aberto ? (
           <div role="dialog" aria-label="Escolher intervalo de datas" style={{
             position: 'absolute', top: 'calc(100% + 8px)', left: 0, zIndex: 'var(--z-suspenso)',
-            background: 'var(--cor-superficie)', border: '1px solid var(--cor-borda)',
+            background: 'var(--cor-camada)', border: '1px solid var(--cor-borda-camada)',
             borderRadius: 'var(--raio-medio)', boxShadow: 'var(--sombra-grande)', padding: 'var(--espaco-4)',
+            backdropFilter: 'var(--camada-filtro)', WebkitBackdropFilter: 'var(--camada-filtro)',
           }}>
             <CalendarioSlot modo="intervalo" valor={rascunho} aoSelecionar={setRascunho} max={d0(hoje)} />
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 'var(--espaco-3)', marginTop: 'var(--espaco-3)', paddingTop: 'var(--espaco-3)', borderTop: '1px solid var(--cor-borda)' }}>

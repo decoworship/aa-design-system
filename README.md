@@ -2,7 +2,7 @@
 
 > A calm, neutral, warm-sand design system for personal **web & mobile dashboards and tools.** Built around two fonts (Fraunces + Hanken Grotesk), a single sand neutral scale, one quiet blue, and a rare terracotta accent. Originally written in **Brazilian Portuguese** (`pt-BR`) — token names, copy, and component labels follow Portuguese conventions.
 
-**Version:** 0.4.0 — gaveta, fila de avisos, multi-seleção, guia mobile
+**Version:** 0.5.0 — camada de material (`data-estilo`: aa e vidro)
 
 ---
 
@@ -37,6 +37,7 @@ It is **not** Material, Apple HIG, or any corporate system. Three words guide ev
 ├── styles.css                 → SINGLE ENTRY POINT — link only this
 ├── colors_and_type.css        → tokens as CSS vars + semantic .t-* classes
 ├── componentes.css            → the same components as plain CSS classes (.aa-*)
+├── estilos.css                → material layer: data-estilo="aa" | "vidro"
 ├── thumbnail.html             → brand tile
 ├── tokens/
 │   ├── tokens.css             → tokens as CSS vars (mirrors colors_and_type)
@@ -58,6 +59,7 @@ It is **not** Material, Apple HIG, or any corporate system. Three words guide ev
 │   ├── graficos-catalogo.html → the full chart-type map
 │   ├── contraste.html         → WCAG audit, both themes, 58 pairs
 │   ├── tema-escuro.html       → dark mode, side by side with light
+│   ├── estilos.html           → aa and vidro, in both themes
 │   ├── periodo.html           → period selector + calendar
 │   └── voz.html               → the writing rules as cards
 └── ui_kits/
@@ -133,6 +135,17 @@ The system has a **distinct, recognizable look**. Follow these closely; they're 
 - **Chart series keep the same order and the same hue,** just lighter. Order is hierarchy; reshuffling it in dark would break the reading for anyone who already knows the chart.
 - Both themes are audited: see `preview/tema-escuro.html` and `preview/contraste.html`.
 
+### Material layer
+- **Turn it on with `data-estilo="vidro"`** on `<html>` (or any wrapper — per-subtree, exactly like `data-tema`, and the two **combine**): `<html data-tema="auto" data-estilo="vidro">`. `data-estilo="aa"` is the default and needs no attribute.
+- **Only material changes** — layer, border, radius, shadow. Never the palette, never the fonts, never the type scale (12/13/15/18/24/36 in both).
+- **The floating layer has its own token.** `--cor-camada` is the surface of what floats; `--cor-superficie` is the surface of what you read and stays opaque in both styles. This split is the whole design: if glass arrived through `--cor-superficie`, every `Cartao` would go translucent with it.
+- **The overlay components carry no CSS class** — they are inline styles reading tokens. That is *why* the style has to arrive by token: a class-based glass layer would reach none of them.
+- **Glass alpha is measured.** `0.82` light and `0.85` dark are the minimum that hold AA over the worst substrate the system can paint, including under the modal veil, which darkens the backdrop before the glass composites on top. Lowering them breaks AA. The blur is what makes it read as glass, not the alpha. 34 measured pairs in `preview/contraste.html`.
+- **`Dica` uses an inverted layer** (`--cor-camada-invertida`): it is an ink chip with light text, so it becomes dark glass in the light theme. Pointing it at `--cor-camada` would put light text on light glass.
+- **No `backdrop-filter` support → opaque.** The fallback is on the token itself, not just on the `.aa-vidro` utility, so the inline-style components fall back too.
+- Non-React consumers get the `.aa-vidro` utility class, which reads the same tokens.
+- See `preview/estilos.html` for all four style × theme combinations.
+
 ### Accessibility
 - **Target is WCAG 2.1 AA, and it's verified, not assumed.** All 58 text/background pairs across both themes are measured in `preview/contraste.html`. Re-run the audit whenever a semantic color changes — contrast is a silent regression.
 - **`--cor-destaque` is decorative and never text** (fill, rule, icon). For emphasis in writing use `--cor-destaque-texto`.
@@ -171,7 +184,11 @@ The system has a **distinct, recognizable look**. Follow these closely; they're 
 
 ### Backgrounds
 - **Flat warm colors. No gradients. No images. No patterns. No grain.** The system uses solid sand-tone backgrounds and that's it.
-- **No glassmorphism, no blur** (the original doesn't use `backdrop-filter` at all). If a popover needs separation, use the medium shadow.
+- **Blur exists, and it has exactly one scope: the `vidro` style.** Translucency with blur is allowed only on what **floats over** content — top bar, modal, drawer, menu, toast, tooltip. What you read stays opaque. A text card on glass tires the eye, and its contrast starts depending on whatever runs behind it.
+- **The rule: if a layer covers content, it may be glass. If a layer *is* the content, it may not.** Card, table, sidebar and every chart stay opaque in both styles.
+- **Glass alpha is measured, not eyeballed.** A translucent layer has no fixed contrast — it inherits the substrate. See [Material layer](#material-layer).
+- If `backdrop-filter` is missing, glass falls back to opaque — never to illegible.
+- In the default `aa` style nothing blurs: `--camada-filtro` is `none`, so this costs nothing until you opt in.
 - The only "decoration" available is the AA monogram, used small and in `currentColor`.
 
 ### Layout rules

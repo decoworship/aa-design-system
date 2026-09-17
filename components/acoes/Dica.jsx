@@ -16,9 +16,10 @@ export function Dica({ texto, posicao = 'cima', children }) {
     onFocus: () => setVer(true), onBlur: () => setVer(false),
   }, children, ver ? React.createElement('span', { key: 't', role: 'tooltip', style: {
     position: 'absolute', zIndex: 100, ...POS[posicao],
-    background: 'var(--cor-texto-forte)', color: 'var(--cor-superficie)',
+    background: 'var(--cor-camada-invertida)', color: 'var(--cor-superficie)',
     fontFamily: 'var(--fonte-ui)', fontSize: 12, lineHeight: 1.4,
     padding: '6px 10px', borderRadius: 'var(--raio-pequeno)',
     whiteSpace: 'nowrap', boxShadow: 'var(--sombra-media)', pointerEvents: 'none',
+    backdropFilter: 'var(--camada-filtro)', WebkitBackdropFilter: 'var(--camada-filtro)',
   } }, texto) : null);
 }

@@ -11,8 +11,9 @@ export function Aviso({ variante = 'info', titulo, mensagem, aoFechar, style }) 
   return (
     <div role="status" style={{
       display: 'flex', gap: 12, alignItems: 'flex-start', width: 340, maxWidth: '100%',
-      background: 'var(--cor-superficie)', border: '1px solid var(--cor-borda)',
+      background: 'var(--cor-camada)', border: '1px solid var(--cor-borda-camada)',
       borderRadius: 'var(--raio-medio)', boxShadow: 'var(--sombra-media)',
+      backdropFilter: 'var(--camada-filtro)', WebkitBackdropFilter: 'var(--camada-filtro)',
       padding: '14px 16px', fontFamily: 'var(--fonte-ui)', ...style,
     }}>
       <span style={{ width: 8, height: 8, borderRadius: 999, background: t.ponto, marginTop: 6, flex: 'none' }} />

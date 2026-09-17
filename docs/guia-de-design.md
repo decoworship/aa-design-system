@@ -38,10 +38,11 @@ Uma escala de areia quente, de `areia-50` (quase branco) a `areia-900` (quase pr
 | Token | Para quê | Valor |
 |---|---|---|
 | `fundo` | Fundo das telas | areia-100 |
-| `superficie` | Fundo de cards e painéis | areia-50 |
+| `superficie` | Fundo de cards e painéis — o que se **lê**, sempre opaco | areia-50 |
+| `camada` | Fundo do que **flutua**: barra, modal, gaveta, menu, aviso, dica | areia-50 |
 | `borda` | Linhas e divisórias | areia-300 |
 | `texto` | Texto padrão | areia-800 |
-| `texto-suave` | Texto secundário, legendas | areia-600 |
+| `texto-suave` | Texto secundário, legendas | areia-700 |
 | `texto-forte` | Títulos | areia-900 |
 | `acao` | Botões e links principais | primária-500 (azul) |
 | `destaque` | Acentos raros | acento-500 (terracota) |
@@ -97,6 +98,33 @@ Toda margem e todo respiro vêm de uma escala única: `4, 8, 12, 16, 24, 32, 48,
 
 Três níveis (`pequena`, `média`, `grande`), todas suaves e com um leve tom quente. Sombra aqui serve para separar camadas discretamente — nunca para chamar atenção.
 
+### Material — `aa` e `vidro`
+
+Raio e sombra são as duas coisas que mudam quando você troca o **estilo**. O sistema tem dois, e os dois vivem sobre a mesma paleta, as mesmas fontes e a mesma escala tipográfica:
+
+| | `aa` (padrão) | `vidro` |
+|---|---|---|
+| Camada que flutua | areia chapada | translúcida, com blur |
+| Raio | 6 / 10 / 16px | 10 / 14 / 22px |
+| Sombra | discreta, quase só um filete | presente — é ela que diz que flutua |
+
+Liga com `data-estilo="vidro"` no `<html>`, ou em qualquer wrapper. Funciona por subárvore e **combina** com `data-tema`:
+
+```html
+<html data-tema="auto" data-estilo="vidro">
+```
+
+**A regra é uma só: vidro flutua, conteúdo é opaco.** Se a camada **cobre** conteúdo — barra, modal, gaveta, menu, aviso, dica — pode ser vidro. Se a camada **é** o conteúdo — cartão, tabela, barra lateral, gráfico — fica opaca. Texto longo sobre blur cansa, e o contraste dele passa a depender do que corre atrás. É a translucidez ser escassa que deixa o `vidro` mais leve que o `aa` sem mexer na leitura.
+
+Por isso existem dois tokens de superfície, e não um: `superficie` é o que se lê e nunca fica translúcido; `camada` é o que flutua e é só ele que vira vidro. Se o vidro entrasse por `superficie`, todo cartão iria junto.
+
+Duas coisas que não se negociam:
+
+- **O alfa da camada é medido, não escolhido a olho.** Camada translúcida não tem contraste fixo — ela herda o que corre atrás. Os valores (0.82 no claro, 0.85 no escuro) são o mínimo que mantém AA no pior substrato que o sistema consegue pintar, inclusive sob o véu do modal, que escurece o fundo antes do vidro compor em cima. Baixar quebra AA. É o blur que faz parecer vidro, não o alfa.
+- **Sem `backdrop-filter` no navegador, vidro cai para opaco** — nunca para ilegível.
+
+Os dois estilos lado a lado, nos dois temas: `preview/estilos.html`. A medição par por par: `preview/contraste.html`.
+
 ---
 
 ## 4. Componentes iniciais
@@ -130,6 +158,8 @@ Não é uma etapa final, é parte de cada decisão:
 
 **Projeto web:** copie `tokens/tokens.css` para o projeto, importe-o antes do seu CSS e use as variáveis (`var(--cor-acao)`, `var(--espaco-4)`, etc.).
 
+Para o estilo `vidro`, copie também `estilos.css` e importe-o **depois** dos tokens — ele redefine token semântico, então ordem importa. Depois é só `data-estilo="vidro"` no `<html>`.
+
 **Ferramenta Python (Streamlit, Dash e afins):** o framework já traz os componentes prontos. Seu design system ali se aplica principalmente como **tema** — leia as cores e fontes de `tokens.json` e configure o tema do framework com esses valores. O guia continua valendo como referência de decisões.
 
 **Mobile:** os mesmos tokens valem. Adapte só o que for específico de telas pequenas (alvos de toque maiores, menos colunas).
@@ -144,7 +174,7 @@ Mesmo trabalhando sozinho, trate mudanças com cuidado:
 2. Suba a versão: correções pequenas mudam o último número (0.1.0 → 0.1.1); adições mudam o do meio (0.1.0 → 0.2.0).
 3. Sempre que mexer nos tokens, abra `preview.html` e confira se tudo continua coerente.
 
-O `tokens.json` é a **fonte da verdade**. Se algum dia o `tokens.css` divergir dele, o JSON é quem manda.
+O `tokens.json` é a **fonte da verdade**. Se algum dia o `tokens.css` divergir dele, o JSON é quem manda. Os dois estilos estão lá no bloco `estilo`, com os valores dos dois temas — é de onde um app Python/Streamlit lê o material sem precisar interpretar CSS.
 
 ---
 

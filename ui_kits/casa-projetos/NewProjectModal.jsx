@@ -37,10 +37,11 @@ function NewProjectModal({ open, onClose, onCreate }) {
         position: 'fixed', top: '50%', left: '50%',
         transform: 'translate(-50%, -50%)',
         width: 480, zIndex: 80,
-        background: 'var(--cor-superficie)',
-        border: '1px solid var(--cor-borda)',
-        borderRadius: 16,
-        boxShadow: '0 12px 28px rgba(34,31,26,0.12)',
+        background: 'var(--cor-camada)',
+        border: '1px solid var(--cor-borda-camada)',
+        borderRadius: 'var(--raio-grande)',
+        boxShadow: 'var(--sombra-grande)',
+        backdropFilter: 'var(--camada-filtro)', WebkitBackdropFilter: 'var(--camada-filtro)',
         display: 'flex', flexDirection: 'column',
       }}>
         <div style={{ padding: '24px 28px 8px', display: 'flex', flexDirection: 'column', gap: 6 }}>

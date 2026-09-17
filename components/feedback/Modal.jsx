@@ -16,8 +16,9 @@ export function Modal({ aberto = true, titulo, rotulo, aoFechar, acoes, largura 
     }}>
       <div role="dialog" aria-modal="true" onClick={(e) => e.stopPropagation()} style={{
         width: largura, maxWidth: '100%', maxHeight: '86vh', overflow: 'auto',
-        background: 'var(--cor-superficie)', borderRadius: 'var(--raio-grande)',
-        border: '1px solid var(--cor-borda)', boxShadow: 'var(--sombra-grande)',
+        background: 'var(--cor-camada)', borderRadius: 'var(--raio-grande)',
+        border: '1px solid var(--cor-borda-camada)', boxShadow: 'var(--sombra-grande)',
+        backdropFilter: 'var(--camada-filtro)', WebkitBackdropFilter: 'var(--camada-filtro)',
         padding: 24, fontFamily: 'var(--fonte-ui)',
       }}>
         {rotulo ? <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--cor-texto-suave)', marginBottom: 4 }}>{rotulo}</div> : null}

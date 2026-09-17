@@ -26,8 +26,9 @@ export function MenuSuspenso({ gatilho, rotulo = 'Opções', itens = [], aoEscol
         <div role="menu" style={{
           position: 'absolute', top: 'calc(100% + 6px)', zIndex: 100, minWidth: 180,
           [alinhamento === 'direita' ? 'right' : 'left']: 0,
-          background: 'var(--cor-superficie)', border: '1px solid var(--cor-borda)',
+          background: 'var(--cor-camada)', border: '1px solid var(--cor-borda-camada)',
           borderRadius: 'var(--raio-medio)', boxShadow: 'var(--sombra-media)', padding: 4,
+          backdropFilter: 'var(--camada-filtro)', WebkitBackdropFilter: 'var(--camada-filtro)',
         }}>
           {itens.map((it, i) => it.separador ? (
             <div key={'s' + i} style={{ height: 1, background: 'var(--cor-borda)', margin: '4px 0' }} />

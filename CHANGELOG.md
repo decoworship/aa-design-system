@@ -3,6 +3,43 @@
 Todas as mudanças relevantes do AA Design System.
 Versionamento: `MAIOR.MENOR.CORRECAO` — correções mudam o último número, adições compatíveis o do meio.
 
+## [0.5.0] — 2026-09-17
+
+Camada de material: o mesmo sistema com dois acabamentos, `aa` e `vidro`. Nada removido, nada renomeado, e o padrão continua sendo o `aa` — quem não põe `data-estilo` não vê diferença nenhuma.
+
+### Adicionado
+- **`estilos.css` e o atributo `data-estilo`.** `data-estilo="aa"` é o de hoje (areia chapada, borda, sombra discreta); `data-estilo="vidro"` deixa translúcido **só o que flutua**. Redefine apenas tokens de camada, borda, raio e sombra — **nunca paleta, fonte ou escala tipográfica** (12/13/15/18/24/36 são idênticas nos dois). Funciona por subárvore e **combina** com `data-tema`, igual ao modo escuro: `<html data-tema="auto" data-estilo="vidro">`.
+- **Tokens de camada.** `--cor-camada`, `--cor-camada-opaca`, `--cor-borda-camada`, `--cor-camada-invertida`, `--cor-camada-invertida-opaca` e `--camada-filtro`, declarados nos três contextos de tema (claro, escuro e auto) e no `tokens.json`, que ganhou um bloco `estilo` com os valores dos dois estilos nos dois temas.
+
+  **A camada é token próprio, e não `--cor-superficie`, de propósito.** Os componentes de sobreposição não têm classe CSS — são *inline style* lendo token. Duas consequências: uma camada de vidro baseada em seletor de classe não alcançaria nenhum deles, então o vidro tem que entrar por token; e se entrasse por `--cor-superficie`, **todo `Cartao` ficaria translúcido junto** e o texto passaria a depender do que corre atrás. Então `--cor-superficie` é o que se lê e continua opaca nos dois estilos, e `--cor-camada` é o que flutua e é só ela que vira vidro. É assim que a regra de design fica escrita no próprio sistema:
+
+  > **Vidro flutua, conteúdo é opaco.** Se a camada **cobre** conteúdo, pode ser vidro. Se a camada **é** o conteúdo, não pode.
+
+- **Nove componentes passaram a ler a camada,** sem nenhuma mudança de lógica e sem nenhuma classe nova: `Modal`, `Gaveta`, `MenuSuspenso`, `Aviso`, `PilhaAvisos`, `Dica`, `MultiSelecao` (painel de opções), `SeletorPeriodo` (popover do calendário) e `BarraSuperior`. **Não** mexeram: `Cartao`, `Tabela`, `BarraLateral`, `Abas`, gráficos, e o véu de modal e gaveta — véu é cortina, não camada, e não recebe filtro. Campo e caixa de marcar dentro de uma camada seguem com fundo opaco e `--cor-borda-controle`: estilo não afrouxa borda de controle.
+- **`preview/estilos.html`** — as quatro combinações de estilo × tema na mesma página, com barras de gráfico atrás da camada para o blur ficar visível e o cartão opaco ao lado para mostrar o contraste da regra. **`preview/sobreposicoes.html`** ganhou um botão de estilo, para ver os componentes de verdade em vidro.
+- **`preview/contraste.html`** ganhou a auditoria da camada: **34 pares novos**, nos dois temas.
+
+### Sobre o alfa da camada — o achado desta versão
+Camada translúcida **não tem contraste fixo**: ela herda o que corre atrás, então não existe "o par" para medir — existe o **pior caso**. O que torna o problema resolvível é uma regra que o sistema já tinha: sem imagem, sem gradiente, sem padrão, sem grão. A camada só flutua sobre cor do sistema, e aí o pior caso é enumerável.
+
+Enumerando, o alfa que o estudo visual sugeria (0.55 no claro) **reprovava AA** — e não num caso exótico: reprovava **sob o véu do modal sobre o fundo da página**, que é o caso mais comum do sistema inteiro, porque o véu escurece o fundo *antes* do vidro compor em cima. Sobre bloco de tinta o texto de corpo caía a 3.94:1.
+
+Os valores que entraram são **0.82 no claro e 0.85 no escuro**: o mínimo que mantém AA sobre qualquer superfície ou preenchimento decorativo do sistema, com e sem véu. A exigência mais apertada fica 3% acima do alvo. **É o blur que faz parecer vidro, não o alfa** — baixar o alfa para "parecer mais vidro" quebra a leitura. Quem mexer nesses números roda `preview/contraste.html` de novo.
+
+### Corrigido
+- **`data-tema="auto"` também recebe os blocos de estilo.** `[data-tema="auto"]` e `[data-estilo="vidro"]` empatam em especificidade (0,1,0) e `estilos.css` é importado depois, então sem um par explícito sob `prefers-color-scheme: dark` a página em auto + vidro num sistema escuro pegaria a camada **clara**. Mesmo motivo pelo qual o tema escuro explícito precisa de dois seletores (o de mesmo elemento e o descendente).
+- **O fallback sem `backdrop-filter` cai no token, não só na classe.** Como os componentes são inline style lendo `--cor-camada`, um `@supports` que só cobrisse `.aa-vidro` deixaria todos eles translúcidos **e sem blur** — o pior dos dois mundos. Agora o `@supports` redefine `--cor-camada` para `--cor-camada-opaca`, então vidro cai para opaco em qualquer consumidor. Nunca para ilegível.
+- **`Dica` entrou por uma camada invertida.** A dica é um chip de tinta: fundo `--cor-texto-forte`, texto `--cor-superficie`. Apontá-la para `--cor-camada` teria posto **texto claro sobre vidro claro**. Ela usa `--cor-camada-invertida`, que é vidro escuro no tema claro e vidro claro no escuro — no estilo `aa` o valor é idêntico ao de hoje, então nada muda lá.
+- `--cor-veu` estava **declarado duas vezes** no bloco `[data-tema="auto"]` de `colors_and_type.css` e de `tokens/tokens.css`, uma delas com indentação errada. Mesmo valor nas duas, então nunca deu sintoma; removida a repetida.
+- O guia listava `texto-suave` como `areia-600` na tabela de cores semânticas. Ele desceu para `areia-700` na auditoria de contraste do 0.3.0 — justamente porque `areia-600` reprovava — e a tabela ficou para trás. Corrigido.
+- `README.md` e `SKILL.md` afirmavam "sem glassmorphism, sem blur", e o README dizia que o sistema não usa `backdrop-filter`. Passou a ser mentira. Os dois textos agora dizem a regra com escopo, em vez de negar o recurso.
+
+### Verificado, sem mudança
+O `backdrop-filter: none !important` que existe em `templates/*/support.js` **já está dentro de `@media print`** nos cinco templates. A suspeita de que ele mataria o vidro em tela não se confirmou: é proteção de impressão e captura, e não vale na tela. Nenhum template precisou de ajuste.
+
+### Ainda não
+O padrão continua `aa`. Trocar o padrão para `vidro` é um segundo passo, deliberado, e com o contraste já medido não depende mais de nada técnico — depende de decisão.
+
 ## [0.4.0] — 2026-07-31
 
 Os três buracos que a auditoria apontou, mais o guia de mobile. Nada removido, nada renomeado.

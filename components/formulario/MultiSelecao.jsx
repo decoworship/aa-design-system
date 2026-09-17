@@ -95,9 +95,10 @@ export function MultiSelecao({
       {aberto ? (
         <div role="listbox" aria-multiselectable="true" style={{
           position: 'absolute', top: '100%', left: 0, right: 0, marginTop: 4,
-          zIndex: 'var(--z-suspenso)', background: 'var(--cor-superficie)',
-          border: '1px solid var(--cor-borda)', borderRadius: 'var(--raio-medio)',
+          zIndex: 'var(--z-suspenso)', background: 'var(--cor-camada)',
+          border: '1px solid var(--cor-borda-camada)', borderRadius: 'var(--raio-medio)',
           boxShadow: 'var(--sombra-media)', padding: 6, maxHeight: 260, overflow: 'auto',
+          backdropFilter: 'var(--camada-filtro)', WebkitBackdropFilter: 'var(--camada-filtro)',
         }}>
           {comBusca ? (
             <input

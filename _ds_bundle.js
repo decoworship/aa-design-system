@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"AADesignSystem_ada6b1","components":[{"name":"Avatar","sourcePath":"components/acoes/Avatar.jsx"},{"name":"Botao","sourcePath":"components/acoes/Botao.jsx"},{"name":"Dica","sourcePath":"components/acoes/Dica.jsx"},{"name":"Etiqueta","sourcePath":"components/acoes/Etiqueta.jsx"},{"name":"Esqueleto","sourcePath":"components/dados/Esqueleto.jsx"},{"name":"Metrica","sourcePath":"components/dados/Metrica.jsx"},{"name":"Paginacao","sourcePath":"components/dados/Paginacao.jsx"},{"name":"Progresso","sourcePath":"components/dados/Progresso.jsx"},{"name":"Tabela","sourcePath":"components/dados/Tabela.jsx"},{"name":"Vazio","sourcePath":"components/dados/Vazio.jsx"},{"name":"Abas","sourcePath":"components/estrutura/Abas.jsx"},{"name":"Cartao","sourcePath":"components/estrutura/Cartao.jsx"},{"name":"Divisor","sourcePath":"components/estrutura/Divisor.jsx"},{"name":"Gaveta","sourcePath":"components/estrutura/Gaveta.jsx"},{"name":"Migalhas","sourcePath":"components/estrutura/Migalhas.jsx"},{"name":"Alerta","sourcePath":"components/feedback/Alerta.jsx"},{"name":"Aviso","sourcePath":"components/feedback/Aviso.jsx"},{"name":"MenuSuspenso","sourcePath":"components/feedback/MenuSuspenso.jsx"},{"name":"Modal","sourcePath":"components/feedback/Modal.jsx"},{"name":"PilhaAvisos","sourcePath":"components/feedback/PilhaAvisos.jsx"},{"name":"Avisos","sourcePath":"components/feedback/PilhaAvisos.jsx"},{"name":"AreaTexto","sourcePath":"components/formulario/AreaTexto.jsx"},{"name":"Busca","sourcePath":"components/formulario/Busca.jsx"},{"name":"Calendario","sourcePath":"components/formulario/Calendario.jsx"},{"name":"Campo","sourcePath":"components/formulario/Campo.jsx"},{"name":"Escolha","sourcePath":"components/formulario/Escolha.jsx"},{"name":"Interruptor","sourcePath":"components/formulario/Interruptor.jsx"},{"name":"MultiSelecao","sourcePath":"components/formulario/MultiSelecao.jsx"},{"name":"Selecao","sourcePath":"components/formulario/Selecao.jsx"},{"name":"ATALHOS","sourcePath":"components/formulario/SeletorPeriodo.jsx"},{"name":"SeletorPeriodo","sourcePath":"components/formulario/SeletorPeriodo.jsx"},{"name":"Periodo","sourcePath":"components/formulario/SeletorPeriodo.jsx"},{"name":"GraficoBarras","sourcePath":"components/graficos/GraficoBarras.jsx"},{"name":"GraficoDispersao","sourcePath":"components/graficos/GraficoDispersao.jsx"},{"name":"GraficoFunil","sourcePath":"components/graficos/GraficoFunil.jsx"},{"name":"GraficoLinhas","sourcePath":"components/graficos/GraficoLinhas.jsx"},{"name":"GraficoMedidor","sourcePath":"components/graficos/GraficoMedidor.jsx"},{"name":"GraficoRosca","sourcePath":"components/graficos/GraficoRosca.jsx"},{"name":"MapaDeCalor","sourcePath":"components/graficos/MapaDeCalor.jsx"},{"name":"Minigrafico","sourcePath":"components/graficos/Minigrafico.jsx"},{"name":"BarraLateral","sourcePath":"components/navegacao/BarraLateral.jsx"},{"name":"BarraSuperior","sourcePath":"components/navegacao/BarraSuperior.jsx"}],"sourceHashes":{"components/acoes/Avatar.jsx":"a7a7a484ed94","components/acoes/Botao.jsx":"d6138295f63a","components/acoes/Dica.jsx":"4197d69d9222","components/acoes/Etiqueta.jsx":"d2e2ad40a915","components/dados/Esqueleto.jsx":"b7152a5824dd","components/dados/Metrica.jsx":"b5c6db4dc158","components/dados/Paginacao.jsx":"a415d3e03671","components/dados/Progresso.jsx":"33b117e8cd33","components/dados/Tabela.jsx":"5ad1f54a267d","components/dados/Vazio.jsx":"efc60ab3dc11","components/estrutura/Abas.jsx":"d67c87460e2b","components/estrutura/Cartao.jsx":"83062865f017","components/estrutura/Divisor.jsx":"79751a067029","components/estrutura/Gaveta.jsx":"da4418944535","components/estrutura/Migalhas.jsx":"08f959176431","components/feedback/Alerta.jsx":"17a72656e8b1","components/feedback/Aviso.jsx":"1c0a5f24df1f","components/feedback/MenuSuspenso.jsx":"b59d9b7a1539","components/feedback/Modal.jsx":"df61e12883a8","components/feedback/PilhaAvisos.jsx":"30c4f123eb7a","components/formulario/AreaTexto.jsx":"7bb908367aae","components/formulario/Busca.jsx":"cd0c3e5c1b20","components/formulario/Calendario.jsx":"08fade00b25a","components/formulario/Campo.jsx":"6b35cc568813","components/formulario/Escolha.jsx":"acbb9b8abfe5","components/formulario/Interruptor.jsx":"74b12440fccd","components/formulario/MultiSelecao.jsx":"852f3e6881e9","components/formulario/Selecao.jsx":"03a7b91785aa","components/formulario/SeletorPeriodo.jsx":"c4630bbee992","components/graficos/GraficoBarras.jsx":"40310b3d85dd","components/graficos/GraficoDispersao.jsx":"415ccfba7981","components/graficos/GraficoFunil.jsx":"a3d3aa8e40b9","components/graficos/GraficoLinhas.jsx":"ea73f98a7580","components/graficos/GraficoMedidor.jsx":"ee5ee830fa10","components/graficos/GraficoRosca.jsx":"38c857499972","components/graficos/MapaDeCalor.jsx":"6262b7d2cd7a","components/graficos/Minigrafico.jsx":"8c04a8f08ae2","components/navegacao/BarraLateral.jsx":"1d1eb7f7cfaa","components/navegacao/BarraSuperior.jsx":"1fba2221b662","ui_kits/casa-projetos/App.jsx":"04d59691b641","ui_kits/casa-projetos/MetricCard.jsx":"6953d605b0ea","ui_kits/casa-projetos/NewProjectModal.jsx":"bb531ecaa041","ui_kits/casa-projetos/ProjectDetail.jsx":"6f84be66efdd","ui_kits/casa-projetos/ProjectRow.jsx":"87482463c38b","ui_kits/casa-projetos/Sidebar.jsx":"7b78f6b2244a","ui_kits/casa-projetos/TopBar.jsx":"cc1b16f371e9","ui_kits/casa-projetos/primitives.jsx":"443637181e98"},"inlinedExternals":[],"unexposedExports":[{"name":"periodoAnterior","sourcePath":"components/formulario/SeletorPeriodo.jsx"},{"name":"periodoDoAtalho","sourcePath":"components/formulario/SeletorPeriodo.jsx"}]} */
+/* @ds-bundle: {"format":4,"namespace":"AADesignSystem_ada6b1","components":[{"name":"Avatar","sourcePath":"components/acoes/Avatar.jsx"},{"name":"Botao","sourcePath":"components/acoes/Botao.jsx"},{"name":"Dica","sourcePath":"components/acoes/Dica.jsx"},{"name":"Etiqueta","sourcePath":"components/acoes/Etiqueta.jsx"},{"name":"Esqueleto","sourcePath":"components/dados/Esqueleto.jsx"},{"name":"Metrica","sourcePath":"components/dados/Metrica.jsx"},{"name":"Paginacao","sourcePath":"components/dados/Paginacao.jsx"},{"name":"Progresso","sourcePath":"components/dados/Progresso.jsx"},{"name":"Tabela","sourcePath":"components/dados/Tabela.jsx"},{"name":"Vazio","sourcePath":"components/dados/Vazio.jsx"},{"name":"Abas","sourcePath":"components/estrutura/Abas.jsx"},{"name":"Cartao","sourcePath":"components/estrutura/Cartao.jsx"},{"name":"Divisor","sourcePath":"components/estrutura/Divisor.jsx"},{"name":"Gaveta","sourcePath":"components/estrutura/Gaveta.jsx"},{"name":"Migalhas","sourcePath":"components/estrutura/Migalhas.jsx"},{"name":"Alerta","sourcePath":"components/feedback/Alerta.jsx"},{"name":"Aviso","sourcePath":"components/feedback/Aviso.jsx"},{"name":"MenuSuspenso","sourcePath":"components/feedback/MenuSuspenso.jsx"},{"name":"Modal","sourcePath":"components/feedback/Modal.jsx"},{"name":"PilhaAvisos","sourcePath":"components/feedback/PilhaAvisos.jsx"},{"name":"Avisos","sourcePath":"components/feedback/PilhaAvisos.jsx"},{"name":"AreaTexto","sourcePath":"components/formulario/AreaTexto.jsx"},{"name":"Busca","sourcePath":"components/formulario/Busca.jsx"},{"name":"Calendario","sourcePath":"components/formulario/Calendario.jsx"},{"name":"Campo","sourcePath":"components/formulario/Campo.jsx"},{"name":"Escolha","sourcePath":"components/formulario/Escolha.jsx"},{"name":"Interruptor","sourcePath":"components/formulario/Interruptor.jsx"},{"name":"MultiSelecao","sourcePath":"components/formulario/MultiSelecao.jsx"},{"name":"Selecao","sourcePath":"components/formulario/Selecao.jsx"},{"name":"ATALHOS","sourcePath":"components/formulario/SeletorPeriodo.jsx"},{"name":"SeletorPeriodo","sourcePath":"components/formulario/SeletorPeriodo.jsx"},{"name":"Periodo","sourcePath":"components/formulario/SeletorPeriodo.jsx"},{"name":"GraficoBarras","sourcePath":"components/graficos/GraficoBarras.jsx"},{"name":"GraficoDispersao","sourcePath":"components/graficos/GraficoDispersao.jsx"},{"name":"GraficoFunil","sourcePath":"components/graficos/GraficoFunil.jsx"},{"name":"GraficoLinhas","sourcePath":"components/graficos/GraficoLinhas.jsx"},{"name":"GraficoMedidor","sourcePath":"components/graficos/GraficoMedidor.jsx"},{"name":"GraficoRosca","sourcePath":"components/graficos/GraficoRosca.jsx"},{"name":"MapaDeCalor","sourcePath":"components/graficos/MapaDeCalor.jsx"},{"name":"Minigrafico","sourcePath":"components/graficos/Minigrafico.jsx"},{"name":"BarraLateral","sourcePath":"components/navegacao/BarraLateral.jsx"},{"name":"BarraSuperior","sourcePath":"components/navegacao/BarraSuperior.jsx"}],"sourceHashes":{"components/acoes/Avatar.jsx":"a7a7a484ed94","components/acoes/Botao.jsx":"d6138295f63a","components/acoes/Dica.jsx":"4e2c3183c8ed","components/acoes/Etiqueta.jsx":"d2e2ad40a915","components/dados/Esqueleto.jsx":"b7152a5824dd","components/dados/Metrica.jsx":"b5c6db4dc158","components/dados/Paginacao.jsx":"a415d3e03671","components/dados/Progresso.jsx":"33b117e8cd33","components/dados/Tabela.jsx":"5ad1f54a267d","components/dados/Vazio.jsx":"efc60ab3dc11","components/estrutura/Abas.jsx":"d67c87460e2b","components/estrutura/Cartao.jsx":"83062865f017","components/estrutura/Divisor.jsx":"79751a067029","components/estrutura/Gaveta.jsx":"1cf81d6d75c1","components/estrutura/Migalhas.jsx":"08f959176431","components/feedback/Alerta.jsx":"17a72656e8b1","components/feedback/Aviso.jsx":"d1b2860e8692","components/feedback/MenuSuspenso.jsx":"1b8a24a85724","components/feedback/Modal.jsx":"2f5dee611132","components/feedback/PilhaAvisos.jsx":"33ea6caea048","components/formulario/AreaTexto.jsx":"7bb908367aae","components/formulario/Busca.jsx":"cd0c3e5c1b20","components/formulario/Calendario.jsx":"08fade00b25a","components/formulario/Campo.jsx":"6b35cc568813","components/formulario/Escolha.jsx":"acbb9b8abfe5","components/formulario/Interruptor.jsx":"74b12440fccd","components/formulario/MultiSelecao.jsx":"7574ea1e8860","components/formulario/Selecao.jsx":"03a7b91785aa","components/formulario/SeletorPeriodo.jsx":"9b6a483e54df","components/graficos/GraficoBarras.jsx":"40310b3d85dd","components/graficos/GraficoDispersao.jsx":"415ccfba7981","components/graficos/GraficoFunil.jsx":"a3d3aa8e40b9","components/graficos/GraficoLinhas.jsx":"ea73f98a7580","components/graficos/GraficoMedidor.jsx":"ee5ee830fa10","components/graficos/GraficoRosca.jsx":"38c857499972","components/graficos/MapaDeCalor.jsx":"6262b7d2cd7a","components/graficos/Minigrafico.jsx":"8c04a8f08ae2","components/navegacao/BarraLateral.jsx":"1d1eb7f7cfaa","components/navegacao/BarraSuperior.jsx":"537a85194f9d","ui_kits/casa-projetos/App.jsx":"04d59691b641","ui_kits/casa-projetos/MetricCard.jsx":"6953d605b0ea","ui_kits/casa-projetos/NewProjectModal.jsx":"a229c5f0328f","ui_kits/casa-projetos/ProjectDetail.jsx":"4909f7ae3bb4","ui_kits/casa-projetos/ProjectRow.jsx":"87482463c38b","ui_kits/casa-projetos/Sidebar.jsx":"7b78f6b2244a","ui_kits/casa-projetos/TopBar.jsx":"cc1b16f371e9","ui_kits/casa-projetos/primitives.jsx":"443637181e98"},"inlinedExternals":[],"unexposedExports":[{"name":"periodoAnterior","sourcePath":"components/formulario/SeletorPeriodo.jsx"},{"name":"periodoDoAtalho","sourcePath":"components/formulario/SeletorPeriodo.jsx"}]} */
 
 (() => {
 
@@ -273,7 +273,7 @@ function Dica({
       position: 'absolute',
       zIndex: 100,
       ...POS[posicao],
-      background: 'var(--cor-texto-forte)',
+      background: 'var(--cor-camada-invertida)',
       color: 'var(--cor-superficie)',
       fontFamily: 'var(--fonte-ui)',
       fontSize: 12,
@@ -282,7 +282,9 @@ function Dica({
       borderRadius: 'var(--raio-pequeno)',
       whiteSpace: 'nowrap',
       boxShadow: 'var(--sombra-media)',
-      pointerEvents: 'none'
+      pointerEvents: 'none',
+      backdropFilter: 'var(--camada-filtro)',
+      WebkitBackdropFilter: 'var(--camada-filtro)'
     }
   }, texto) : null);
 }
@@ -1149,9 +1151,11 @@ function Gaveta({
       maxHeight: '100%',
       display: 'flex',
       flexDirection: 'column',
-      background: 'var(--cor-superficie)',
+      background: 'var(--cor-camada)',
       boxShadow: 'var(--sombra-grande)',
-      [l.borda]: '1px solid var(--cor-borda)',
+      backdropFilter: 'var(--camada-filtro)',
+      WebkitBackdropFilter: 'var(--camada-filtro)',
+      [l.borda]: '1px solid var(--cor-borda-camada)',
       borderRadius: deBaixo ? 'var(--raio-grande) var(--raio-grande) 0 0' : 0,
       fontFamily: 'var(--fonte-ui)',
       animation: l.anim + ' 220ms cubic-bezier(0.22,0.61,0.36,1)',
@@ -1411,10 +1415,12 @@ function Aviso({
       alignItems: 'flex-start',
       width: 340,
       maxWidth: '100%',
-      background: 'var(--cor-superficie)',
-      border: '1px solid var(--cor-borda)',
+      background: 'var(--cor-camada)',
+      border: '1px solid var(--cor-borda-camada)',
       borderRadius: 'var(--raio-medio)',
       boxShadow: 'var(--sombra-media)',
+      backdropFilter: 'var(--camada-filtro)',
+      WebkitBackdropFilter: 'var(--camada-filtro)',
       padding: '14px 16px',
       fontFamily: 'var(--fonte-ui)',
       ...style
@@ -1533,10 +1539,12 @@ function MenuSuspenso({
       zIndex: 100,
       minWidth: 180,
       [alinhamento === 'direita' ? 'right' : 'left']: 0,
-      background: 'var(--cor-superficie)',
-      border: '1px solid var(--cor-borda)',
+      background: 'var(--cor-camada)',
+      border: '1px solid var(--cor-borda-camada)',
       borderRadius: 'var(--raio-medio)',
       boxShadow: 'var(--sombra-media)',
+      backdropFilter: 'var(--camada-filtro)',
+      WebkitBackdropFilter: 'var(--camada-filtro)',
       padding: 4
     }
   }, itens.map((it, i) => it.separador ? /*#__PURE__*/React.createElement("div", {
@@ -1618,10 +1626,12 @@ function Modal({
       maxWidth: '100%',
       maxHeight: '86vh',
       overflow: 'auto',
-      background: 'var(--cor-superficie)',
+      background: 'var(--cor-camada)',
       borderRadius: 'var(--raio-grande)',
-      border: '1px solid var(--cor-borda)',
+      border: '1px solid var(--cor-borda-camada)',
       boxShadow: 'var(--sombra-grande)',
+      backdropFilter: 'var(--camada-filtro)',
+      WebkitBackdropFilter: 'var(--camada-filtro)',
       padding: 24,
       fontFamily: 'var(--fonte-ui)'
     }
@@ -1742,10 +1752,12 @@ function Item({
       width: 340,
       maxWidth: '100%',
       boxSizing: 'border-box',
-      background: 'var(--cor-superficie)',
-      border: '1px solid var(--cor-borda)',
+      background: 'var(--cor-camada)',
+      border: '1px solid var(--cor-borda-camada)',
       borderRadius: 'var(--raio-medio)',
       boxShadow: 'var(--sombra-media)',
+      backdropFilter: 'var(--camada-filtro)',
+      WebkitBackdropFilter: 'var(--camada-filtro)',
       padding: '14px 16px',
       fontFamily: 'var(--fonte-ui)',
       pointerEvents: 'auto',
@@ -2694,10 +2706,12 @@ function MultiSelecao({
       right: 0,
       marginTop: 4,
       zIndex: 'var(--z-suspenso)',
-      background: 'var(--cor-superficie)',
-      border: '1px solid var(--cor-borda)',
+      background: 'var(--cor-camada)',
+      border: '1px solid var(--cor-borda-camada)',
       borderRadius: 'var(--raio-medio)',
       boxShadow: 'var(--sombra-media)',
+      backdropFilter: 'var(--camada-filtro)',
+      WebkitBackdropFilter: 'var(--camada-filtro)',
       padding: 6,
       maxHeight: 260,
       overflow: 'auto'
@@ -3082,10 +3096,12 @@ function SeletorPeriodo({
       top: 'calc(100% + 8px)',
       left: 0,
       zIndex: 'var(--z-suspenso)',
-      background: 'var(--cor-superficie)',
-      border: '1px solid var(--cor-borda)',
+      background: 'var(--cor-camada)',
+      border: '1px solid var(--cor-borda-camada)',
       borderRadius: 'var(--raio-medio)',
       boxShadow: 'var(--sombra-grande)',
+      backdropFilter: 'var(--camada-filtro)',
+      WebkitBackdropFilter: 'var(--camada-filtro)',
       padding: 'var(--espaco-4)'
     }
   }, /*#__PURE__*/React.createElement(CalendarioSlot, {
@@ -4325,8 +4341,10 @@ function BarraSuperior({
       minWidth: 0,
       padding: '24px 32px',
       borderBottom: '1px solid var(--cor-borda)',
-      background: 'var(--cor-superficie)',
+      background: 'var(--cor-camada)',
       fontFamily: 'var(--fonte-ui)',
+      backdropFilter: 'var(--camada-filtro)',
+      WebkitBackdropFilter: 'var(--camada-filtro)',
       ...style
     }
   }, /*#__PURE__*/React.createElement("div", {
@@ -4926,10 +4944,12 @@ function NewProjectModal({
       transform: 'translate(-50%, -50%)',
       width: 480,
       zIndex: 80,
-      background: 'var(--cor-superficie)',
-      border: '1px solid var(--cor-borda)',
-      borderRadius: 16,
-      boxShadow: '0 12px 28px rgba(34,31,26,0.12)',
+      background: 'var(--cor-camada)',
+      border: '1px solid var(--cor-borda-camada)',
+      borderRadius: 'var(--raio-grande)',
+      boxShadow: 'var(--sombra-grande)',
+      backdropFilter: 'var(--camada-filtro)',
+      WebkitBackdropFilter: 'var(--camada-filtro)',
       display: 'flex',
       flexDirection: 'column'
     }
@@ -5085,9 +5105,11 @@ function ProjectDetail({
       top: 0,
       bottom: 0,
       width: 480,
-      background: 'var(--cor-superficie)',
-      borderLeft: '1px solid var(--cor-borda)',
-      boxShadow: '0 12px 28px rgba(34,31,26,0.12)',
+      background: 'var(--cor-camada)',
+      borderLeft: '1px solid var(--cor-borda-camada)',
+      boxShadow: 'var(--sombra-grande)',
+      backdropFilter: 'var(--camada-filtro)',
+      WebkitBackdropFilter: 'var(--camada-filtro)',
       zIndex: 60,
       display: 'flex',
       flexDirection: 'column'

@@ -22,14 +22,16 @@ This skill packages a small, opinionated personal design system. The brand langu
 
 ## When generating visual artifacts
 
-- Copy `styles.css` (plus `colors_and_type.css` and `componentes.css`, which it imports) and `assets/logo-aa.svg` into your output folder; reference them, don't re-invent.
+- Copy `styles.css` (plus `colors_and_type.css`, `componentes.css` and `estilos.css`, which it imports) and `assets/logo-aa.svg` into your output folder; reference them, don't re-invent.
 - Default UI copy to **Brazilian Portuguese**, in conversational `você` tone. Keep examples domestic and small-scale (`Reforma da cozinha`, `Resumo do mês`).
 - Use ONLY the eight spacing values, six type sizes (48px `--texto-heroi` exists but is for login/marketing heroes only), three radii, three shadows, and named semantic colors. Do not invent new colors.
 - In charts: categorical series use `--dados-1…8` in order; one variable light→dark uses `--seq-1…5`; deviation uses `--div-1…5`. Never a feedback color in a series. Bar charts start at zero.
-- No emoji. No gradients. No glassmorphism. No icons unless explicitly added — substitute Lucide (and flag it) if you really need one.
+- No emoji. No gradients. No icons unless explicitly added — substitute Lucide (and flag it) if you really need one.
+- No glassmorphism **by default**. Blur has exactly one scope: the opt-in `vidro` style, and only on what floats over content. If you have not been asked for `data-estilo="vidro"`, build in `aa` and nothing blurs.
 - Background is `--cor-fundo` (warm off-white `#F4EFE6`), never pure white. Cards sit on `--cor-superficie` (`#FAF7F1`).
 - **Never write a literal color or a raw ramp (`--areia-*`, `--primaria-*`, `--acento-*`) in a component** — semantic tokens only, hover and pressed states included. A literal passes in light and breaks in dark.
 - **Dark mode:** put `data-tema="escuro"` on `<html>` (or `"auto"` to follow the OS). Only semantic tokens change, so nothing else needs touching. The dark base is warm charcoal-brown, never cool grey.
+- **Material layer:** put `data-estilo="vidro"` on `<html>` for the glass style (default is `aa`, no attribute needed). It combines with `data-tema` and works per-subtree. Only layer, border, radius and shadow change — never palette, fonts or type scale. What **floats** (bar, modal, drawer, menu, toast, tooltip) goes translucent; what you **read** (card, table, sidebar, charts) stays opaque. Use `--cor-camada` for a floating surface and `--cor-superficie` for a reading surface; the `.aa-vidro` class does it for plain HTML. Do not lower the glass alpha — it is measured against AA in `preview/contraste.html`.
 - **Accessibility is verified, not assumed** — see `preview/contraste.html`. Two rules that catch people out: `--cor-destaque` is decorative and never text (use `--cor-destaque-texto`), and form controls use `--cor-borda-controle`, not `--cor-borda`.
 - **Writing:** follow `docs/voz.md`. Buttons are verbs the person is performing; errors always carry the next step; no exclamation marks, no emoji, no "com sucesso".
 
